@@ -10,7 +10,7 @@
 
   <meta
     name="description"
-    content="Daniil Zorin — Ukrainian artist and model based in Norway."
+    content="Daniil Zorin — Ukrainian artist and model based in Bodø, Norway."
   >
 
   <meta
@@ -23,7 +23,7 @@
     content="#090708"
   >
 
-  <title>Daniil Zorin — Artist</title>
+  <title>Daniil Zorin</title>
 
 
   <!-- =====================================================
@@ -31,6 +31,7 @@
   ====================================================== -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
+
   <link
     rel="preconnect"
     href="https://fonts.gstatic.com"
@@ -193,6 +194,11 @@
       border-top: 1px solid var(--line);
     }
 
+    /*
+      The wine line now fills according to
+      how far the user has progressed through the page.
+    */
+
     section::before {
       content: "";
 
@@ -201,12 +207,14 @@
       top: -1px;
       left: 0;
 
-      width: 90px;
+      width: var(--section-progress, 0%);
       height: 1px;
 
       background: var(--wine-light);
 
-      opacity: 0.75;
+      opacity: 0.85;
+
+      transition: width 0.12s linear;
     }
 
 
@@ -530,53 +538,6 @@
 
 
     /* =====================================================
-       HERO ROLE
-    ====================================================== */
-
-    .hero-intro {
-      display: flex;
-
-      justify-content: center;
-
-      margin-top: 52px;
-
-      text-align: center;
-
-      animation:
-        rolesReveal 1s 0.35s var(--ease) both;
-    }
-
-    .hero-roles {
-      display: inline-block;
-
-      color: var(--muted);
-
-      font-size: 10px;
-      font-weight: 500;
-
-      text-transform: uppercase;
-
-      letter-spacing: 0.42em;
-    }
-
-    @keyframes rolesReveal {
-      from {
-        opacity: 0;
-
-        transform:
-          translateY(25px);
-      }
-
-      to {
-        opacity: 1;
-
-        transform:
-          translateY(0);
-      }
-    }
-
-
-    /* =====================================================
        HERO IMAGE
     ====================================================== */
 
@@ -801,12 +762,33 @@
     .about-content {
       width: 100%;
 
-      min-height: 0;
-
-      padding: 0;
+      padding:
+        55px 0;
 
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
+    }
+
+    .about-text {
+      max-width: 850px;
+
+      margin: 0;
+
+      color: var(--cream);
+
+      font-family: var(--display-font);
+
+      font-size: clamp(
+        38px,
+        5vw,
+        76px
+      );
+
+      font-weight: 400;
+
+      line-height: 1.05;
+
+      letter-spacing: -0.045em;
     }
 
 
@@ -819,7 +801,43 @@
     }
 
     .work-header {
-      margin-bottom: 70px;
+      margin-bottom: 45px;
+    }
+
+
+    /* =====================================================
+       WORK TEXT FIELD
+    ====================================================== */
+
+    .work-text {
+      width: 100%;
+
+      max-width: 850px;
+
+      margin:
+        0 0 70px;
+
+      min-height: 150px;
+
+      padding:
+        28px 0;
+
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.8;
+
+      letter-spacing: 0.01em;
+    }
+
+    .work-text-placeholder {
+      opacity: 0.45;
+
+      font-style: italic;
     }
 
 
@@ -1218,7 +1236,7 @@
       .hero {
         min-height: 100svh;
 
-        padding-top: 175px;
+        padding-top: 155px;
         padding-bottom: 90px;
       }
 
@@ -1234,15 +1252,6 @@
 
         letter-spacing:
           -0.075em;
-      }
-
-      .hero-intro {
-        margin-top: 42px;
-      }
-
-      .hero-roles {
-        font-size: 9px;
-        letter-spacing: 0.28em;
       }
 
       .hero-image {
@@ -1283,8 +1292,14 @@
       }
 
       .about-content {
-        min-height: 0;
-        padding: 0;
+        padding:
+          40px 0;
+      }
+
+      .about-text {
+        font-size: 38px;
+
+        line-height: 1.05;
       }
 
 
@@ -1295,7 +1310,20 @@
       }
 
       .work-header {
+        margin-bottom: 40px;
+      }
+
+      .work-text {
         margin-bottom: 50px;
+
+        min-height: 130px;
+
+        padding:
+          24px 0;
+
+        font-size: 13px;
+
+        line-height: 1.7;
       }
 
       .gallery {
@@ -1372,16 +1400,16 @@
         font-size: 17.5vw;
       }
 
-      .hero-roles {
-        font-size: 8px;
-      }
-
       .section-title {
         font-size: 60px;
       }
 
       .work-title {
         font-size: 55px;
+      }
+
+      .about-text {
+        font-size: 33px;
       }
 
       .contact-title {
@@ -1410,6 +1438,7 @@
         animation: none !important;
         transition: none !important;
       }
+
     }
 
   </style>
@@ -1507,15 +1536,6 @@
       </h1>
 
 
-      <div class="hero-intro">
-
-        <div class="hero-roles">
-          Artist
-        </div>
-
-      </div>
-
-
       <button
         class="hero-image"
         type="button"
@@ -1576,6 +1596,11 @@
           class="about-content reveal"
           aria-label="About"
         >
+
+          <p class="about-text">
+            Ukrainian artist and model based in Bodø, Norway.
+          </p>
+
         </div>
 
       </div>
@@ -1603,6 +1628,17 @@
           <h2 class="work-title">
             Selected Work
           </h2>
+
+        </div>
+
+
+        <!-- FUTURE TEXT FIELD -->
+
+        <div class="work-text reveal">
+
+          <span class="work-text-placeholder">
+            Future text goes here.
+          </span>
 
         </div>
 
@@ -1643,6 +1679,23 @@
               <img
                 src="portfolio-03.jpg"
                 alt="Daniil Zorin portfolio image 3"
+                loading="lazy"
+                decoding="async"
+              >
+
+            </button>
+
+
+            <button
+              class="gallery-item reveal"
+              type="button"
+              data-image="portfolio-05.jpg"
+              aria-label="Open portfolio image 5"
+            >
+
+              <img
+                src="portfolio-05.jpg"
+                alt="Daniil Zorin portfolio image 5"
                 loading="lazy"
                 decoding="async"
               >
@@ -1828,6 +1881,9 @@
     const heroImage =
       document.querySelector(".hero-image");
 
+    const sections =
+      document.querySelectorAll("main section");
+
     let lastFocusedElement = null;
 
 
@@ -1943,6 +1999,91 @@
       );
 
     }
+
+
+    /* =====================================================
+       SECTION SCROLL PROGRESS
+    ====================================================== */
+
+    function updateSectionProgress() {
+
+      const viewportHeight =
+        window.innerHeight;
+
+      sections.forEach((section) => {
+
+        const rect =
+          section.getBoundingClientRect();
+
+        /*
+          Progress starts when the section
+          enters the viewport and reaches 100%
+          when the bottom of the section
+          reaches the bottom of the viewport.
+        */
+
+        const totalDistance =
+          rect.height + viewportHeight;
+
+        const passed =
+          viewportHeight - rect.top;
+
+        let progress =
+          passed / totalDistance;
+
+        progress =
+          Math.max(
+            0,
+            Math.min(1, progress)
+          );
+
+        section.style.setProperty(
+          "--section-progress",
+          `${progress * 100}%`
+        );
+
+      });
+
+    }
+
+
+    let progressTicking = false;
+
+    function requestProgressUpdate() {
+
+      if (progressTicking) {
+        return;
+      }
+
+      progressTicking = true;
+
+      requestAnimationFrame(() => {
+
+        updateSectionProgress();
+
+        progressTicking = false;
+
+      });
+
+    }
+
+
+    window.addEventListener(
+      "scroll",
+      requestProgressUpdate,
+      {
+        passive: true
+      }
+    );
+
+
+    window.addEventListener(
+      "resize",
+      requestProgressUpdate
+    );
+
+
+    updateSectionProgress();
 
 
     /* =====================================================
