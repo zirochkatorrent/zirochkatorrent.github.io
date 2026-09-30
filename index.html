@@ -8,7 +8,7 @@
   >
   <meta
     name="description"
-    content="Daniil Zorin — Ukrainian artist and model based in Bodø, Norway."
+    content="Daniil Zorin — Ukrainian artist and model based in Norway."
   >
   <meta
     name="robots"
@@ -18,16 +18,12 @@
     name="theme-color"
     content="#090708"
   >
-  <title>Daniil Zorin</title>
+  <title>Daniil Zorin — Artist & Model</title>
   <!-- =====================================================
        FONTS
   ====================================================== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Inter:wght@300;400;500;600&display=swap"
     rel="stylesheet"
@@ -53,8 +49,6 @@
       --display-font: "Bodoni Moda", serif;
       --body-font: "Inter", sans-serif;
       --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
-      /* Global website progress */
-      --site-progress: 0%;
     }
     /* =====================================================
        RESET
@@ -140,28 +134,17 @@
     }
     section {
       position: relative;
-      border-top:
-        1px solid var(--line);
+      border-top: 1px solid var(--line);
     }
-    /*
-      Every section uses exactly the same
-      global website progress value.
-      0%   = top of website
-      50%  = middle of website
-      100% = bottom of website
-    */
     section::before {
       content: "";
       position: absolute;
       top: -1px;
       left: 0;
-      width: var(--site-progress);
+      width: 90px;
       height: 1px;
       background: var(--wine-light);
-      opacity: 0.9;
-      pointer-events: none;
-      transition:
-        width 0.08s linear;
+      opacity: 0.75;
     }
     /* =====================================================
        NAVIGATION
@@ -173,6 +156,7 @@
       left: 0;
       z-index: 100;
       padding: 30px 0;
+      mix-blend-mode: normal;
       pointer-events: none;
     }
     .nav-inner {
@@ -219,8 +203,7 @@
     }
     .menu-button:hover .menu-line:nth-child(2) {
       width: 27px;
-      background:
-        var(--wine-light);
+      background: var(--wine-light);
     }
     .nav.open .menu-line:nth-child(1) {
       transform:
@@ -242,12 +225,11 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 34px;
+      gap: 32px;
       max-width: 0;
       overflow: hidden;
       opacity: 0;
-      transform:
-        translateX(-20px);
+      transform: translateX(-20px);
       pointer-events: none;
       white-space: nowrap;
       transition:
@@ -258,20 +240,18 @@
     .nav.open .nav-links {
       max-width: 800px;
       opacity: 1;
-      transform:
-        translateX(0);
+      transform: translateX(0);
       pointer-events: auto;
     }
     .nav-link {
       position: relative;
       color: var(--ivory);
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.19em;
+      letter-spacing: 0.22em;
       opacity: 0;
-      transform:
-        translateY(8px);
+      transform: translateY(8px);
       transition:
         opacity 0.4s ease,
         transform 0.5s var(--ease),
@@ -279,8 +259,7 @@
     }
     .nav.open .nav-link {
       opacity: 1;
-      transform:
-        translateY(0);
+      transform: translateY(0);
     }
     .nav.open .nav-link:nth-child(1) {
       transition-delay: 0.08s;
@@ -301,8 +280,7 @@
       bottom: -7px;
       left: 0;
       height: 1px;
-      background:
-        var(--wine-light);
+      background: var(--wine-light);
       transform:
         scaleX(0);
       transform-origin: right;
@@ -313,8 +291,7 @@
       color: var(--cream);
     }
     .nav-link:hover::after {
-      transform:
-        scaleX(1);
+      transform: scaleX(1);
       transform-origin: left;
     }
     /* =====================================================
@@ -336,8 +313,7 @@
       height: 520px;
       top: 18%;
       left: 50%;
-      transform:
-        translateX(-50%);
+      transform: translateX(-50%);
       background:
         radial-gradient(
           circle,
@@ -358,28 +334,21 @@
       width: 100%;
       margin: 0;
       color: var(--ivory);
-      font-family:
-        var(--display-font);
-      font-size:
-        clamp(
-          125px,
-          24vw,
-          450px
-        );
+      font-family: var(--display-font);
+      font-size: clamp(
+        150px,
+        27vw,
+        500px
+      );
       font-weight: 400;
-      line-height: 0.70;
-      letter-spacing:
-        -0.085em;
+      line-height: 0.68;
+      letter-spacing: -0.09em;
       text-align: center;
       white-space: nowrap;
       text-shadow:
-        0 0 70px
-        rgba(123, 38, 55, 0.08);
+        0 0 70px rgba(123, 38, 55, 0.08);
       animation:
-        titleReveal
-        1.5s
-        var(--ease)
-        both;
+        titleReveal 1.5s var(--ease) both;
     }
     @keyframes titleReveal {
       from {
@@ -396,21 +365,55 @@
       }
     }
     /* =====================================================
+       HERO ROLE
+    ====================================================== */
+    .hero-intro {
+      display: flex;
+      justify-content: center;
+      margin-top: 52px;
+      text-align: center;
+      animation:
+        rolesReveal 1s 0.35s var(--ease) both;
+    }
+    .hero-roles {
+      position: relative;
+      display: inline-block;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.42em;
+      padding-left: 0.42em;
+    }
+    .hero-roles::before,
+    .hero-roles::after {
+      content: "✦";
+      margin: 0 13px;
+      color: var(--wine-light);
+      font-size: 9px;
+    }
+    @keyframes rolesReveal {
+      from {
+        opacity: 0;
+        transform:
+          translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform:
+          translateY(0);
+      }
+    }
+    /* =====================================================
        HERO IMAGE
     ====================================================== */
     .hero-image {
       position: relative;
       display: block;
-      width:
-        min(
-          720px,
-          76vw
-        );
-      margin:
-        90px auto 0;
+      width: min(720px, 76vw);
+      margin: 90px auto 0;
       overflow: hidden;
-      border:
-        1px solid var(--line);
+      border: 1px solid var(--line);
       background:
         linear-gradient(
           145deg,
@@ -419,18 +422,13 @@
         );
       cursor: zoom-in;
       animation:
-        imageReveal
-        1.4s
-        0.55s
-        var(--ease)
-        both;
+        imageReveal 1.4s 0.55s var(--ease) both;
       transition:
         transform 0.6s var(--ease),
         border-color 0.5s ease;
     }
     .hero-image:hover {
-      border-color:
-        var(--line-strong);
+      border-color: var(--line-strong);
     }
     .hero-image::before {
       content: "";
@@ -442,7 +440,7 @@
         linear-gradient(
           115deg,
           transparent 30%,
-          rgba(255, 255, 255, 0.08) 50%,
+          rgba(255,255,255,0.08) 50%,
           transparent 70%
         );
       transform:
@@ -459,9 +457,12 @@
       position: absolute;
       inset: 12px;
       z-index: 2;
-      border:
-        1px solid
-        rgba(123, 38, 55, 0.35);
+      border: 1px solid rgba(
+        123,
+        38,
+        55,
+        0.35
+      );
       pointer-events: none;
       opacity: 0;
       transition:
@@ -472,8 +473,7 @@
     }
     .hero-image img {
       width: 100%;
-      aspect-ratio:
-        4 / 5;
+      aspect-ratio: 4 / 5;
       object-fit: cover;
       filter:
         grayscale(0.18)
@@ -500,18 +500,16 @@
       right: 18px;
       bottom: 18px;
       z-index: 3;
-      color:
-        rgba(
-          238,
-          232,
-          223,
-          0.58
-        );
+      color: rgba(
+        238,
+        232,
+        223,
+        0.58
+      );
       font-size: 7px;
       text-transform: uppercase;
       letter-spacing: 0.3em;
-      writing-mode:
-        vertical-rl;
+      writing-mode: vertical-rl;
     }
     @keyframes imageReveal {
       from {
@@ -535,106 +533,88 @@
     .section-header,
     .work-header {
       display: flex;
-      justify-content:
-        space-between;
-      align-items:
-        baseline;
-      margin-bottom:
-        55px;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 55px;
     }
     .section-number {
-      color:
-        var(--wine-light);
+      color: var(--wine-light);
       font-size: 8px;
       font-weight: 500;
-      text-transform:
-        uppercase;
-      letter-spacing:
-        0.35em;
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
     }
     .section-title,
     .work-title {
       margin: 0;
-      font-family:
-        var(--display-font);
-      font-size:
-        clamp(
-          70px,
-          8vw,
-          120px
-        );
+      font-family: var(--display-font);
+      font-size: clamp(
+        70px,
+        8vw,
+        120px
+      );
       font-weight: 400;
-      line-height:
-        0.82;
-      letter-spacing:
-        -0.06em;
+      line-height: 0.82;
+      letter-spacing: -0.06em;
     }
     /* =====================================================
        ABOUT
     ====================================================== */
     .about {
-      padding:
-        140px 0;
+      padding: 140px 0;
     }
     .about-content {
       width: 100%;
-      padding:
-        55px 0;
-      border-top:
-        1px solid var(--line);
-      border-bottom:
-        1px solid var(--line);
-    }
-    .about-text {
-      max-width:
-        850px;
-      margin: 0;
-      color:
-        var(--cream);
-      font-family:
-        var(--display-font);
-      font-size:
-        clamp(
-          38px,
-          5vw,
-          76px
-        );
+      min-height: 220px;
+      padding: 45px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--cream);
+      font-family: var(--display-font);
+      font-size: clamp(
+        25px,
+        3vw,
+        40px
+      );
       font-weight: 400;
-      line-height:
-        1.05;
-      letter-spacing:
-        -0.045em;
+      line-height: 1.35;
+      letter-spacing: -0.025em;
+    }
+    .about-content p {
+      width: min(
+        850px,
+        100%
+      );
+      margin: 0;
+    }
+    .about-content p::first-letter {
+      color: var(--wine-light);
     }
     /* =====================================================
-       HALF-BURGUNDY U
-    ====================================================== */
-    .about-u {
-      position: relative;
-      display: inline-block;
-      color:
-        var(--cream);
-    }
-    .about-u::after {
-      content: "U";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 50%;
-      overflow: hidden;
-      color:
-        var(--wine-light);
-      pointer-events: none;
-    }
-    /* =====================================================
-       WORK
+       SELECTED WORK
     ====================================================== */
     .work {
-      padding:
-        140px 0;
+      padding: 140px 0;
     }
-    .work-header {
-      margin-bottom:
-        70px;
+    .work-empty {
+      width: 100%;
+      min-height: 150px;
+      margin-bottom: 70px;
+      padding: 40px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+    .work-empty p {
+      width: min(
+        760px,
+        100%
+      );
+      margin: 0;
     }
     /* =====================================================
        GALLERY
@@ -645,34 +625,29 @@
         1.35fr
         0.65fr;
       gap: 24px;
-      align-items:
-        start;
+      align-items: start;
     }
     .gallery-column {
       display: grid;
       gap: 24px;
     }
     .gallery-column:nth-child(2) {
-      padding-top:
-        180px;
+      padding-top: 180px;
     }
     .gallery-item {
       position: relative;
       display: block;
       width: 100%;
       overflow: hidden;
-      border:
-        1px solid var(--line);
-      background:
-        var(--soft-black);
+      border: 1px solid var(--line);
+      background: var(--soft-black);
       cursor: zoom-in;
     }
     .gallery-item::after {
       content: "";
       position: absolute;
       inset: 0;
-      border:
-        1px solid transparent;
+      border: 1px solid transparent;
       pointer-events: none;
       transition:
         border-color 0.5s ease;
@@ -708,53 +683,39 @@
        CONTACT
     ====================================================== */
     .contact {
-      padding:
-        130px 0
-        140px;
+      padding: 130px 0 140px;
     }
     .contact-title {
-      margin:
-        35px 0
-        65px;
-      font-family:
-        var(--display-font);
-      font-size:
-        clamp(
-          80px,
-          10vw,
-          150px
-        );
+      margin: 35px 0 65px;
+      font-family: var(--display-font);
+      font-size: clamp(
+        80px,
+        10vw,
+        150px
+      );
       font-weight: 400;
-      line-height:
-        0.78;
-      letter-spacing:
-        -0.065em;
+      line-height: 0.78;
+      letter-spacing: -0.065em;
     }
     .contact-list {
       display: flex;
-      flex-direction:
-        column;
-      align-items:
-        flex-start;
+      flex-direction: column;
+      align-items: flex-start;
       gap: 15px;
     }
     .contact-link {
       position: relative;
       display: inline-block;
-      padding-bottom:
-        8px;
-      font-family:
-        var(--display-font);
-      font-size:
-        clamp(
-          25px,
-          3vw,
-          42px
-        );
+      padding-bottom: 8px;
+      font-family: var(--display-font);
+      font-size: clamp(
+        25px,
+        3vw,
+        42px
+      );
       font-weight: 400;
       line-height: 1;
-      letter-spacing:
-        -0.025em;
+      letter-spacing: -0.025em;
       transition:
         transform 0.5s var(--ease),
         color 0.3s ease,
@@ -775,39 +736,30 @@
         );
       transform:
         scaleX(0);
-      transform-origin:
-        right;
+      transform-origin: right;
       transition:
         transform 0.5s var(--ease);
     }
     .contact-link:hover {
-      color:
-        var(--cream);
+      color: var(--cream);
       transform:
         translateX(10px);
     }
     .contact-link:hover::after {
       transform:
         scaleX(1);
-      transform-origin:
-        left;
+      transform-origin: left;
     }
     /* =====================================================
        FOOTER
     ====================================================== */
     footer {
-      padding:
-        30px 0
-        40px;
-      border-top:
-        1px solid var(--line);
-      color:
-        var(--dim);
+      padding: 30px 0 40px;
+      border-top: 1px solid var(--line);
+      color: var(--dim);
       font-size: 7px;
-      text-transform:
-        uppercase;
-      letter-spacing:
-        0.25em;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
     }
     /* =====================================================
        SCROLL REVEAL
@@ -833,10 +785,8 @@
       inset: 0;
       z-index: 1000;
       display: flex;
-      align-items:
-        center;
-      justify-content:
-        center;
+      align-items: center;
+      justify-content: center;
       padding: 30px;
       background:
         rgba(
@@ -846,37 +796,25 @@
           0.975
         );
       opacity: 0;
-      visibility:
-        hidden;
-      pointer-events:
-        none;
+      visibility: hidden;
+      pointer-events: none;
       transition:
         opacity 0.4s ease,
         visibility 0.4s ease;
     }
     .lightbox.open {
       opacity: 1;
-      visibility:
-        visible;
-      pointer-events:
-        auto;
+      visibility: visible;
+      pointer-events: auto;
     }
     .lightbox img {
       width: auto;
-      max-width:
-        92vw;
-      max-height:
-        90vh;
-      object-fit:
-        contain;
+      max-width: 92vw;
+      max-height: 90vh;
+      object-fit: contain;
       box-shadow:
         0 30px 100px
-        rgba(
-          0,
-          0,
-          0,
-          0.6
-        );
+        rgba(0, 0, 0, 0.6);
       transform:
         scale(0.92);
       transition:
@@ -890,8 +828,7 @@
       position: absolute;
       top: 24px;
       right: 30px;
-      color:
-        var(--ivory);
+      color: var(--ivory);
       font-size: 30px;
       font-weight: 300;
       cursor: pointer;
@@ -901,8 +838,7 @@
         color 0.3s ease;
     }
     .lightbox-close:hover {
-      color:
-        var(--wine-light);
+      color: var(--wine-light);
       opacity: 0.9;
       transform:
         rotate(90deg);
@@ -914,10 +850,8 @@
       :root {
         --padding: 28px;
       }
-      /* NAV */
       .nav {
-        padding:
-          27px 0;
+        padding: 27px 0;
       }
       .nav-left {
         gap: 23px;
@@ -941,88 +875,86 @@
           rotate(-45deg);
       }
       .nav-links {
-        gap: 20px;
+        gap: 18px;
       }
       .nav-link {
-        font-size: 11px;
-        letter-spacing:
-          0.15em;
+        font-size: 9px;
+        letter-spacing: 0.15em;
       }
       /* HERO */
       .hero {
-        min-height:
-          100svh;
-        padding-top:
-          155px;
-        padding-bottom:
-          90px;
+        min-height: 100svh;
+        padding-top: 175px;
+        padding-bottom: 90px;
       }
       .hero-title {
         font-size:
           clamp(
-            68px,
-            19vw,
-            175px
+            82px,
+            23vw,
+            200px
           );
-        line-height:
-          0.72;
+        line-height: 0.72;
         letter-spacing:
           -0.075em;
       }
+      .hero-intro {
+        margin-top: 42px;
+      }
+      .hero-roles {
+        font-size: 9px;
+        letter-spacing:
+          0.28em;
+      }
+      .hero-roles::before,
+      .hero-roles::after {
+        margin-inline: 7px;
+      }
       .hero-image {
         width: 100%;
-        margin-top:
-          65px;
+        margin-top: 65px;
       }
       .hero-image-label {
         display: none;
       }
       /* ABOUT */
       .about {
-        padding:
-          95px 0;
+        padding: 95px 0;
       }
       .section-header,
       .work-header {
         display: block;
-        margin-bottom:
-          45px;
+        margin-bottom: 45px;
       }
       .section-title,
       .work-title {
-        margin-top:
-          25px;
+        margin-top: 25px;
       }
       .section-title {
-        font-size:
-          68px;
+        font-size: 68px;
       }
       .work-title {
-        font-size:
-          61px;
+        font-size: 61px;
       }
       .about-content {
-        padding:
-          40px 0;
-      }
-      .about-text {
-        font-size:
-          38px;
-        line-height:
-          1.05;
+        min-height: 180px;
+        padding: 32px 0;
+        font-size: 24px;
+        line-height: 1.4;
       }
       /* WORK */
       .work {
-        padding:
-          95px 0;
+        padding: 95px 0;
       }
-      .work-header {
-        margin-bottom:
-          50px;
+      .work-empty {
+        min-height: 140px;
+        margin-bottom: 50px;
+        padding: 30px 0;
+        font-size: 10px;
+        line-height: 1.8;
       }
       .gallery {
-        grid-template-columns:
-          1fr;
+        grid-template-columns: 1fr;
       }
       .gallery-column:nth-child(2) {
         padding-top: 0;
@@ -1034,21 +966,16 @@
           105px;
       }
       .contact-title {
-        margin-top:
-          30px;
-        margin-bottom:
-          50px;
-        font-size:
-          75px;
+        margin-top: 30px;
+        margin-bottom: 50px;
+        font-size: 75px;
       }
       .contact-link {
-        font-size:
-          29px;
+        font-size: 29px;
       }
       /* LIGHTBOX */
       .lightbox {
-        padding:
-          20px;
+        padding: 20px;
       }
       .lightbox-close {
         top: 20px;
@@ -1073,31 +1000,28 @@
         gap: 12px;
       }
       .nav-link {
-        font-size: 9px;
+        font-size: 8px;
       }
       .hero-title {
-        font-size:
-          17.5vw;
+        font-size: 19vw;
+      }
+      .hero-roles {
+        font-size: 8px;
       }
       .section-title {
-        font-size:
-          60px;
+        font-size: 60px;
       }
       .work-title {
-        font-size:
-          55px;
-      }
-      .about-text {
-        font-size:
-          33px;
+        font-size: 55px;
       }
       .contact-title {
-        font-size:
-          64px;
+        font-size: 64px;
       }
       .contact-link {
-        font-size:
-          25px;
+        font-size: 25px;
+      }
+      .about-content {
+        font-size: 21px;
       }
     }
     /* =====================================================
@@ -1105,16 +1029,13 @@
     ====================================================== */
     @media (prefers-reduced-motion: reduce) {
       html {
-        scroll-behavior:
-          auto;
+        scroll-behavior: auto;
       }
       *,
       *::before,
       *::after {
-        animation:
-          none !important;
-        transition:
-          none !important;
+        animation: none !important;
+        transition: none !important;
       }
     }
   </style>
@@ -1185,6 +1106,11 @@
       <h1 class="hero-title">
         Daniil Zorin
       </h1>
+      <div class="hero-intro">
+        <div class="hero-roles">
+          Artist · Model · Creative
+        </div>
+      </div>
       <button
         class="hero-image"
         type="button"
@@ -1227,8 +1153,11 @@
           class="about-content reveal"
           aria-label="About"
         >
-          <p class="about-text">
-            <span class="about-u">U</span>krainian artist and model based in Bodø, Norway.
+          <p>
+            Ukrainian artist and model based in Norway,
+            exploring identity, beauty, image and
+            self-expression through a dark,
+            sensual and editorial perspective.
           </p>
         </div>
       </div>
@@ -1249,9 +1178,16 @@
             Selected Work
           </h2>
         </div>
-        <!-- =================================================
-             GALLERY
-        ================================================== -->
+        <div
+          class="work-empty reveal"
+          aria-label="Selected Work"
+        >
+          <p>
+            Photography · Fashion · Art ·
+            Creative Direction
+          </p>
+        </div>
+        <!-- GALLERY -->
         <div class="gallery">
           <!-- COLUMN 1 -->
           <div class="gallery-column">
@@ -1277,19 +1213,6 @@
               <img
                 src="portfolio-03.jpg"
                 alt="Daniil Zorin portfolio image 3"
-                loading="lazy"
-                decoding="async"
-              >
-            </button>
-            <button
-              class="gallery-item reveal"
-              type="button"
-              data-image="portfolio-05.jpg"
-              aria-label="Open portfolio image 5"
-            >
-              <img
-                src="portfolio-05.jpg"
-                alt="Daniil Zorin portfolio image 5"
                 loading="lazy"
                 decoding="async"
               >
@@ -1397,41 +1320,25 @@
        JAVASCRIPT
   ====================================================== -->
   <script>
-    /* =====================================================
-       ELEMENTS
-    ====================================================== */
     const nav =
       document.getElementById("nav");
     const menuButton =
       document.getElementById("menuButton");
     const navLinks =
-      document.querySelectorAll(
-        ".nav-link"
-      );
+      document.querySelectorAll(".nav-link");
     const lightbox =
       document.getElementById("lightbox");
     const lightboxImage =
-      document.getElementById(
-        "lightboxImage"
-      );
+      document.getElementById("lightboxImage");
     const lightboxClose =
-      document.getElementById(
-        "lightboxClose"
-      );
+      document.getElementById("lightboxClose");
     const clickableImages =
       document.querySelectorAll(
         "[data-image]"
       );
     const heroImage =
-      document.querySelector(
-        ".hero-image"
-      );
-    const progressSections =
-      document.querySelectorAll(
-        "main section"
-      );
-    let lastFocusedElement =
-      null;
+      document.querySelector(".hero-image");
+    let lastFocusedElement = null;
     /* =====================================================
        NAVIGATION
     ====================================================== */
@@ -1455,58 +1362,38 @@
       "click",
       () => {
         const isOpen =
-          nav.classList.contains(
-            "open"
-          );
-        setNavigation(
-          !isOpen
-        );
+          nav.classList.contains("open");
+        setNavigation(!isOpen);
       }
     );
-    navLinks.forEach(
-      (link) => {
-        link.addEventListener(
-          "click",
-          () => {
-            setNavigation(
-              false
-            );
-          }
-        );
-      }
-    );
+    navLinks.forEach((link) => {
+      link.addEventListener(
+        "click",
+        () => {
+          setNavigation(false);
+        }
+      );
+    });
     /* =====================================================
        SCROLL REVEAL
     ====================================================== */
     const revealElements =
-      document.querySelectorAll(
-        ".reveal"
-      );
-    if (
-      "IntersectionObserver"
-      in window
-    ) {
+      document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
       const revealObserver =
         new IntersectionObserver(
-          (
-            entries,
-            observer
-          ) => {
-            entries.forEach(
-              (entry) => {
-                if (
-                  !entry.isIntersecting
-                ) {
-                  return;
-                }
-                entry.target.classList.add(
-                  "visible"
-                );
-                observer.unobserve(
-                  entry.target
-                );
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) {
+                return;
               }
-            );
+              entry.target.classList.add(
+                "visible"
+              );
+              observer.unobserve(
+                entry.target
+              );
+            });
           },
           {
             threshold: 0.12
@@ -1528,87 +1415,6 @@
         }
       );
     }
-    /* =====================================================
-       GLOBAL WEBSITE SCROLL PROGRESS
-    ====================================================== */
-    function updateSiteProgress() {
-      const documentHeight =
-        document.documentElement
-          .scrollHeight;
-      const viewportHeight =
-        window.innerHeight;
-      const maxScroll =
-        documentHeight -
-        viewportHeight;
-      let progress = 0;
-      if (
-        maxScroll > 0
-      ) {
-        const scrollTop =
-          window.scrollY ||
-          window.pageYOffset ||
-          0;
-        progress =
-          scrollTop /
-          maxScroll;
-      }
-      progress =
-        Math.max(
-          0,
-          Math.min(
-            1,
-            progress
-          )
-        );
-      const percentage =
-        `${progress * 100}%`;
-      /*
-        ALL section lines use exactly
-        the same global progress.
-      */
-      progressSections.forEach(
-        (section) => {
-          section.style.setProperty(
-            "--site-progress",
-            percentage
-          );
-        }
-      );
-    }
-    let progressTicking =
-      false;
-    function requestProgressUpdate() {
-      if (
-        progressTicking
-      ) {
-        return;
-      }
-      progressTicking =
-        true;
-      requestAnimationFrame(
-        () => {
-          updateSiteProgress();
-          progressTicking =
-            false;
-        }
-      );
-    }
-    window.addEventListener(
-      "scroll",
-      requestProgressUpdate,
-      {
-        passive: true
-      }
-    );
-    window.addEventListener(
-      "resize",
-      requestProgressUpdate
-    );
-    window.addEventListener(
-      "load",
-      updateSiteProgress
-    );
-    updateSiteProgress();
     /* =====================================================
        LIGHTBOX
     ====================================================== */
@@ -1635,11 +1441,9 @@
       document.body.classList.add(
         "no-scroll"
       );
-      requestAnimationFrame(
-        () => {
-          lightboxClose.focus();
-        }
-      );
+      requestAnimationFrame(() => {
+        lightboxClose.focus();
+      });
     }
     function closeLightbox() {
       lightbox.classList.remove(
@@ -1652,18 +1456,15 @@
       document.body.classList.remove(
         "no-scroll"
       );
-      lightboxImage.src =
-        "";
+      lightboxImage.src = "";
       if (
         lastFocusedElement &&
-        typeof
-          lastFocusedElement.focus ===
+        typeof lastFocusedElement.focus ===
           "function"
       ) {
         lastFocusedElement.focus();
       }
-      lastFocusedElement =
-        null;
+      lastFocusedElement = null;
     }
     clickableImages.forEach(
       (element) => {
@@ -1696,22 +1497,20 @@
       "click",
       (event) => {
         if (
-          event.target ===
-          lightbox
+          event.target === lightbox
         ) {
           closeLightbox();
         }
       }
     );
     /* =====================================================
-       ESCAPE KEY
+       ESCAPE
     ====================================================== */
     document.addEventListener(
       "keydown",
       (event) => {
         if (
-          event.key !==
-          "Escape"
+          event.key !== "Escape"
         ) {
           return;
         }
@@ -1727,9 +1526,7 @@
             "open"
           )
         ) {
-          setNavigation(
-            false
-          );
+          setNavigation(false);
         }
       }
     );
@@ -1751,18 +1548,14 @@
           const rect =
             heroImage.getBoundingClientRect();
           const x =
-            (
-              event.clientX -
-              rect.left
-            ) /
-            rect.width -
+            (event.clientX -
+              rect.left) /
+              rect.width -
             0.5;
           const y =
-            (
-              event.clientY -
-              rect.top
-            ) /
-            rect.height -
+            (event.clientY -
+              rect.top) /
+              rect.height -
             0.5;
           heroImage.style.transform =
             `translate(
@@ -1784,17 +1577,14 @@
     ====================================================== */
     document
       .querySelectorAll("img")
-      .forEach(
-        (image) => {
-          image.addEventListener(
-            "error",
-            () => {
-              image.style.opacity =
-                "0";
-            }
-          );
-        }
-      );
+      .forEach((image) => {
+        image.addEventListener(
+          "error",
+          () => {
+            image.style.opacity = "0";
+          }
+        );
+      });
   </script>
 </body>
 </html>
