@@ -2,12 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <meta
     name="description"
-    content="Daniil Zorin — model and blogger."
+    content="Daniil Zorin — model, blogger."
   >
+
   <meta
     name="robots"
     content="index, follow"
@@ -15,7 +20,11 @@
 
   <title>Daniil Zorin</title>
 
-  <!-- Fonts -->
+
+  <!-- ======================================================
+       FONTS
+  ======================================================= -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -24,10 +33,12 @@
     rel="stylesheet"
   >
 
+
   <style>
-    /* =========================================================
+
+    /* ======================================================
        VARIABLES
-    ========================================================= */
+    ======================================================= */
 
     :root {
       --black: #050505;
@@ -41,9 +52,9 @@
     }
 
 
-    /* =========================================================
+    /* ======================================================
        RESET
-    ========================================================= */
+    ======================================================= */
 
     *,
     *::before,
@@ -102,9 +113,9 @@
     }
 
 
-    /* =========================================================
+    /* ======================================================
        GRAIN
-    ========================================================= */
+    ======================================================= */
 
     body::after {
       content: "";
@@ -124,9 +135,9 @@
     }
 
 
-    /* =========================================================
-       GLOBAL LAYOUT
-    ========================================================= */
+    /* ======================================================
+       LAYOUT
+    ======================================================= */
 
     .wrap {
       width: min(
@@ -142,15 +153,16 @@
     }
 
 
-    /* =========================================================
+    /* ======================================================
        NAVIGATION
-    ========================================================= */
+    ======================================================= */
 
     .nav {
       position: fixed;
       top: 0;
       right: 0;
       left: 0;
+
       z-index: 100;
 
       padding: 28px 0;
@@ -160,16 +172,23 @@
 
     .nav-inner {
       display: flex;
+      justify-content: flex-end;
       align-items: center;
     }
 
-    .nav-left {
+    .nav-right {
       display: flex;
+      flex-direction: row-reverse;
       align-items: center;
-      gap: 32px;
+      gap: 30px;
     }
+
+
+    /* DZ */
 
     .logo-button {
+      position: relative;
+
       display: block;
 
       color: var(--white);
@@ -178,6 +197,7 @@
       font-size: 38px;
       font-weight: 500;
       line-height: 0.7;
+
       letter-spacing: -0.065em;
 
       cursor: pointer;
@@ -187,10 +207,26 @@
         transform 0.3s ease;
     }
 
+    .logo-button::after {
+      content: "";
+
+      position: absolute;
+      right: 0;
+      bottom: -8px;
+      left: 0;
+
+      height: 1px;
+
+      background: currentColor;
+    }
+
     .logo-button:hover {
       opacity: 0.6;
       transform: translateY(-1px);
     }
+
+
+    /* MENU */
 
     .nav-links {
       display: flex;
@@ -201,7 +237,7 @@
       overflow: hidden;
 
       opacity: 0;
-      transform: translateX(-15px);
+      transform: translateX(15px);
 
       pointer-events: none;
       white-space: nowrap;
@@ -231,8 +267,6 @@
 
       text-transform: uppercase;
       letter-spacing: 0.19em;
-
-      transition: opacity 0.25s ease;
     }
 
     .nav-link::after {
@@ -247,40 +281,27 @@
 
       background: currentColor;
 
-      transform: scaleX(0);
-      transform-origin: right;
-
-      transition: transform 0.3s ease;
+      transition: opacity 0.25s ease;
     }
 
     .nav-link:hover {
-      opacity: 0.6;
-    }
-
-    .nav-link:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
+      opacity: 0.55;
     }
 
 
-    /* =========================================================
+    /* ======================================================
        HERO
-    ========================================================= */
+    ======================================================= */
 
     .hero {
       min-height: 100vh;
 
-      padding-top: 190px;
+      padding-top: 185px;
       padding-bottom: 110px;
     }
 
     .hero-intro {
-      display: flex;
-      justify-content: center;
-
       margin-bottom: 38px;
-
-      text-align: center;
     }
 
     .hero-roles {
@@ -294,20 +315,24 @@
     }
 
     .hero-title {
+      max-width: 900px;
+
       margin: 0;
 
       color: var(--white);
 
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(62px, 12vw, 185px);
+      font-size: clamp(80px, 11vw, 170px);
       font-weight: 500;
-      line-height: 0.82;
 
+      line-height: 0.78;
       letter-spacing: -0.065em;
-      text-align: center;
-
-      white-space: nowrap;
     }
+
+
+    /* ======================================================
+       HERO IMAGE
+    ======================================================= */
 
     .hero-image {
       position: relative;
@@ -321,6 +346,7 @@
       overflow: hidden;
 
       border: 1px solid var(--line);
+
       background: var(--soft-black);
 
       cursor: zoom-in;
@@ -350,6 +376,7 @@
 
     .hero-image-label {
       position: absolute;
+
       right: 18px;
       bottom: 18px;
 
@@ -364,9 +391,9 @@
     }
 
 
-    /* =========================================================
-       WORK / GALLERY
-    ========================================================= */
+    /* ======================================================
+       WORK
+    ======================================================= */
 
     .section {
       padding: 130px 0;
@@ -388,6 +415,7 @@
       display: grid;
 
       grid-template-columns: 1.35fr 0.65fr;
+
       gap: 24px;
 
       align-items: start;
@@ -395,6 +423,7 @@
 
     .gallery-column {
       display: grid;
+
       gap: 24px;
     }
 
@@ -408,6 +437,7 @@
       overflow: hidden;
 
       border: 1px solid var(--line);
+
       background: var(--soft-black);
 
       cursor: zoom-in;
@@ -423,9 +453,9 @@
     }
 
 
-    /* =========================================================
+    /* ======================================================
        CONTACT
-    ========================================================= */
+    ======================================================= */
 
     .contact {
       padding: 110px 0 125px;
@@ -436,7 +466,7 @@
       flex-direction: column;
       align-items: flex-start;
 
-      gap: 8px;
+      gap: 12px;
     }
 
     .contact-link {
@@ -448,6 +478,7 @@
 
       font-family: "Cormorant Garamond", serif;
       font-size: clamp(28px, 3.2vw, 44px);
+
       font-weight: 400;
       line-height: 1;
 
@@ -464,9 +495,9 @@
     }
 
 
-    /* =========================================================
+    /* ======================================================
        FOOTER
-    ========================================================= */
+    ======================================================= */
 
     footer {
       padding: 28px 0 40px;
@@ -482,13 +513,14 @@
     }
 
 
-    /* =========================================================
+    /* ======================================================
        LIGHTBOX
-    ========================================================= */
+    ======================================================= */
 
     .lightbox {
       position: fixed;
       inset: 0;
+
       z-index: 1000;
 
       display: flex;
@@ -523,8 +555,11 @@
 
     .lightbox-close {
       position: absolute;
+
       top: 24px;
       right: 30px;
+
+      padding-bottom: 4px;
 
       border-bottom: 1px solid white;
 
@@ -537,12 +572,13 @@
     }
 
 
-    /* =========================================================
-       SCROLL REVEAL
-    ========================================================= */
+    /* ======================================================
+       REVEAL
+    ======================================================= */
 
     .reveal {
       opacity: 0;
+
       transform: translateY(35px);
 
       transition:
@@ -556,71 +592,80 @@
     }
 
 
-    /* =========================================================
+    /* ======================================================
        MOBILE
-    ========================================================= */
+    ======================================================= */
 
     @media (max-width: 700px) {
+
       :root {
-        --padding: 18px;
+        --padding: 28px;
       }
 
-      /* Navigation */
+
+      /* NAVIGATION */
 
       .nav {
-        padding: 26px 0;
+        padding: 27px 0;
       }
 
-      .nav-left {
-        gap: 25px;
-      }
-
-      .logo-button {
-        font-size: 37px;
-      }
-
-      .nav-links {
+      .nav-right {
         gap: 22px;
       }
 
-      .nav-link {
-        font-size: 10px;
-        letter-spacing: 0.15em;
+      .logo-button {
+        font-size: 30px;
       }
 
-      /* Hero */
+      .nav-links {
+        gap: 20px;
+      }
+
+      .nav-link {
+        font-size: 9px;
+        letter-spacing: 0.16em;
+      }
+
+
+      /* HERO */
 
       .hero {
         min-height: auto;
 
-        padding-top: 150px;
-        padding-bottom: 90px;
+        padding-top: 205px;
+        padding-bottom: 85px;
       }
 
       .hero-intro {
-        margin-bottom: 30px;
+        margin-bottom: 45px;
       }
 
       .hero-roles {
-        font-size: 8px;
-        letter-spacing: 0.2em;
+        font-size: 9px;
+        letter-spacing: 0.22em;
       }
 
       .hero-title {
-        font-size: 17.5vw;
-        line-height: 0.85;
+        max-width: 100%;
+
+        font-size: 22vw;
+        line-height: 0.78;
+
+        letter-spacing: -0.07em;
       }
 
       .hero-image {
         width: 100%;
-        margin-top: 65px;
+
+        margin-top: 70px;
       }
 
       .hero-image-label {
         display: none;
       }
 
-      /* Work */
+
+      /* WORK */
 
       .section {
         padding: 90px 0;
@@ -638,7 +683,8 @@
         padding-top: 0;
       }
 
-      /* Contact */
+
+      /* CONTACT */
 
       .contact {
         padding: 80px 0 100px;
@@ -648,7 +694,8 @@
         font-size: 32px;
       }
 
-      /* Lightbox */
+
+      /* LIGHTBOX */
 
       .lightbox {
         padding: 20px;
@@ -661,49 +708,63 @@
     }
 
 
-    /* =========================================================
+    /* ======================================================
        VERY SMALL PHONES
-    ========================================================= */
+    ======================================================= */
 
     @media (max-width: 380px) {
-      .nav-left {
-        gap: 18px;
+
+      :root {
+        --padding: 22px;
+      }
+
+      .nav-right {
+        gap: 17px;
       }
 
       .nav-links {
-        gap: 16px;
+        gap: 15px;
       }
 
       .nav-link {
         font-size: 8px;
       }
 
+      .logo-button {
+        font-size: 27px;
+      }
+
       .hero-title {
-        font-size: 16.5vw;
+        font-size: 21vw;
       }
     }
 
 
-    /* =========================================================
+    /* ======================================================
        REDUCED MOTION
-    ========================================================= */
+    ======================================================= */
 
     @media (prefers-reduced-motion: reduce) {
+
       html {
         scroll-behavior: auto;
       }
 
       *,
-      *::before {
+      *::before,
+      *::after {
         transition: none !important;
       }
     }
+
   </style>
 </head>
 
+
 <body>
 
-  <!-- =======================================================
+
+  <!-- ======================================================
        NAVIGATION
   ======================================================= -->
 
@@ -712,9 +773,43 @@
     id="nav"
     aria-label="Site navigation"
   >
+
     <div class="wrap nav-inner">
 
-      <div class="nav-left">
+      <div class="nav-right">
+
+        <!-- MENU -->
+
+        <div
+          class="nav-links"
+          id="navigationLinks"
+        >
+
+          <a
+            class="nav-link"
+            href="#home"
+          >
+            Home
+          </a>
+
+          <a
+            class="nav-link"
+            href="#work"
+          >
+            Work
+          </a>
+
+          <a
+            class="nav-link"
+            href="#contact"
+          >
+            Contact
+          </a>
+
+        </div>
+
+
+        <!-- DZ -->
 
         <button
           class="logo-button"
@@ -727,30 +822,14 @@
           DZ
         </button>
 
-        <div
-          class="nav-links"
-          id="navigationLinks"
-        >
-          <a class="nav-link" href="#home">
-            Home
-          </a>
-
-          <a class="nav-link" href="#work">
-            Work
-          </a>
-
-          <a class="nav-link" href="#contact">
-            Contact
-          </a>
-        </div>
-
       </div>
 
     </div>
+
   </nav>
 
 
-  <!-- =======================================================
+  <!-- ======================================================
        HERO
   ======================================================= -->
 
@@ -758,17 +837,30 @@
     class="hero"
     id="home"
   >
+
     <div class="wrap">
 
+
+      <!-- NAME -->
+
+      <h1 class="hero-title reveal">
+        Daniil<br>
+        Zorin
+      </h1>
+
+
+      <!-- ROLES -->
+
       <div class="hero-intro reveal">
+
         <div class="hero-roles">
           Model, Blogger
         </div>
+
       </div>
 
-      <h1 class="hero-title reveal">
-        Daniil Zorin
-      </h1>
+
+      <!-- MAIN PORTRAIT -->
 
       <button
         class="hero-image reveal"
@@ -776,6 +868,7 @@
         data-image="Facetune_15-06-2026-23-14-00.jpeg"
         aria-label="Open portrait"
       >
+
         <img
           src="Facetune_15-06-2026-23-14-00.jpeg"
           alt="Portrait of Daniil Zorin"
@@ -784,31 +877,39 @@
         <span class="hero-image-label">
           Portrait / 001
         </span>
+
       </button>
 
     </div>
+
   </header>
 
 
-  <!-- =======================================================
+  <!-- ======================================================
        MAIN
   ======================================================= -->
 
   <main>
 
-    <!-- Work -->
+
+    <!-- WORK -->
 
     <section
       class="section"
       id="work"
     >
+
       <div class="wrap">
 
         <div class="section-label reveal">
           01 / Work
         </div>
 
+
         <div class="gallery">
+
+
+          <!-- COLUMN 1 -->
 
           <div class="gallery-column">
 
@@ -818,12 +919,15 @@
               data-image="portfolio-01.jpg"
               aria-label="Open portfolio image"
             >
+
               <img
                 src="portfolio-01.jpg"
                 alt="Portfolio image"
                 loading="lazy"
               >
+
             </button>
+
 
             <button
               class="gallery-item reveal"
@@ -831,15 +935,19 @@
               data-image="portfolio-03.jpg"
               aria-label="Open portfolio image"
             >
+
               <img
                 src="portfolio-03.jpg"
                 alt="Portfolio image"
                 loading="lazy"
               >
+
             </button>
 
           </div>
 
+
+          <!-- COLUMN 2 -->
 
           <div class="gallery-column">
 
@@ -849,12 +957,15 @@
               data-image="portfolio-02.jpg"
               aria-label="Open portfolio image"
             >
+
               <img
                 src="portfolio-02.jpg"
                 alt="Portfolio image"
                 loading="lazy"
               >
+
             </button>
+
 
             <button
               class="gallery-item reveal"
@@ -862,11 +973,13 @@
               data-image="portfolio-04.jpg"
               aria-label="Open portfolio image"
             >
+
               <img
                 src="portfolio-04.jpg"
                 alt="Portfolio image"
                 loading="lazy"
               >
+
             </button>
 
           </div>
@@ -874,20 +987,25 @@
         </div>
 
       </div>
+
     </section>
 
 
-    <!-- Contact -->
+    <!-- ====================================================
+         CONTACT
+    ===================================================== -->
 
     <section
       class="contact"
       id="contact"
     >
+
       <div class="wrap">
 
         <div class="section-label reveal">
           02 / Contact
         </div>
+
 
         <div class="contact-list">
 
@@ -900,6 +1018,7 @@
             Instagram
           </a>
 
+
           <a
             class="contact-link reveal"
             href="mailto:zirochkatorrent@icloud.com"
@@ -910,23 +1029,26 @@
         </div>
 
       </div>
+
     </section>
 
   </main>
 
 
-  <!-- =======================================================
+  <!-- ======================================================
        FOOTER
   ======================================================= -->
 
   <footer>
+
     <div class="wrap">
       © 2026 Daniil Zorin
     </div>
+
   </footer>
 
 
-  <!-- =======================================================
+  <!-- ======================================================
        LIGHTBOX
   ======================================================= -->
 
@@ -938,6 +1060,7 @@
     aria-modal="true"
     aria-label="Image preview"
   >
+
     <button
       class="lightbox-close"
       id="lightboxClose"
@@ -947,29 +1070,42 @@
       ×
     </button>
 
+
     <img
       id="lightboxImage"
       src=""
       alt=""
     >
+
   </div>
 
 
-  <!-- =======================================================
+  <!-- ======================================================
        JAVASCRIPT
   ======================================================= -->
 
   <script>
-    /* =======================================================
+
+    /* ======================================================
        NAVIGATION
     ======================================================= */
 
-    const nav = document.getElementById("nav");
-    const menuButton = document.getElementById("menuButton");
-    const navLinks = document.querySelectorAll(".nav-link");
+    const nav =
+      document.getElementById("nav");
+
+    const menuButton =
+      document.getElementById("menuButton");
+
+    const navLinks =
+      document.querySelectorAll(".nav-link");
+
 
     function setNavigation(open) {
-      nav.classList.toggle("open", open);
+
+      nav.classList.toggle(
+        "open",
+        open
+      );
 
       menuButton.setAttribute(
         "aria-expanded",
@@ -984,50 +1120,75 @@
       );
     }
 
-    menuButton.addEventListener("click", () => {
-      const isOpen = nav.classList.contains("open");
 
-      setNavigation(!isOpen);
-    });
+    menuButton.addEventListener(
+      "click",
+      () => {
+
+        const isOpen =
+          nav.classList.contains("open");
+
+        setNavigation(!isOpen);
+
+      }
+    );
+
 
     navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        setNavigation(false);
-      });
+
+      link.addEventListener(
+        "click",
+        () => {
+          setNavigation(false);
+        }
+      );
+
     });
 
 
-    /* =======================================================
+    /* ======================================================
        SCROLL REVEAL
     ======================================================= */
 
     const revealElements =
       document.querySelectorAll(".reveal");
 
+
     const revealObserver =
       new IntersectionObserver(
         (entries, observer) => {
+
           entries.forEach((entry) => {
+
             if (!entry.isIntersecting) {
               return;
             }
 
-            entry.target.classList.add("visible");
+            entry.target.classList.add(
+              "visible"
+            );
 
-            observer.unobserve(entry.target);
+            observer.unobserve(
+              entry.target
+            );
+
           });
+
         },
         {
           threshold: 0.12
         }
       );
 
+
     revealElements.forEach((element) => {
+
       revealObserver.observe(element);
+
     });
 
 
-    /* =======================================================
+    /* ======================================================
        LIGHTBOX
     ======================================================= */
 
@@ -1035,18 +1196,30 @@
       document.getElementById("lightbox");
 
     const lightboxImage =
-      document.getElementById("lightboxImage");
+      document.getElementById(
+        "lightboxImage"
+      );
 
     const lightboxClose =
-      document.getElementById("lightboxClose");
+      document.getElementById(
+        "lightboxClose"
+      );
 
     const clickableImages =
-      document.querySelectorAll("[data-image]");
+      document.querySelectorAll(
+        "[data-image]"
+      );
 
     let lastFocusedElement = null;
 
-    function openLightbox(image, alt = "") {
-      lastFocusedElement = document.activeElement;
+
+    function openLightbox(
+      image,
+      alt = ""
+    ) {
+
+      lastFocusedElement =
+        document.activeElement;
 
       lightboxImage.src = image;
       lightboxImage.alt = alt;
@@ -1058,72 +1231,115 @@
         "false"
       );
 
-      document.body.classList.add("no-scroll");
+      document.body.classList.add(
+        "no-scroll"
+      );
 
       lightboxClose.focus();
     }
 
+
     function closeLightbox() {
-      lightbox.classList.remove("open");
+
+      lightbox.classList.remove(
+        "open"
+      );
 
       lightbox.setAttribute(
         "aria-hidden",
         "true"
       );
 
-      document.body.classList.remove("no-scroll");
+      document.body.classList.remove(
+        "no-scroll"
+      );
 
       setTimeout(() => {
+
         lightboxImage.src = "";
         lightboxImage.alt = "";
+
       }, 350);
+
 
       if (lastFocusedElement) {
         lastFocusedElement.focus();
       }
     }
 
-    clickableImages.forEach((element) => {
-      element.addEventListener("click", () => {
-        const image = element.dataset.image;
-        const img = element.querySelector("img");
 
-        openLightbox(
-          image,
-          img?.alt || ""
-        );
-      });
+    clickableImages.forEach((element) => {
+
+      element.addEventListener(
+        "click",
+        () => {
+
+          const image =
+            element.dataset.image;
+
+          const img =
+            element.querySelector("img");
+
+          openLightbox(
+            image,
+            img?.alt || ""
+          );
+
+        }
+      );
+
     });
+
 
     lightboxClose.addEventListener(
       "click",
       closeLightbox
     );
 
-    lightbox.addEventListener("click", (event) => {
-      if (event.target === lightbox) {
-        closeLightbox();
+
+    lightbox.addEventListener(
+      "click",
+      (event) => {
+
+        if (event.target === lightbox) {
+          closeLightbox();
+        }
+
       }
-    });
+    );
 
 
-    /* =======================================================
-       ESCAPE KEY
+    /* ======================================================
+       ESCAPE
     ======================================================= */
 
-    document.addEventListener("keydown", (event) => {
-      if (event.key !== "Escape") {
-        return;
-      }
+    document.addEventListener(
+      "keydown",
+      (event) => {
 
-      if (lightbox.classList.contains("open")) {
-        closeLightbox();
-      }
+        if (event.key !== "Escape") {
+          return;
+        }
 
-      if (nav.classList.contains("open")) {
-        setNavigation(false);
+        if (
+          lightbox.classList.contains(
+            "open"
+          )
+        ) {
+          closeLightbox();
+        }
+
+        if (
+          nav.classList.contains(
+            "open"
+          )
+        ) {
+          setNavigation(false);
+        }
+
       }
-    });
+    );
+
   </script>
 
 </body>
