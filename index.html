@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,33 +8,22 @@
 name=“description”
 content=“Daniil Zorin — model, blogger and creative based in Norway.”
 
-<meta
-name=“keywords”
-content=“Daniil Zorin, model, blogger, fashion, portfolio, Norway”
-
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Daniil Zorin — Model · Blogger">
-  <meta
-    property="og:description"
-    content="Model, blogger and creative based in Norway."
-  >
-  <title>Daniil Zorin — Model · Blogger</title>
+  <title>Daniil Zorin — Model · Creative</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;500;600&family=Playfair+Display:wght@500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap"
     rel="stylesheet"
   >
   <style>
     :root {
-      --bg: #080808;
-      --surface: #0d0d0d;
-      --text: #f4f4f0;
-      --muted: rgba(244, 244, 240, 0.45);
-      --soft: rgba(244, 244, 240, 0.7);
-      --line: #242424;
-      --max-width: 1180px;
-      --padding: 48px;
+      --black: #050505;
+      --white: #f1f1ed;
+      --grey: #777;
+      --line: #202020;
+      --max-width: 1280px;
+      --padding: 42px;
     }
     * {
       box-sizing: border-box;
@@ -44,11 +33,11 @@ content=“Daniil Zorin, model, blogger, fashion, portfolio, Norway”
     }
     body {
       margin: 0;
-      background: var(--bg);
-      color: var(--text);
+      background: var(--black);
+      color: var(--white);
       font-family: "Inter", sans-serif;
       font-weight: 300;
-      line-height: 1.5;
+      overflow-x: hidden;
     }
     body.no-scroll {
       overflow: hidden;
@@ -62,8 +51,29 @@ content=“Daniil Zorin, model, blogger, fashion, portfolio, Norway”
     }
     img {
       display: block;
-      max-width: 100%;
+      width: 100%;
     }
+    ::selection {
+      background: var(--white);
+      color: var(--black);
+    }
+    /* ─────────────────────────
+       GRAIN
+    ───────────────────────── */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.045;
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+      mix-blend-mode: screen;
+    }
+    /* ─────────────────────────
+       LAYOUT
+    ───────────────────────── */
     .wrap {
       width: min(
         var(--max-width),
@@ -71,20 +81,21 @@ content=“Daniil Zorin, model, blogger, fashion, portfolio, Norway”
       );
       margin-inline: auto;
     }
-    /* Navigation */
-    .site-nav {
+    section {
+      position: relative;
+      border-top: 1px solid var(--line);
+    }
+    /* ─────────────────────────
+       NAVIGATION
+    ───────────────────────── */
+    .nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 100;
-      padding: 28px 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(8, 8, 8, 0.9),
-        transparent
-      );
-      pointer-events: none;
+      padding: 25px 0;
+      mix-blend-mode: difference;
     }
     .nav-inner {
       display: flex;
@@ -94,217 +105,336 @@ content=“Daniil Zorin, model, blogger, fashion, portfolio, Norway”
     .logo {
       font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      pointer-events: auto;
+      letter-spacing: .2em;
     }
     .nav-links {
       display: flex;
       gap: 28px;
-      font-size: 10px;
+      font-size: 9px;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      pointer-events: auto;
+      letter-spacing: .2em;
     }
     .nav-links a {
-      transition: color 0.25s ease;
+      opacity: .65;
+      transition: opacity .25s ease;
     }
     .nav-links a:hover {
-      color: var(--text);
+      opacity: 1;
     }
-    /* Hero */
+    /* ─────────────────────────
+       HERO
+    ───────────────────────── */
     .hero {
       min-height: 100vh;
+      position: relative;
+      padding-top: 150px;
+      padding-bottom: 80px;
+    }
+    .hero-meta {
       display: flex;
-      align-items: flex-end;
-      padding: 150px 0 70px;
-    }
-    .eyebrow,
-    .section-title {
-      font-size: 10px;
+      justify-content: space-between;
+      margin-bottom: 35px;
+      font-size: 9px;
       text-transform: uppercase;
-      letter-spacing: 0.24em;
-      color: var(--muted);
-    }
-    .eyebrow {
-      margin-bottom: 25px;
+      letter-spacing: .22em;
+      color: var(--grey);
     }
     .hero-title {
+      position: relative;
+      z-index: 2;
       margin: 0;
       font-family: "Playfair Display", serif;
-      font-size: clamp(72px, 13vw, 175px);
-      line-height: 0.83;
       font-weight: 500;
-      letter-spacing: -0.06em;
+      font-size: clamp(
+        80px,
+        17vw,
+        230px
+      );
+      line-height: .72;
+      letter-spacing: -.075em;
+      white-space: nowrap;
     }
-    .role {
-      margin-top: 38px;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--soft);
+    .hero-title em {
+      font-weight: 500;
     }
     .hero-image {
-      margin-top: 60px;
+      position: relative;
+      width: min(62vw, 720px);
+      margin-top: 80px;
+      margin-left: auto;
+      cursor: zoom-in;
       overflow: hidden;
       border: 1px solid var(--line);
-      background: var(--surface);
     }
     .hero-image img {
-      width: 100%;
-      max-height: 760px;
+      aspect-ratio: 4 / 5;
       object-fit: cover;
-      object-position: center;
+      filter: grayscale(100%);
+      transition:
+        transform 1s cubic-bezier(.2,.7,.2,1),
+        filter .8s ease;
     }
-    /* Sections */
-    section {
-      padding: 140px 0;
-      border-top: 1px solid var(--line);
+    .hero-image:hover img {
+      transform: scale(1.025);
+      filter: grayscale(65%);
     }
-    .section-header {
-      margin-bottom: 55px;
-    }
-    /* About */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 60px;
-    }
-    .about-text {
-      max-width: 760px;
-      font-family: "Playfair Display", serif;
-      font-size: clamp(28px, 4vw, 52px);
-      line-height: 1.08;
-      letter-spacing: -0.025em;
-    }
-    .about-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 45px;
-      font-size: 11px;
+    .hero-image-label {
+      position: absolute;
+      left: -55px;
+      bottom: 25px;
+      writing-mode: vertical-rl;
+      font-size: 8px;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--muted);
+      letter-spacing: .25em;
+      color: var(--grey);
     }
-    /* Portfolio */
-    .portfolio-grid {
+    .hero-number {
+      position: absolute;
+      left: 0;
+      bottom: 75px;
+      font-size: 9px;
+      letter-spacing: .2em;
+      color: var(--grey);
+    }
+    /* ─────────────────────────
+       INTRO
+    ───────────────────────── */
+    .intro {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+    }
+    .intro-inner {
       display: grid;
-      grid-template-columns: 1.35fr 0.8fr;
-      gap: 22px;
+      grid-template-columns:
+        1fr
+        2fr;
+      gap: 80px;
+    }
+    .section-label {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .25em;
+      color: var(--grey);
+    }
+    .intro-text {
+      max-width: 850px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(
+        40px,
+        6vw,
+        82px
+      );
+      line-height: .98;
+      letter-spacing: -.045em;
+    }
+    .intro-text em {
+      color: #888;
+    }
+    /* ─────────────────────────
+       PORTFOLIO
+    ───────────────────────── */
+    .portfolio {
+      padding: 150px 0;
+    }
+    .portfolio-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 90px;
+    }
+    .portfolio-title {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(
+        55px,
+        10vw,
+        130px
+      );
+      line-height: .8;
+      letter-spacing: -.06em;
+    }
+    .portfolio-count {
+      font-size: 9px;
+      letter-spacing: .2em;
+      color: var(--grey);
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns:
+        1.35fr
+        .65fr;
+      gap: 24px;
       align-items: start;
     }
-    .portfolio-column {
+    .gallery-left,
+    .gallery-right {
       display: grid;
-      gap: 22px;
+      gap: 24px;
     }
-    .portfolio-item {
+    .gallery-right {
+      padding-top: 180px;
+    }
+    .gallery-item {
       position: relative;
       overflow: hidden;
       border: 1px solid var(--line);
-      background: var(--surface);
+      background: #090909;
       cursor: zoom-in;
+      padding: 0;
     }
-    .portfolio-item img {
-      width: 100%;
-      height: auto;
+    .gallery-item img {
       transition:
-        transform 0.7s cubic-bezier(.2,.7,.2,1),
-        opacity 0.4s ease;
+        transform .9s cubic-bezier(.2,.7,.2,1),
+        filter .7s ease;
+      filter: grayscale(100%);
     }
-    .portfolio-item:hover img {
-      transform: scale(1.025);
-      opacity: 0.82;
+    .gallery-item:hover img {
+      transform: scale(1.035);
+      filter: grayscale(35%);
     }
-    .portfolio-caption {
+    .gallery-info {
       position: absolute;
       left: 18px;
+      right: 18px;
       bottom: 16px;
-      font-size: 9px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 8px;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      opacity: 0;
-      transform: translateY(5px);
-      transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
+      letter-spacing: .2em;
+      color: white;
+      opacity: .8;
     }
-    .portfolio-item:hover .portfolio-caption {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    /* Statement */
+    /* ─────────────────────────
+       STATEMENT
+    ───────────────────────── */
     .statement {
-      min-height: 55vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
     }
+    .statement-inner {
+      width: 100%;
+    }
+    .statement-small {
+      margin-bottom: 35px;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .25em;
+      color: var(--grey);
+    }
     .statement-text {
-      max-width: 1000px;
+      max-width: 1100px;
       font-family: "Playfair Display", serif;
-      font-size: clamp(42px, 7vw, 95px);
-      line-height: 0.95;
-      letter-spacing: -0.045em;
+      font-size: clamp(
+        55px,
+        11vw,
+        155px
+      );
+      line-height: .8;
+      letter-spacing: -.065em;
     }
-    /* Links */
-    .link-list {
-      max-width: 800px;
+    .statement-text em {
+      display: block;
+      margin-left: 15%;
+      color: #777;
     }
-    .link {
+    /* ─────────────────────────
+       SOCIALS
+    ───────────────────────── */
+    .socials {
+      padding: 130px 0;
+    }
+    .social-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 30px;
-      padding: 24px 0;
+      padding: 28px 0;
       border-bottom: 1px solid var(--line);
-      font-size: 19px;
-      transition:
-        opacity 0.25s ease,
-        padding-left 0.25s ease;
-    }
-    .link:hover {
-      opacity: 0.55;
-      padding-left: 7px;
-    }
-    .arrow {
-      color: var(--muted);
-      transition: transform 0.25s ease;
-    }
-    .link:hover .arrow {
-      transform: translate(4px, -4px);
-    }
-    /* Contact */
-    .contact-text {
-      max-width: 700px;
-      margin-bottom: 45px;
+      font-size: clamp(
+        24px,
+        4vw,
+        52px
+      );
       font-family: "Playfair Display", serif;
-      font-size: clamp(30px, 5vw, 60px);
-      line-height: 1;
-      letter-spacing: -0.03em;
+      transition:
+        opacity .25s ease,
+        padding-left .35s ease;
     }
-    .contact-note {
-      margin-bottom: 25px;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--muted);
+    .social-row:hover {
+      opacity: .55;
+      padding-left: 15px;
     }
-    /* Footer */
-    footer {
-      padding: 35px 0 55px;
-      border-top: 1px solid var(--line);
+    .social-arrow {
+      font-family: "Inter", sans-serif;
+      font-size: 15px;
+      color: var(--grey);
+      transition: transform .3s ease;
+    }
+    .social-row:hover .social-arrow {
+      transform: translate(6px, -6px);
+    }
+    /* ─────────────────────────
+       CONTACT
+    ───────────────────────── */
+    .contact {
+      padding: 150px 0;
+    }
+    .contact-inner {
+      display: grid;
+      grid-template-columns:
+        1fr
+        2fr;
+      gap: 80px;
+    }
+    .contact-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(
+        55px,
+        9vw,
+        125px
+      );
+      line-height: .8;
+      letter-spacing: -.06em;
+    }
+    .contact-link {
+      display: inline-block;
+      margin-top: 55px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--white);
+      font-size: 13px;
+      letter-spacing: .05em;
+      transition: opacity .25s ease;
+    }
+    .contact-link:hover {
+      opacity: .55;
+    }
+    .availability {
+      margin-top: 20px;
       font-size: 9px;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
+      letter-spacing: .2em;
+      color: var(--grey);
+    }
+    /* ─────────────────────────
+       FOOTER
+    ───────────────────────── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 30px 0 45px;
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: var(--grey);
     }
     .footer-inner {
       display: flex;
       justify-content: space-between;
-      gap: 30px;
     }
-    /* Lightbox */
+    /* ─────────────────────────
+       LIGHTBOX
+    ───────────────────────── */
     .lightbox {
       position: fixed;
       inset: 0;
@@ -312,109 +442,131 @@ content=“Daniil Zorin, model, blogger, fashion, portfolio, Norway”
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 40px;
-      background: rgba(0, 0, 0, 0.96);
+      padding: 30px;
+      background: rgba(0,0,0,.97);
       opacity: 0;
       visibility: hidden;
       transition:
-        opacity 0.3s ease,
-        visibility 0.3s ease;
+        opacity .35s ease,
+        visibility .35s ease;
     }
-    .lightbox.is-open {
+    .lightbox.open {
       opacity: 1;
       visibility: visible;
     }
-    .lightbox-image {
+    .lightbox img {
       max-width: 92vw;
       max-height: 90vh;
+      width: auto;
       object-fit: contain;
+      filter: grayscale(100%);
     }
     .lightbox-close {
       position: absolute;
       top: 25px;
       right: 30px;
       border: 0;
-      background: transparent;
-      color: var(--text);
-      font-size: 28px;
+      background: none;
+      color: white;
+      font-size: 32px;
       font-weight: 300;
       cursor: pointer;
     }
-    /* Reveal animation */
+    /* ─────────────────────────
+       REVEAL
+    ───────────────────────── */
     .reveal {
       opacity: 0;
-      transform: translateY(25px);
+      transform: translateY(35px);
       transition:
-        opacity 0.8s ease,
-        transform 0.8s ease;
+        opacity .9s ease,
+        transform .9s cubic-bezier(.2,.7,.2,1);
     }
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    /* Accessibility */
-    :focus-visible {
-      outline: 1px solid var(--text);
-      outline-offset: 6px;
-    }
-    /* Mobile */
+    /* ─────────────────────────
+       MOBILE
+    ───────────────────────── */
     @media (max-width: 700px) {
       :root {
         --padding: 18px;
       }
-      .site-nav {
-        padding: 20px 0;
+      .nav {
+        padding: 19px 0;
       }
       .nav-links {
-        gap: 12px;
-        font-size: 8px;
+        gap: 13px;
+        font-size: 7px;
       }
       .hero {
-        padding-top: 130px;
-        padding-bottom: 45px;
+        padding-top: 120px;
+      }
+      .hero-meta {
+        margin-bottom: 25px;
       }
       .hero-title {
-        font-size: clamp(62px, 20vw, 105px);
-      }
-      .role {
-        margin-top: 30px;
-        font-size: 11px;
+        font-size: 22vw;
       }
       .hero-image {
-        margin-top: 40px;
+        width: 82vw;
+        margin-top: 55px;
       }
-      section {
-        padding: 90px 0;
+      .hero-image-label {
+        display: none;
       }
-      .about-grid {
+      .hero-number {
+        bottom: 25px;
+      }
+      .intro {
+        min-height: 70vh;
+      }
+      .intro-inner,
+      .contact-inner {
         grid-template-columns: 1fr;
-        gap: 35px;
+        gap: 40px;
       }
-      .about-text {
-        font-size: 34px;
+      .intro-text {
+        font-size: 39px;
       }
-      .portfolio-grid {
+      .portfolio {
+        padding: 95px 0;
+      }
+      .portfolio-header {
+        margin-bottom: 55px;
+      }
+      .portfolio-title {
+        font-size: 22vw;
+      }
+      .gallery {
         grid-template-columns: 1fr;
       }
-      .portfolio-caption {
-        opacity: 1;
-        transform: none;
+      .gallery-right {
+        padding-top: 0;
       }
       .statement {
-        min-height: 45vh;
+        min-height: 75vh;
       }
       .statement-text {
-        font-size: 48px;
+        font-size: 18vw;
       }
-      .link {
-        font-size: 16px;
+      .statement-text em {
+        margin-left: 8%;
+      }
+      .socials,
+      .contact {
+        padding: 95px 0;
+      }
+      .social-row {
+        font-size: 28px;
+      }
+      .contact-title {
+        font-size: 20vw;
       }
       .footer-inner {
         flex-direction: column;
-        gap: 10px;
-      }
-      .lightbox {
-        padding: 20px;
+        gap: 12px;
       }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -430,196 +582,246 @@ content=“Daniil Zorin, model, blogger, fashion, portfolio, Norway”
   </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="site-nav">
-    <div class="wrap nav-inner">
-  <a href="#" class="logo">
+  <!-- NAVIGATION -->
+  <nav class="nav">
+<div class="wrap nav-inner">
+  <a
+    href="#"
+    class="logo"
+  >
     DZ
   </a>
   <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#portfolio">Work</a>
-    <a href="#socials">Social</a>
-    <a href="#contact">Contact</a>
+    <a href="#about">
+      About
+    </a>
+    <a href="#work">
+      Work
+    </a>
+    <a href="#socials">
+      Social
+    </a>
+    <a href="#contact">
+      Contact
+    </a>
   </div>
 </div>
   </nav>
-  <!-- Hero -->
+  <!-- HERO -->
   <header class="wrap hero">
-<div>
-  <div class="eyebrow reveal">
-    Personal website · Norway
-  </div>
-  <h1 class="hero-title reveal">
-    Daniil<br>
-    Zorin
-  </h1>
-  <div class="role reveal">
-    Model · Blogger · Creative
-  </div>
-  <div class="hero-image reveal">
-    <img
-      src="Facetune_15-06-2026-23-14-00.jpeg"
-      alt="Daniil Zorin"
-    >
-  </div>
+<div class="hero-meta">
+  <span>
+    Model / Blogger
+  </span>
+  <span>
+    Norway · 2026
+  </span>
+</div>
+<h1 class="hero-title reveal">
+  Daniil<br>
+  <em>Zorin</em>
+</h1>
+<div
+  class="hero-image reveal"
+  data-image="Facetune_15-06-2026-23-14-00.jpeg"
+>
+  <img
+    src="Facetune_15-06-2026-23-14-00.jpeg"
+    alt="Daniil Zorin"
+  >
+  <span class="hero-image-label">
+    Portrait / 001
+  </span>
+</div>
+<div class="hero-number">
+  01 — 04
 </div>
   </header>
   <main>
-<!-- About -->
-<section id="about">
-  <div class="wrap">
-    <div class="section-header reveal">
-      <div class="section-title">
-        01 — About
-      </div>
+<!-- ABOUT -->
+<section
+  id="about"
+  class="intro"
+>
+  <div class="wrap intro-inner">
+    <div class="section-label reveal">
+      01 / About
     </div>
-    <div class="about-grid">
-      <div></div>
-      <div>
-        <div class="about-text reveal">
-          Model, blogger and creative exploring fashion,
-          identity and visual self-expression.
-        </div>
-        <div class="about-meta reveal">
-          <span>Based in Norway</span>
-          <span>Available internationally</span>
-        </div>
-      </div>
+    <div class="intro-text reveal">
+      Model, blogger and creative
+      exploring <em>fashion, identity</em>
+      and visual self-expression.
     </div>
   </div>
 </section>
-<!-- Portfolio -->
-<section id="portfolio">
+<!-- PORTFOLIO -->
+<section
+  id="work"
+  class="portfolio"
+>
   <div class="wrap">
-    <div class="section-header reveal">
-      <div class="section-title">
-        02 — Selected Work
+    <div class="portfolio-header">
+      <h2 class="portfolio-title reveal">
+        Work
+      </h2>
+      <div class="portfolio-count reveal">
+        Selected images · 2026
       </div>
     </div>
-    <div class="portfolio-grid">
-      <div class="portfolio-column">
+    <div class="gallery">
+      <!-- LEFT -->
+      <div class="gallery-left">
         <button
-          class="portfolio-item reveal"
+          class="gallery-item reveal"
           data-image="portfolio-01.jpg"
-          aria-label="Open portfolio image"
+          aria-label="Open portrait"
         >
           <img
             src="portfolio-01.jpg"
-            alt="Daniil Zorin — editorial portrait"
-            loading="lazy"
-          >
-          <span class="portfolio-caption">
-            Editorial · 01
-          </span>
-        </button>
-        <button
-          class="portfolio-item reveal"
-          data-image="portfolio-03.jpg"
-          aria-label="Open portfolio image"
-        >
-          <img
-            src="portfolio-03.jpg"
-            alt="Daniil Zorin — fashion editorial"
-            loading="lazy"
-          >
-          <span class="portfolio-caption">
-            Fashion · 03
-          </span>
-        </button>
-      </div>
-      <div class="portfolio-column">
-        <button
-          class="portfolio-item reveal"
-          data-image="portfolio-02.jpg"
-          aria-label="Open portfolio image"
-        >
-          <img
-            src="portfolio-02.jpg"
             alt="Daniil Zorin — portrait"
             loading="lazy"
           >
-          <span class="portfolio-caption">
-            Portrait · 02
+          <span class="gallery-info">
+            <span>
+              Portrait
+            </span>
+            <span>
+              001
+            </span>
           </span>
         </button>
         <button
-          class="portfolio-item reveal"
+          class="gallery-item reveal"
+          data-image="portfolio-03.jpg"
+          aria-label="Open fashion image"
+        >
+          <img
+            src="portfolio-03.jpg"
+            alt="Daniil Zorin — fashion"
+            loading="lazy"
+          >
+          <span class="gallery-info">
+            <span>
+              Fashion
+            </span>
+            <span>
+              003
+            </span>
+          </span>
+        </button>
+      </div>
+      <!-- RIGHT -->
+      <div class="gallery-right">
+        <button
+          class="gallery-item reveal"
+          data-image="portfolio-02.jpg"
+          aria-label="Open editorial image"
+        >
+          <img
+            src="portfolio-02.jpg"
+            alt="Daniil Zorin — editorial"
+            loading="lazy"
+          >
+          <span class="gallery-info">
+            <span>
+              Editorial
+            </span>
+            <span>
+              002
+            </span>
+          </span>
+        </button>
+        <button
+          class="gallery-item reveal"
           data-image="portfolio-04.jpg"
-          aria-label="Open portfolio image"
+          aria-label="Open personal project"
         >
           <img
             src="portfolio-04.jpg"
             alt="Daniil Zorin — personal project"
             loading="lazy"
           >
-          <span class="portfolio-caption">
-            Personal · 04
+          <span class="gallery-info">
+            <span>
+              Personal
+            </span>
+            <span>
+              004
+            </span>
           </span>
         </button>
       </div>
     </div>
   </div>
 </section>
-<!-- Statement -->
+<!-- STATEMENT -->
 <section class="statement">
-  <div class="wrap">
+  <div class="wrap statement-inner">
+    <div class="statement-small reveal">
+      02 / Statement
+    </div>
     <div class="statement-text reveal">
-      Creating images.<br>
-      Building identity.
+      Identity is
+      <em>
+        a moving target.
+      </em>
     </div>
   </div>
 </section>
-<!-- Socials -->
-<section id="socials">
+<!-- SOCIALS -->
+<section
+  id="socials"
+  class="socials"
+>
   <div class="wrap">
-    <div class="section-header reveal">
-      <div class="section-title">
-        03 — Socials
-      </div>
+    <div class="section-label reveal">
+      03 / Social
     </div>
-    <div class="link-list">
+    <div style="margin-top: 55px;">
       <a
-        class="link reveal"
+        class="social-row reveal"
         href="https://www.instagram.com/zirochkatorrent"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <span>Instagram</span>
-        <span class="arrow">↗</span>
+        <span>
+          Instagram
+        </span>
+        <span class="social-arrow">
+          ↗
+        </span>
       </a>
     </div>
   </div>
 </section>
-<!-- Contact -->
-<section id="contact">
-  <div class="wrap">
-    <div class="section-header reveal">
-      <div class="section-title">
-        04 — Contact
+<!-- CONTACT -->
+<section
+  id="contact"
+  class="contact"
+>
+  <div class="wrap contact-inner">
+    <div class="section-label reveal">
+      04 / Contact
+    </div>
+    <div>
+      <div class="contact-title reveal">
+        Let's<br>
+        create.
       </div>
-    </div>
-    <div class="contact-text reveal">
-      Let's create something
-      interesting.
-    </div>
-    <div class="contact-note reveal">
-      For collaborations, modeling inquiries
-      and creative projects
-    </div>
-    <div class="link-list">
       <a
-        class="link reveal"
+        class="contact-link reveal"
         href="mailto:zirochkatorrent@icloud.com"
       >
-        <span>zirochkatorrent@icloud.com</span>
-        <span class="arrow">↗</span>
+        zirochkatorrent@icloud.com
       </a>
+      <div class="availability reveal">
+        Collaborations · Modeling · Creative projects
+      </div>
     </div>
   </div>
 </section>
   </main>
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
 <div class="wrap footer-inner">
   <span>
@@ -630,7 +832,7 @@ content=“Daniil Zorin, model, blogger, fashion, portfolio, Norway”
   </span>
 </div>
   </footer>
-  <!-- Lightbox -->
+  <!-- LIGHTBOX -->
   <div
     class="lightbox"
     id="lightbox"
@@ -639,74 +841,109 @@ content=“Daniil Zorin, model, blogger, fashion, portfolio, Norway”
 <button
   class="lightbox-close"
   id="lightboxClose"
-  aria-label="Close image"
+  aria-label="Close"
 >
   ×
 </button>
 <img
-  class="lightbox-image"
   id="lightboxImage"
   src=""
   alt=""
 >
   </div>
   <script>
-    /* Scroll reveal */
-    const revealElements = document.querySelectorAll(".reveal");
-    const revealObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        });
-      },
-      {
-        threshold: 0.12
-      }
-    );
+    /* ─────────────────────────
+       SCROLL REVEAL
+    ───────────────────────── */
+    const revealElements =
+      document.querySelectorAll(".reveal");
+    const revealObserver =
+      new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          });
+        },
+        {
+          threshold: 0.12
+        }
+      );
     revealElements.forEach((element) => {
       revealObserver.observe(element);
     });
-    /* Portfolio lightbox */
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImage = document.getElementById("lightboxImage");
-    const lightboxClose = document.getElementById("lightboxClose");
-    const portfolioItems =
-      document.querySelectorAll(".portfolio-item");
+    /* ─────────────────────────
+       LIGHTBOX
+    ───────────────────────── */
+    const lightbox =
+      document.getElementById("lightbox");
+    const lightboxImage =
+      document.getElementById("lightboxImage");
+    const lightboxClose =
+      document.getElementById("lightboxClose");
+    const clickableImages =
+      document.querySelectorAll(
+        "[data-image]"
+      );
     function openLightbox(image) {
       lightboxImage.src = image;
-      lightbox.classList.add("is-open");
-      lightbox.setAttribute("aria-hidden", "false");
-      document.body.classList.add("no-scroll");
+      lightbox.classList.add("open");
+      lightbox.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+      document.body.classList.add(
+        "no-scroll"
+      );
     }
     function closeLightbox() {
-      lightbox.classList.remove("is-open");
-      lightbox.setAttribute("aria-hidden", "true");
-      document.body.classList.remove("no-scroll");
+      lightbox.classList.remove("open");
+      lightbox.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+      document.body.classList.remove(
+        "no-scroll"
+      );
       setTimeout(() => {
         lightboxImage.src = "";
-      }, 300);
+      }, 350);
     }
-    portfolioItems.forEach((item) => {
-      item.addEventListener("click", () => {
-        openLightbox(item.dataset.image);
-      });
+    clickableImages.forEach((element) => {
+      element.addEventListener(
+        "click",
+        () => {
+          openLightbox(
+            element.dataset.image
+          );
+        }
+      );
     });
     lightboxClose.addEventListener(
       "click",
       closeLightbox
     );
-    lightbox.addEventListener("click", (event) => {
-      if (event.target === lightbox) {
-        closeLightbox();
+    lightbox.addEventListener(
+      "click",
+      (event) => {
+        if (
+          event.target === lightbox
+        ) {
+          closeLightbox();
+        }
       }
-    });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        closeLightbox();
+    );
+    document.addEventListener(
+      "keydown",
+      (event) => {
+        if (event.key === "Escape") {
+          closeLightbox();
+        }
       }
-    });
+    );
   </script>
 </body>
 </html>
