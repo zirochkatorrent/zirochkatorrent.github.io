@@ -2,48 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
   >
-
   <meta
     name="description"
     content="Daniil Zorin — Ukrainian artist and model based in Bodø, Norway."
   >
-
   <meta
     name="robots"
     content="index, follow"
   >
-
   <meta
     name="theme-color"
     content="#090708"
   >
-
   <title>Daniil Zorin</title>
 
   <!-- =====================================================
        FONTS
   ====================================================== -->
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
   <link
     rel="preconnect"
     href="https://fonts.gstatic.com"
     crossorigin
   >
-
   <link
     href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Inter:wght@300;400;500;600&display=swap"
     rel="stylesheet"
   >
 
   <style>
-
     /* =====================================================
        VARIABLES
     ====================================================== */
@@ -55,7 +46,6 @@
 
       --ivory: #eee8df;
       --cream: #d9d0c8;
-
       --muted: #817876;
       --dim: #51494a;
 
@@ -73,7 +63,6 @@
 
       --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
     }
-
 
     /* =====================================================
        RESET
@@ -103,7 +92,6 @@
         var(--black);
 
       color: var(--ivory);
-
       font-family: var(--body-font);
       font-weight: 300;
 
@@ -127,7 +115,6 @@
       background: transparent;
       color: inherit;
       font: inherit;
-
       -webkit-appearance: none;
       appearance: none;
     }
@@ -147,30 +134,25 @@
       outline-offset: 7px;
     }
 
-
     /* =====================================================
        GRAIN
     ====================================================== */
 
     body::after {
       content: "";
-
       position: fixed;
       inset: 0;
-
       z-index: 9999;
 
       pointer-events: none;
 
       opacity: 0.045;
-
       mix-blend-mode: screen;
 
       background-image: url(
         "data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E"
       );
     }
-
 
     /* =====================================================
        GLOBAL
@@ -187,7 +169,6 @@
 
     section {
       position: relative;
-
       border-top: 1px solid var(--line);
     }
 
@@ -195,7 +176,6 @@
       content: "";
 
       position: absolute;
-
       top: -1px;
       left: 0;
 
@@ -203,10 +183,8 @@
       height: 1px;
 
       background: var(--wine-light);
-
       opacity: 0.75;
     }
-
 
     /* =====================================================
        NAVIGATION
@@ -214,11 +192,9 @@
 
     .nav {
       position: fixed;
-
       top: 0;
       right: 0;
       left: 0;
-
       z-index: 100;
 
       padding: 30px 0;
@@ -234,12 +210,10 @@
     .nav-left {
       display: flex;
       align-items: center;
-
       gap: 30px;
 
       pointer-events: auto;
     }
-
 
     /* =====================================================
        MENU BUTTON
@@ -309,7 +283,6 @@
         rotate(-45deg);
     }
 
-
     /* =====================================================
        NAVIGATION LINKS
     ====================================================== */
@@ -372,7 +345,6 @@
 
     .nav.open .nav-link {
       opacity: 1;
-
       transform: translateY(0);
     }
 
@@ -419,10 +391,8 @@
 
     .nav-link:hover::after {
       transform: scaleX(1);
-
       transform-origin: left;
     }
-
 
     /* =====================================================
        HERO
@@ -473,7 +443,6 @@
       z-index: 1;
     }
 
-
     /* =====================================================
        HERO TITLE
     ====================================================== */
@@ -487,12 +456,11 @@
 
       font-family: var(--display-font);
 
-      font-size:
-        clamp(
-          125px,
-          24vw,
-          450px
-        );
+      font-size: clamp(
+        125px,
+        24vw,
+        450px
+      );
 
       font-weight: 400;
 
@@ -528,7 +496,6 @@
           scale(1);
       }
     }
-
 
     /* =====================================================
        HERO IMAGE
@@ -695,7 +662,6 @@
       }
     }
 
-
     /* =====================================================
        SECTION HEADERS
     ====================================================== */
@@ -729,12 +695,11 @@
 
       font-family: var(--display-font);
 
-      font-size:
-        clamp(
-          70px,
-          8vw,
-          120px
-        );
+      font-size: clamp(
+        70px,
+        8vw,
+        120px
+      );
 
       font-weight: 400;
 
@@ -742,7 +707,6 @@
 
       letter-spacing: -0.06em;
     }
-
 
     /* =====================================================
        ABOUT
@@ -755,85 +719,65 @@
     .about-content {
       width: 100%;
 
+      min-height: 260px;
+
       padding:
-        55px 0
-        65px;
+        55px 0;
 
-      border-top:
-        1px solid var(--line);
+      border-top: 1px solid var(--line);
 
-      border-bottom:
-        1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+
+      display: flex;
+
+      align-items: center;
     }
 
-    .about-kicker {
-      margin: 0 0 32px;
-
-      color: var(--muted);
-
-      font-size: 11px;
-
-      font-weight: 500;
-
-      text-transform: uppercase;
-
-      letter-spacing: 0.24em;
-    }
-
-    .about-kicker .ukraine-accent {
-      color: var(--wine-light);
-
-      position: relative;
-
-      display: inline-block;
-    }
-
-    .about-kicker .ukraine-accent::after {
-      content: "";
-
-      position: absolute;
-
-      left: 0;
-      right: 0;
-
-      bottom: -3px;
-
-      height: 2px;
-
-      background: var(--wine-light);
-
-      opacity: 0.8;
-    }
-
-    .about-text {
+    .about-description {
       max-width: 900px;
 
       margin: 0;
 
-      color: var(--ivory);
-
       font-family: var(--display-font);
 
-      font-size:
-        clamp(
-          32px,
-          4vw,
-          58px
-        );
+      font-size: clamp(
+        38px,
+        5.2vw,
+        76px
+      );
 
       font-weight: 400;
 
-      line-height: 1.08;
+      line-height: 0.98;
 
-      letter-spacing: -0.035em;
+      letter-spacing: -0.045em;
     }
 
-    .about-text em {
-      color: var(--cream);
+    /*
+      The first "U" is visually split in half:
+      left side = ivory,
+      right side = burgundy.
+    */
 
-      font-style: normal;
+    .split-u {
+      display: inline-block;
+
+      color: var(--ivory);
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--ivory) 0%,
+          var(--ivory) 50%,
+          var(--wine-light) 50%,
+          var(--wine-light) 100%
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      -webkit-text-fill-color: transparent;
     }
-
 
     /* =====================================================
        WORK
@@ -847,79 +791,29 @@
       margin-bottom: 70px;
     }
 
-    .work-intro {
-      max-width: 850px;
+    /*
+      Empty field reserved for future text.
+      It intentionally contains no text.
+    */
 
-      margin-bottom: 80px;
-    }
+    .work-text-field {
+      width: 100%;
 
-    .work-paragraph {
-      position: relative;
+      min-height: 190px;
 
-      margin: 0;
+      margin-bottom: 70px;
 
-      padding:
-        0 0
-        38px;
+      border-top: 1px solid var(--line);
 
-      color: var(--cream);
-
-      font-size:
-        clamp(
-          17px,
-          2vw,
-          23px
-        );
-
-      line-height: 1.65;
-
-      font-weight: 300;
-    }
-
-    .work-paragraph + .work-paragraph {
-      margin-top: 40px;
-    }
-
-    .work-paragraph::after {
-      content: "";
-
-      position: absolute;
-
-      right: 0;
-      bottom: 0;
-      left: 0;
-
-      height: 1px;
-
-      background: rgba(
-        238,
-        232,
-        223,
-        0.16
-      );
-    }
-
-    .work-progress {
-      position: absolute;
-
-      left: 0;
-      bottom: -1px;
-
-      width: 0%;
-
-      height: 1px;
+      border-bottom: 1px solid var(--line);
 
       background:
         linear-gradient(
-          90deg,
-          var(--wine),
-          var(--wine-light)
+          145deg,
+          rgba(16, 13, 14, 0.45),
+          rgba(5, 4, 5, 0.25)
         );
-
-      transition:
-        width 0.15s linear;
     }
-
 
     /* =====================================================
        GALLERY
@@ -1006,7 +900,6 @@
         contrast(1.07);
     }
 
-
     /* =====================================================
        CONTACT
     ====================================================== */
@@ -1024,12 +917,11 @@
 
       font-family: var(--display-font);
 
-      font-size:
-        clamp(
-          80px,
-          10vw,
-          150px
-        );
+      font-size: clamp(
+        80px,
+        10vw,
+        150px
+      );
 
       font-weight: 400;
 
@@ -1057,12 +949,11 @@
 
       font-family: var(--display-font);
 
-      font-size:
-        clamp(
-          25px,
-          3vw,
-          42px
-        );
+      font-size: clamp(
+        25px,
+        3vw,
+        42px
+      );
 
       font-weight: 400;
 
@@ -1117,7 +1008,6 @@
       transform-origin: left;
     }
 
-
     /* =====================================================
        FOOTER
     ====================================================== */
@@ -1138,7 +1028,6 @@
 
       letter-spacing: 0.25em;
     }
-
 
     /* =====================================================
        SCROLL REVEAL
@@ -1162,7 +1051,6 @@
         translateY(0);
     }
 
-
     /* =====================================================
        LIGHTBOX
     ====================================================== */
@@ -1177,6 +1065,7 @@
       display: flex;
 
       align-items: center;
+
       justify-content: center;
 
       padding: 30px;
@@ -1212,6 +1101,7 @@
       width: auto;
 
       max-width: 92vw;
+
       max-height: 90vh;
 
       object-fit: contain;
@@ -1261,7 +1151,6 @@
         rotate(90deg);
     }
 
-
     /* =====================================================
        MOBILE
     ====================================================== */
@@ -1271,7 +1160,6 @@
       :root {
         --padding: 28px;
       }
-
 
       /* NAV */
 
@@ -1316,13 +1204,13 @@
         letter-spacing: 0.15em;
       }
 
-
       /* HERO */
 
       .hero {
         min-height: 100svh;
 
         padding-top: 175px;
+
         padding-bottom: 90px;
       }
 
@@ -1349,7 +1237,6 @@
       .hero-image-label {
         display: none;
       }
-
 
       /* ABOUT */
 
@@ -1378,20 +1265,24 @@
       }
 
       .about-content {
+        min-height: 210px;
+
         padding:
-          40px 0
-          50px;
+          45px 0;
       }
 
-      .about-text {
+      .about-description {
         font-size:
           clamp(
-            30px,
-            8vw,
-            44px
+            34px,
+            10vw,
+            52px
           );
-      }
 
+        line-height: 1;
+
+        letter-spacing: -0.04em;
+      }
 
       /* WORK */
 
@@ -1403,16 +1294,10 @@
         margin-bottom: 50px;
       }
 
-      .work-intro {
-        margin-bottom: 60px;
-      }
+      .work-text-field {
+        min-height: 150px;
 
-      .work-paragraph {
-        padding-bottom: 30px;
-
-        font-size: 17px;
-
-        line-height: 1.65;
+        margin-bottom: 50px;
       }
 
       .gallery {
@@ -1422,7 +1307,6 @@
       .gallery-column:nth-child(2) {
         padding-top: 0;
       }
-
 
       /* CONTACT */
 
@@ -1444,7 +1328,6 @@
         font-size: 29px;
       }
 
-
       /* LIGHTBOX */
 
       .lightbox {
@@ -1453,10 +1336,10 @@
 
       .lightbox-close {
         top: 20px;
+
         right: 22px;
       }
     }
-
 
     /* =====================================================
        SMALL PHONES
@@ -1497,6 +1380,10 @@
         font-size: 55px;
       }
 
+      .about-description {
+        font-size: 32px;
+      }
+
       .contact-title {
         font-size: 64px;
       }
@@ -1505,7 +1392,6 @@
         font-size: 25px;
       }
     }
-
 
     /* =====================================================
        REDUCED MOTION
@@ -1525,10 +1411,8 @@
         transition: none !important;
       }
     }
-
   </style>
 </head>
-
 
 <body>
 
@@ -1541,7 +1425,6 @@
     id="nav"
     aria-label="Site navigation"
   >
-
     <div class="wrap nav-inner">
 
       <div class="nav-left">
@@ -1554,19 +1437,15 @@
           aria-expanded="false"
           aria-controls="navigationLinks"
         >
-
           <span class="menu-line"></span>
           <span class="menu-line"></span>
           <span class="menu-line"></span>
-
         </button>
-
 
         <div
           class="nav-links"
           id="navigationLinks"
         >
-
           <a
             class="nav-link"
             href="#home"
@@ -1594,13 +1473,10 @@
           >
             Contact
           </a>
-
         </div>
 
       </div>
-
     </div>
-
   </nav>
 
 
@@ -1618,7 +1494,6 @@
       <h1 class="hero-title">
         Daniil Zorin
       </h1>
-
 
       <button
         class="hero-image"
@@ -1641,7 +1516,6 @@
       </button>
 
     </div>
-
   </header>
 
 
@@ -1650,7 +1524,6 @@
   ====================================================== -->
 
   <main>
-
 
     <!-- ===================================================
          ABOUT
@@ -1675,33 +1548,18 @@
 
         </div>
 
-
         <div
           class="about-content reveal"
           aria-label="About Daniil Zorin"
         >
 
-          <p class="about-kicker">
-            <span class="ukraine-accent">
-              Ukrainian
-            </span>
-            artist and model based in Bodø, Norway.
-          </p>
-
-
-          <p class="about-text">
-
-            Daniil Zorin is a
-            <em>Ukrainian artist and model</em>
-            based in Bodø, Norway, working across
-            image, fashion and visual expression.
-
+          <p class="about-description">
+            <span class="split-u">U</span>krainian artist and model based in Bodø, Norway.
           </p>
 
         </div>
 
       </div>
-
     </section>
 
 
@@ -1716,7 +1574,6 @@
 
       <div class="wrap">
 
-
         <div class="work-header reveal">
 
           <span class="section-number">
@@ -1730,67 +1587,21 @@
         </div>
 
 
-        <!-- WORK TEXT -->
+        <!-- EMPTY FUTURE TEXT FIELD -->
 
-        <div class="work-intro">
-
-
-          <p class="work-paragraph reveal">
-
-            My work explores identity, beauty and
-            self-expression through photography,
-            fashion and image-making.
-
-            <span
-              class="work-progress"
-              aria-hidden="true"
-            ></span>
-
-          </p>
-
-
-          <p class="work-paragraph reveal">
-
-            I am interested in the space between
-            vulnerability and confidence, where
-            the image becomes both personal and
-            performative.
-
-            <span
-              class="work-progress"
-              aria-hidden="true"
-            ></span>
-
-          </p>
-
-
-          <p class="work-paragraph reveal">
-
-            Through portraiture and visual direction,
-            I create intimate, sensual and editorial
-            images shaped by atmosphere, movement
-            and identity.
-
-            <span
-              class="work-progress"
-              aria-hidden="true"
-            ></span>
-
-          </p>
-
-
-        </div>
+        <div
+          class="work-text-field reveal"
+          aria-label="Future work description"
+        ></div>
 
 
         <!-- GALLERY -->
 
         <div class="gallery">
 
-
           <!-- COLUMN 1 -->
 
           <div class="gallery-column">
-
 
             <button
               class="gallery-item reveal"
@@ -1844,14 +1655,12 @@
 
             </button>
 
-
           </div>
 
 
           <!-- COLUMN 2 -->
 
           <div class="gallery-column">
-
 
             <button
               class="gallery-item reveal"
@@ -1886,14 +1695,11 @@
 
             </button>
 
-
           </div>
-
 
         </div>
 
       </div>
-
     </section>
 
 
@@ -1912,14 +1718,11 @@
           03
         </div>
 
-
         <h2 class="contact-title reveal">
           Let's connect.
         </h2>
 
-
         <div class="contact-list">
-
 
           <a
             class="contact-link reveal"
@@ -1930,7 +1733,6 @@
             Instagram
           </a>
 
-
           <a
             class="contact-link reveal"
             href="mailto:zirochkatorrent@icloud.com"
@@ -1938,11 +1740,9 @@
             Email
           </a>
 
-
         </div>
 
       </div>
-
     </section>
 
   </main>
@@ -1955,9 +1755,7 @@
   <footer>
 
     <div class="wrap">
-
       © 2026 Daniil Zorin · All rights reserved.
-
     </div>
 
   </footer>
@@ -1984,7 +1782,6 @@
     >
       ×
     </button>
-
 
     <img
       id="lightboxImage"
@@ -2024,9 +1821,7 @@
       document.getElementById("lightboxClose");
 
     const clickableImages =
-      document.querySelectorAll(
-        "[data-image]"
-      );
+      document.querySelectorAll("[data-image]");
 
     const heroImage =
       document.querySelector(".hero-image");
@@ -2056,7 +1851,6 @@
           ? "Close navigation"
           : "Open navigation"
       );
-
     }
 
 
@@ -2099,7 +1893,6 @@
 
       const revealObserver =
         new IntersectionObserver(
-
           (entries, observer) => {
 
             entries.forEach((entry) => {
@@ -2119,11 +1912,9 @@
             });
 
           },
-
           {
             threshold: 0.12
           }
-
         );
 
 
@@ -2150,94 +1941,6 @@
       );
 
     }
-
-
-    /* =====================================================
-       PARAGRAPH SCROLL PROGRESS
-    ====================================================== */
-
-    const workParagraphs =
-      document.querySelectorAll(
-        ".work-paragraph"
-      );
-
-
-    function updateParagraphProgress() {
-
-      const viewportHeight =
-        window.innerHeight;
-
-
-      workParagraphs.forEach(
-        (paragraph) => {
-
-          const rect =
-            paragraph.getBoundingClientRect();
-
-          const progressBar =
-            paragraph.querySelector(
-              ".work-progress"
-            );
-
-          if (!progressBar) {
-            return;
-          }
-
-
-          /*
-             Progress begins when the paragraph
-             enters the lower part of the screen
-             and finishes as it reaches the
-             upper-middle area.
-          */
-
-          const start =
-            viewportHeight * 0.90;
-
-          const end =
-            viewportHeight * 0.30;
-
-
-          const progress =
-            (start - rect.top) /
-            (start - end);
-
-
-          const clamped =
-            Math.max(
-              0,
-              Math.min(
-                1,
-                progress
-              )
-            );
-
-
-          progressBar.style.width =
-            `${clamped * 100}%`;
-
-        }
-      );
-
-    }
-
-
-    window.addEventListener(
-      "scroll",
-      updateParagraphProgress,
-      {
-        passive: true
-      }
-    );
-
-
-    window.addEventListener(
-      "resize",
-      updateParagraphProgress
-    );
-
-
-    updateParagraphProgress();
 
 
     /* =====================================================
@@ -2275,7 +1978,6 @@
         "no-scroll"
       );
 
-
       requestAnimationFrame(() => {
 
         lightboxClose.focus();
@@ -2302,7 +2004,6 @@
 
       lightboxImage.src = "";
 
-
       if (
         lastFocusedElement &&
         typeof lastFocusedElement.focus ===
@@ -2312,7 +2013,6 @@
         lastFocusedElement.focus();
 
       }
-
 
       lastFocusedElement = null;
 
@@ -2330,15 +2030,11 @@
               element.dataset.image;
 
             const img =
-              element.querySelector(
-                "img"
-              );
-
+              element.querySelector("img");
 
             if (!image) {
               return;
             }
-
 
             openLightbox(
               image,
@@ -2386,11 +2082,8 @@
         if (
           event.key !== "Escape"
         ) {
-
           return;
-
         }
-
 
         if (
           lightbox.classList.contains(
@@ -2401,7 +2094,6 @@
           closeLightbox();
 
         }
-
 
         if (
           nav.classList.contains(
@@ -2438,20 +2130,17 @@
           const rect =
             heroImage.getBoundingClientRect();
 
-
           const x =
             (event.clientX -
               rect.left) /
               rect.width -
             0.5;
 
-
           const y =
             (event.clientY -
               rect.top) /
               rect.height -
             0.5;
-
 
           heroImage.style.transform =
             `translate(
