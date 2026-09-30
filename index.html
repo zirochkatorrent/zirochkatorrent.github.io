@@ -2,33 +2,39 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
+    name="description"
+    content="Daniil Zorin — model, digital creator, blogger and psychologist."
   >
-
-<meta
-name=“description”
-content=“Daniil Zorin — personal website.”
-
   <meta name="robots" content="index, follow">
   <title>Daniil Zorin</title>
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap"
     rel="stylesheet"
   >
   <style>
+    /* ========================================
+       VARIABLES
+    ======================================== */
     :root {
       --black: #050505;
-      --white: #f1f1ed;
-      --grey: #777;
-      --line: #202020;
+      --soft-black: #090909;
+      --white: #eeeae4;
+      --muted: #77736e;
+      --line: #242220;
       --max-width: 1280px;
       --padding: 42px;
     }
-    * {
+    /* ========================================
+       RESET
+    ======================================== */
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
     }
     html {
@@ -36,11 +42,11 @@ content=“Daniil Zorin — personal website.”
     }
     body {
       margin: 0;
+      overflow-x: hidden;
       background: var(--black);
       color: var(--white);
       font-family: "Inter", sans-serif;
       font-weight: 300;
-      overflow-x: hidden;
     }
     body.no-scroll {
       overflow: hidden;
@@ -50,8 +56,11 @@ content=“Daniil Zorin — personal website.”
       text-decoration: none;
     }
     button {
-      font: inherit;
+      border: 0;
+      padding: 0;
       color: inherit;
+      font: inherit;
+      background: transparent;
     }
     img {
       display: block;
@@ -61,19 +70,24 @@ content=“Daniil Zorin — personal website.”
       background: var(--white);
       color: var(--black);
     }
-    /* Grain */
+    /* ========================================
+       GRAIN
+    ======================================== */
     body::after {
       content: "";
       position: fixed;
       inset: 0;
       z-index: 9999;
       pointer-events: none;
-      opacity: 0.04;
-      background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+      opacity: 0.035;
+      background-image: url(
+        "data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E"
+      );
       mix-blend-mode: screen;
     }
-    /* Layout */
+    /* ========================================
+       LAYOUT
+    ======================================== */
     .wrap {
       width: min(
         var(--max-width),
@@ -85,176 +99,204 @@ content=“Daniil Zorin — personal website.”
       position: relative;
       border-top: 1px solid var(--line);
     }
-    /* Navigation */
+    /* ========================================
+       NAVIGATION
+    ======================================== */
     .nav {
       position: fixed;
       top: 0;
-      left: 0;
       right: 0;
+      left: 0;
       z-index: 100;
-      padding: 25px 0;
+      padding: 24px 0;
       mix-blend-mode: difference;
     }
     .nav-inner {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
     }
-    .logo-button {
-      padding: 0;
-      border: 0;
-      border-bottom: 1px solid currentColor;
-      background: transparent;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      cursor: pointer;
+    .nav-left {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
     }
-    /* Menu */
-    .menu {
-      position: fixed;
-      inset: 0;
-      z-index: 90;
+    .logo-button {
+      position: relative;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 31px;
+      font-weight: 500;
+      line-height: 0.8;
+      letter-spacing: -0.06em;
+      cursor: pointer;
+      transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+    }
+    .logo-button:hover {
+      opacity: 0.65;
+      transform: translateY(-1px);
+    }
+    .nav-links {
       display: flex;
       align-items: center;
-      justify-content: center;
-      background: var(--black);
+      gap: 18px;
+      max-width: 0;
+      overflow: hidden;
       opacity: 0;
-      visibility: hidden;
+      transform: translateX(-12px);
+      pointer-events: none;
       transition:
+        max-width 0.6s cubic-bezier(0.2, 0.7, 0.2, 1),
         opacity 0.35s ease,
-        visibility 0.35s ease;
+        transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
     }
-    .menu.open {
+    .nav.open .nav-links {
+      max-width: 500px;
       opacity: 1;
-      visibility: visible;
+      transform: translateX(0);
+      pointer-events: auto;
     }
-    .menu-inner {
-      width: min(900px, calc(100% - 36px));
-    }
-    .menu-list {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-    }
-    .menu-link {
-      border: 0;
-      border-bottom: 1px solid var(--white);
-      padding: 4px 0;
-      background: transparent;
-      font-family: "Playfair Display", serif;
-      font-size: clamp(48px, 8vw, 100px);
-      line-height: 0.95;
-      letter-spacing: -0.045em;
-      cursor: pointer;
-      transform: translateY(20px);
-      opacity: 0;
-      transition:
-        opacity 0.45s ease,
-        transform 0.45s ease,
-        color 0.25s ease;
-    }
-    .menu.open .menu-link {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    .menu.open .menu-link:nth-child(1) {
-      transition-delay: 0.05s;
-    }
-    .menu.open .menu-link:nth-child(2) {
-      transition-delay: 0.1s;
-    }
-    .menu.open .menu-link:nth-child(3) {
-      transition-delay: 0.15s;
-    }
-    .menu.open .menu-link:nth-child(4) {
-      transition-delay: 0.2s;
-    }
-    .menu-link:hover {
-      color: #888;
-    }
-    /* Hero */
-    .hero {
-      min-height: 100vh;
+    .nav-link {
       position: relative;
-      padding-top: 150px;
-      padding-bottom: 80px;
+      white-space: nowrap;
+      color: var(--white);
+      font-size: 9px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      transition: opacity 0.25s ease;
     }
-    .hero-meta {
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -5px;
+      left: 0;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+    .nav-link:hover {
+      opacity: 0.65;
+    }
+    .nav-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+    /* ========================================
+       HERO
+    ======================================== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      padding-top: 155px;
+      padding-bottom: 100px;
+    }
+    .hero-intro {
       display: flex;
       justify-content: flex-end;
-      margin-bottom: 35px;
-      font-size: 9px;
+      margin-bottom: 34px;
+    }
+    .hero-roles {
+      max-width: 370px;
+      color: var(--muted);
+      font-size: 8px;
+      line-height: 1.7;
+      text-align: right;
       text-transform: uppercase;
-      letter-spacing: 0.22em;
-      color: var(--grey);
+      letter-spacing: 0.24em;
     }
     .hero-title {
       position: relative;
       z-index: 2;
       margin: 0;
-      font-family: "Playfair Display", serif;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(105px, 18vw, 245px);
       font-weight: 500;
-      font-size: clamp(
-        80px,
-        17vw,
-        230px
-      );
-      line-height: 0.72;
+      line-height: 0.68;
       letter-spacing: -0.075em;
+    }
+    .hero-title span {
+      display: block;
+    }
+    .hero-title span:last-child {
+      margin-left: 0.28em;
     }
     .hero-image {
       position: relative;
-      width: min(62vw, 720px);
-      margin-top: 80px;
+      width: min(59vw, 690px);
+      margin-top: 90px;
       margin-left: auto;
       overflow: hidden;
       border: 1px solid var(--line);
+      background: var(--soft-black);
       cursor: zoom-in;
     }
     .hero-image img {
       aspect-ratio: 4 / 5;
       object-fit: cover;
+      filter: saturate(0.78) contrast(1.05);
       transition:
-        transform 1s cubic-bezier(.2,.7,.2,1);
+        transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1),
+        filter 0.8s ease;
     }
     .hero-image:hover img {
       transform: scale(1.025);
+      filter: saturate(0.92) contrast(1.05);
     }
     .hero-image-label {
       position: absolute;
-      left: -55px;
-      bottom: 25px;
-      writing-mode: vertical-rl;
-      font-size: 8px;
+      right: 18px;
+      bottom: 18px;
+      color: rgba(238, 234, 228, 0.6);
+      font-size: 7px;
       text-transform: uppercase;
       letter-spacing: 0.25em;
-      color: var(--grey);
+      writing-mode: vertical-rl;
     }
-    /* Sections */
+    /* ========================================
+       SECTIONS
+    ======================================== */
     .section {
-      padding: 150px 0;
+      padding: 155px 0;
     }
     .section-inner {
-      min-height: 500px;
+      min-height: 420px;
     }
     .section-label {
       margin-bottom: 70px;
-      font-size: 9px;
+      color: var(--muted);
+      font-size: 8px;
       text-transform: uppercase;
-      letter-spacing: 0.25em;
-      color: var(--grey);
+      letter-spacing: 0.28em;
     }
-    .empty-space {
-      min-height: 350px;
+    /* ========================================
+       ABOUT
+    ======================================== */
+    .about-content {
+      max-width: 760px;
+      margin-left: auto;
     }
-    /* Portfolio */
+    .about-text {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(42px, 6vw, 76px);
+      font-weight: 400;
+      line-height: 0.98;
+      letter-spacing: -0.035em;
+    }
+    .about-text em {
+      font-style: italic;
+    }
+    /* ========================================
+       WORK
+    ======================================== */
     .gallery {
       display: grid;
-      grid-template-columns:
-        1.35fr
-        0.65fr;
+      grid-template-columns: 1.35fr 0.65fr;
       gap: 24px;
       align-items: start;
     }
@@ -268,47 +310,57 @@ content=“Daniil Zorin — personal website.”
     .gallery-item {
       position: relative;
       overflow: hidden;
-      padding: 0;
       border: 1px solid var(--line);
-      background: #090909;
+      background: var(--soft-black);
       cursor: zoom-in;
     }
     .gallery-item img {
       transition:
-        transform 0.9s cubic-bezier(.2,.7,.2,1);
+        transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
     }
     .gallery-item:hover img {
       transform: scale(1.035);
     }
-    /* Social / Contact */
-    .link-list {
+    /* ========================================
+       CONTACT
+    ======================================== */
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
       max-width: 800px;
     }
-    .link {
-      display: block;
-      width: fit-content;
-      padding: 12px 0 7px;
+    .contact-link {
+      display: inline-block;
+      padding: 10px 0 6px;
       border-bottom: 1px solid var(--white);
-      font-family: "Playfair Display", serif;
-      font-size: clamp(30px, 5vw, 60px);
-      line-height: 1;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(42px, 6vw, 76px);
+      font-weight: 400;
+      line-height: 0.9;
+      letter-spacing: -0.035em;
       transition:
-        opacity 0.25s ease,
-        color 0.25s ease;
+        opacity 0.3s ease,
+        transform 0.3s ease;
     }
-    .link:hover {
+    .contact-link:hover {
       opacity: 0.55;
+      transform: translateX(8px);
     }
-    /* Footer */
+    /* ========================================
+       FOOTER
+    ======================================== */
     footer {
       padding: 30px 0 45px;
       border-top: 1px solid var(--line);
-      font-size: 8px;
+      color: var(--muted);
+      font-size: 7px;
       text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--grey);
+      letter-spacing: 0.22em;
     }
-    /* Lightbox */
+    /* ========================================
+       LIGHTBOX
+    ======================================== */
     .lightbox {
       position: fixed;
       inset: 0;
@@ -329,70 +381,102 @@ content=“Daniil Zorin — personal website.”
       visibility: visible;
     }
     .lightbox img {
+      width: auto;
       max-width: 92vw;
       max-height: 90vh;
-      width: auto;
       object-fit: contain;
     }
     .lightbox-close {
       position: absolute;
-      top: 25px;
+      top: 24px;
       right: 30px;
-      padding: 0;
-      border: 0;
-      background: transparent;
+      border-bottom: 1px solid white;
       color: white;
-      font-size: 32px;
+      font-size: 30px;
       font-weight: 300;
       cursor: pointer;
-      border-bottom: 1px solid white;
     }
-    /* Reveal animation */
+    /* ========================================
+       REVEAL
+    ======================================== */
     .reveal {
       opacity: 0;
       transform: translateY(35px);
       transition:
         opacity 0.9s ease,
-        transform 0.9s cubic-bezier(.2,.7,.2,1);
+        transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
     }
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    /* Accessibility */
+    /* ========================================
+       ACCESSIBILITY
+    ======================================== */
     :focus-visible {
       outline: 1px solid var(--white);
       outline-offset: 6px;
     }
-    /* Mobile */
+    /* ========================================
+       MOBILE
+    ======================================== */
     @media (max-width: 700px) {
       :root {
         --padding: 18px;
       }
       .nav {
-        padding: 19px 0;
+        padding: 20px 0;
+      }
+      .nav-left {
+        gap: 17px;
+      }
+      .logo-button {
+        font-size: 28px;
+      }
+      .nav-links {
+        gap: 11px;
+      }
+      .nav-link {
+        font-size: 7px;
+        letter-spacing: 0.14em;
       }
       .hero {
-        padding-top: 120px;
+        padding-top: 125px;
+        padding-bottom: 80px;
+      }
+      .hero-intro {
+        margin-bottom: 30px;
+      }
+      .hero-roles {
+        max-width: 270px;
+        font-size: 7px;
+        line-height: 1.8;
       }
       .hero-title {
-        font-size: 22vw;
+        font-size: 24vw;
+        line-height: 0.7;
+      }
+      .hero-title span:last-child {
+        margin-left: 0.18em;
       }
       .hero-image {
-        width: 82vw;
-        margin-top: 55px;
+        width: 84vw;
+        margin-top: 60px;
       }
       .hero-image-label {
         display: none;
       }
       .section {
-        padding: 95px 0;
+        padding: 100px 0;
       }
       .section-label {
         margin-bottom: 50px;
       }
-      .empty-space {
-        min-height: 250px;
+      .about-content {
+        margin-left: 0;
+      }
+      .about-text {
+        font-size: 48px;
       }
       .gallery {
         grid-template-columns: 1fr;
@@ -400,16 +484,16 @@ content=“Daniil Zorin — personal website.”
       .gallery-column:nth-child(2) {
         padding-top: 0;
       }
-      .link {
-        font-size: 32px;
-      }
-      .menu-link {
-        font-size: 17vw;
+      .contact-link {
+        font-size: 48px;
       }
       .lightbox {
         padding: 20px;
       }
     }
+    /* ========================================
+       REDUCED MOTION
+    ======================================== */
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
@@ -423,257 +507,250 @@ content=“Daniil Zorin — personal website.”
   </style>
 </head>
 <body>
-  <!-- MENU -->
-  <div
-    class="menu"
-    id="menu"
-    aria-hidden="true"
+  <!-- ======================================
+       NAVIGATION
+  ======================================= -->
+  <nav
+    class="nav"
+    id="nav"
+    aria-label="Site navigation"
   >
-<div class="menu-inner">
-  <nav class="menu-list">
-    <button
-      class="menu-link"
-      data-target="home"
-    >
-      Home
-    </button>
-    <button
-      class="menu-link"
-      data-target="about"
-    >
-      About
-    </button>
-    <button
-      class="menu-link"
-      data-target="work"
-    >
-      Work
-    </button>
-    <button
-      class="menu-link"
-      data-target="contact"
-    >
-      Contact
-    </button>
+    <div class="wrap nav-inner">
+      <div class="nav-left">
+        <button
+          class="logo-button"
+          id="menuButton"
+          type="button"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          aria-controls="navigationLinks"
+        >
+          DZ
+        </button>
+        <div
+          class="nav-links"
+          id="navigationLinks"
+        >
+          <a class="nav-link" href="#home">Home</a>
+          <a class="nav-link" href="#about">About</a>
+          <a class="nav-link" href="#work">Work</a>
+          <a class="nav-link" href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
   </nav>
-</div>
-  </div>
-  <!-- NAVIGATION -->
-  <nav class="nav">
-<div class="wrap nav-inner">
-  <button
-    class="logo-button"
-    id="menuButton"
-    aria-label="Open menu"
-    aria-expanded="false"
-  >
-    DZ
-  </button>
-</div>
-  </nav>
-  <!-- HOME -->
+  <!-- ======================================
+       HOME
+  ======================================= -->
   <header
     class="wrap hero"
     id="home"
   >
-<div class="hero-meta reveal">
-  Personal website
-</div>
-<h1 class="hero-title reveal">
-  Daniil<br>
-  Zorin
-</h1>
-<div
-  class="hero-image reveal"
-  data-image="Facetune_15-06-2026-23-14-00.jpeg"
->
-  <img
-    src="Facetune_15-06-2026-23-14-00.jpeg"
-    alt="Daniil Zorin"
-  >
-  <span class="hero-image-label">
-    Portrait / 001
-  </span>
-</div>
+    <div class="hero-intro reveal">
+      <div class="hero-roles">
+        Model · Digital Creator · Blogger · Psychologist
+      </div>
+    </div>
+    <h1 class="hero-title reveal">
+      <span>Daniil</span>
+      <span>Zorin</span>
+    </h1>
+    <button
+      class="hero-image reveal"
+      type="button"
+      data-image="Facetune_15-06-2026-23-14-00.jpeg"
+      aria-label="Open portrait"
+    >
+      <img
+        src="Facetune_15-06-2026-23-14-00.jpeg"
+        alt="Portrait of Daniil Zorin"
+      >
+      <span class="hero-image-label">
+        Portrait / 001
+      </span>
+    </button>
   </header>
+  <!-- ======================================
+       MAIN
+  ======================================= -->
   <main>
-<!-- ABOUT -->
-<section
-  id="about"
-  class="section"
->
-  <div class="wrap section-inner">
-    <div class="section-label reveal">
-      01 / About
-    </div>
-    <div class="empty-space reveal">
-      <!-- Здесь будет твой текст -->
-    </div>
-  </div>
-</section>
-<!-- WORK -->
-<section
-  id="work"
-  class="section"
->
-  <div class="wrap">
-    <div class="section-label reveal">
-      02 / Work
-    </div>
-    <div class="gallery">
-      <div class="gallery-column">
-        <button
-          class="gallery-item reveal"
-          data-image="portfolio-01.jpg"
-          aria-label="Open image"
-        >
-          <img
-            src="portfolio-01.jpg"
-            alt=""
-            loading="lazy"
-          >
-        </button>
-        <button
-          class="gallery-item reveal"
-          data-image="portfolio-03.jpg"
-          aria-label="Open image"
-        >
-          <img
-            src="portfolio-03.jpg"
-            alt=""
-            loading="lazy"
-          >
-        </button>
+    <!-- ABOUT -->
+    <section
+      id="about"
+      class="section"
+    >
+      <div class="wrap section-inner">
+        <div class="section-label reveal">
+          01 / About
+        </div>
+        <div class="about-content reveal">
+          <p class="about-text">
+            Between image,
+            <em>identity</em>
+            and perception.
+          </p>
+        </div>
       </div>
-      <div class="gallery-column">
-        <button
-          class="gallery-item reveal"
-          data-image="portfolio-02.jpg"
-          aria-label="Open image"
-        >
-          <img
-            src="portfolio-02.jpg"
-            alt=""
-            loading="lazy"
-          >
-        </button>
-        <button
-          class="gallery-item reveal"
-          data-image="portfolio-04.jpg"
-          aria-label="Open image"
-        >
-          <img
-            src="portfolio-04.jpg"
-            alt=""
-            loading="lazy"
-          >
-        </button>
+    </section>
+    <!-- WORK -->
+    <section
+      id="work"
+      class="section"
+    >
+      <div class="wrap">
+        <div class="section-label reveal">
+          02 / Work
+        </div>
+        <div class="gallery">
+          <div class="gallery-column">
+            <button
+              class="gallery-item reveal"
+              type="button"
+              data-image="portfolio-01.jpg"
+              aria-label="Open portfolio image"
+            >
+              <img
+                src="portfolio-01.jpg"
+                alt="Portfolio image"
+                loading="lazy"
+              >
+            </button>
+            <button
+              class="gallery-item reveal"
+              type="button"
+              data-image="portfolio-03.jpg"
+              aria-label="Open portfolio image"
+            >
+              <img
+                src="portfolio-03.jpg"
+                alt="Portfolio image"
+                loading="lazy"
+              >
+            </button>
+          </div>
+          <div class="gallery-column">
+            <button
+              class="gallery-item reveal"
+              type="button"
+              data-image="portfolio-02.jpg"
+              aria-label="Open portfolio image"
+            >
+              <img
+                src="portfolio-02.jpg"
+                alt="Portfolio image"
+                loading="lazy"
+              >
+            </button>
+            <button
+              class="gallery-item reveal"
+              type="button"
+              data-image="portfolio-04.jpg"
+              aria-label="Open portfolio image"
+            >
+              <img
+                src="portfolio-04.jpg"
+                alt="Portfolio image"
+                loading="lazy"
+              >
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-<!-- CONTACT -->
-<section
-  id="contact"
-  class="section"
->
-  <div class="wrap section-inner">
-    <div class="section-label reveal">
-      03 / Contact
-    </div>
-    <div class="link-list">
-      <a
-        class="link reveal"
-        href="mailto:zirochkatorrent@icloud.com"
-      >
-        Email
-      </a>
-    </div>
-  </div>
-</section>
-<!-- SOCIAL -->
-<section class="section">
-  <div class="wrap section-inner">
-    <div class="section-label reveal">
-      04 / Social
-    </div>
-    <div class="link-list">
-      <a
-        class="link reveal"
-        href="https://www.instagram.com/zirochkatorrent"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Instagram
-      </a>
-    </div>
-  </div>
-</section>
+    </section>
+    <!-- CONTACT -->
+    <section
+      id="contact"
+      class="section"
+    >
+      <div class="wrap section-inner">
+        <div class="section-label reveal">
+          03 / Contact
+        </div>
+        <div class="contact-list">
+          <a
+            class="contact-link reveal"
+            href="https://www.instagram.com/zirochkatorrent"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </a>
+          <a
+            class="contact-link reveal"
+            href="mailto:zirochkatorrent@icloud.com"
+          >
+            Email
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
-  <!-- FOOTER -->
+  <!-- ======================================
+       FOOTER
+  ======================================= -->
   <footer>
-<div class="wrap">
-  © 2026
-</div>
+    <div class="wrap">
+      © 2026
+    </div>
   </footer>
-  <!-- LIGHTBOX -->
+  <!-- ======================================
+       LIGHTBOX
+  ======================================= -->
   <div
     class="lightbox"
     id="lightbox"
     aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Image preview"
   >
-<button
-  class="lightbox-close"
-  id="lightboxClose"
-  aria-label="Close"
->
-  ×
-</button>
-<img
-  id="lightboxImage"
-  src=""
-  alt=""
->
+    <button
+      class="lightbox-close"
+      id="lightboxClose"
+      type="button"
+      aria-label="Close image"
+    >
+      ×
+    </button>
+    <img
+      id="lightboxImage"
+      src=""
+      alt=""
+    >
   </div>
+  <!-- ======================================
+       JAVASCRIPT
+  ======================================= -->
   <script>
-    /* MENU */
-    const menu = document.getElementById("menu");
+    /* ========================================
+       NAVIGATION
+    ======================================== */
+    const nav = document.getElementById("nav");
     const menuButton = document.getElementById("menuButton");
-    const menuLinks = document.querySelectorAll(".menu-link");
-    function openMenu() {
-      menu.classList.add("open");
-      menu.setAttribute("aria-hidden", "false");
-      menuButton.setAttribute("aria-expanded", "true");
-      document.body.classList.add("no-scroll");
-    }
-    function closeMenu() {
-      menu.classList.remove("open");
-      menu.setAttribute("aria-hidden", "true");
-      menuButton.setAttribute("aria-expanded", "false");
-      document.body.classList.remove("no-scroll");
+    const navLinks = document.querySelectorAll(".nav-link");
+    function setNavigation(open) {
+      nav.classList.toggle("open", open);
+      menuButton.setAttribute(
+        "aria-expanded",
+        String(open)
+      );
+      menuButton.setAttribute(
+        "aria-label",
+        open ? "Close navigation" : "Open navigation"
+      );
     }
     menuButton.addEventListener("click", () => {
-      if (menu.classList.contains("open")) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
+      const isOpen = nav.classList.contains("open");
+      setNavigation(!isOpen);
     });
-    menuLinks.forEach((link) => {
+    navLinks.forEach((link) => {
       link.addEventListener("click", () => {
-        const target =
-          document.getElementById(
-            link.dataset.target
-          );
-        closeMenu();
-        if (target) {
-          target.scrollIntoView({
-            behavior: "smooth"
-          });
-        }
+        setNavigation(false);
       });
     });
-    /* SCROLL REVEAL */
+    /* ========================================
+       SCROLL REVEAL
+    ======================================== */
     const revealElements =
       document.querySelectorAll(".reveal");
     const revealObserver =
@@ -683,12 +760,8 @@ content=“Daniil Zorin — personal website.”
             if (!entry.isIntersecting) {
               return;
             }
-            entry.target.classList.add(
-              "visible"
-            );
-            observer.unobserve(
-              entry.target
-            );
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
           });
         },
         {
@@ -698,21 +771,17 @@ content=“Daniil Zorin — personal website.”
     revealElements.forEach((element) => {
       revealObserver.observe(element);
     });
-    /* LIGHTBOX */
+    /* ========================================
+       LIGHTBOX
+    ======================================== */
     const lightbox =
       document.getElementById("lightbox");
     const lightboxImage =
-      document.getElementById(
-        "lightboxImage"
-      );
+      document.getElementById("lightboxImage");
     const lightboxClose =
-      document.getElementById(
-        "lightboxClose"
-      );
+      document.getElementById("lightboxClose");
     const clickableImages =
-      document.querySelectorAll(
-        "[data-image]"
-      );
+      document.querySelectorAll("[data-image]");
     function openLightbox(image) {
       lightboxImage.src = image;
       lightbox.classList.add("open");
@@ -720,70 +789,48 @@ content=“Daniil Zorin — personal website.”
         "aria-hidden",
         "false"
       );
-      document.body.classList.add(
-        "no-scroll"
-      );
+      document.body.classList.add("no-scroll");
+      lightboxClose.focus();
     }
     function closeLightbox() {
-      lightbox.classList.remove(
-        "open"
-      );
+      lightbox.classList.remove("open");
       lightbox.setAttribute(
         "aria-hidden",
         "true"
       );
-      document.body.classList.remove(
-        "no-scroll"
-      );
+      document.body.classList.remove("no-scroll");
       setTimeout(() => {
         lightboxImage.src = "";
       }, 350);
     }
     clickableImages.forEach((element) => {
-      element.addEventListener(
-        "click",
-        () => {
-          openLightbox(
-            element.dataset.image
-          );
-        }
-      );
+      element.addEventListener("click", () => {
+        openLightbox(element.dataset.image);
+      });
     });
     lightboxClose.addEventListener(
       "click",
       closeLightbox
     );
-    lightbox.addEventListener(
-      "click",
-      (event) => {
-        if (
-          event.target === lightbox
-        ) {
-          closeLightbox();
-        }
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) {
+        closeLightbox();
       }
-    );
-    document.addEventListener(
-      "keydown",
-      (event) => {
-        if (event.key === "Escape") {
-          if (
-            lightbox.classList.contains(
-              "open"
-            )
-          ) {
-            closeLightbox();
-          }
-          if (
-            menu.classList.contains(
-              "open"
-            )
-          ) {
-            closeMenu();
-          }
-        }
+    });
+    /* ========================================
+       KEYBOARD
+    ======================================== */
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") {
+        return;
       }
-    );
+      if (lightbox.classList.contains("open")) {
+        closeLightbox();
+      }
+      if (nav.classList.contains("open")) {
+        setNavigation(false);
+      }
+    });
   </script>
 </body>
 </html>
