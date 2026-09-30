@@ -19,9 +19,6 @@
     content="#090708"
   >
   <title>Daniil Zorin — Artist & Model</title>
-  <!-- =====================================================
-       FONTS
-  ====================================================== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -246,7 +243,8 @@
     .nav-link {
       position: relative;
       color: var(--ivory);
-      font-size: 11px;
+      /* Немного увеличено меню */
+      font-size: 13px;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.22em;
@@ -281,8 +279,7 @@
       left: 0;
       height: 1px;
       background: var(--wine-light);
-      transform:
-        scaleX(0);
+      transform: scaleX(0);
       transform-origin: right;
       transition:
         transform 0.45s var(--ease);
@@ -335,10 +332,11 @@
       margin: 0;
       color: var(--ivory);
       font-family: var(--display-font);
+      /* Имя немного уменьшено */
       font-size: clamp(
-        150px,
-        27vw,
-        500px
+        135px,
+        24vw,
+        450px
       );
       font-weight: 400;
       line-height: 0.68;
@@ -384,13 +382,6 @@
       text-transform: uppercase;
       letter-spacing: 0.42em;
       padding-left: 0.42em;
-    }
-    .hero-roles::before,
-    .hero-roles::after {
-      content: "✦";
-      margin: 0 13px;
-      color: var(--wine-light);
-      font-size: 9px;
     }
     @keyframes rolesReveal {
       from {
@@ -587,6 +578,7 @@
       );
       margin: 0;
     }
+    /* Только первая буква U бордовая */
     .about-content p::first-letter {
       color: var(--wine-light);
     }
@@ -878,7 +870,7 @@
         gap: 18px;
       }
       .nav-link {
-        font-size: 9px;
+        font-size: 10px;
         letter-spacing: 0.15em;
       }
       /* HERO */
@@ -890,9 +882,9 @@
       .hero-title {
         font-size:
           clamp(
-            82px,
-            23vw,
-            200px
+            78px,
+            21vw,
+            190px
           );
         line-height: 0.72;
         letter-spacing:
@@ -905,10 +897,6 @@
         font-size: 9px;
         letter-spacing:
           0.28em;
-      }
-      .hero-roles::before,
-      .hero-roles::after {
-        margin-inline: 7px;
       }
       .hero-image {
         width: 100%;
@@ -950,8 +938,6 @@
         min-height: 140px;
         margin-bottom: 50px;
         padding: 30px 0;
-        font-size: 10px;
-        line-height: 1.8;
       }
       .gallery {
         grid-template-columns: 1fr;
@@ -1000,10 +986,10 @@
         gap: 12px;
       }
       .nav-link {
-        font-size: 8px;
+        font-size: 9px;
       }
       .hero-title {
-        font-size: 19vw;
+        font-size: 18vw;
       }
       .hero-roles {
         font-size: 8px;
@@ -1108,7 +1094,7 @@
       </h1>
       <div class="hero-intro">
         <div class="hero-roles">
-          Artist · Model · Creative
+          Artist
         </div>
       </div>
       <button
@@ -1154,10 +1140,7 @@
           aria-label="About"
         >
           <p>
-            Ukrainian artist and model based in Norway,
-            exploring identity, beauty, image and
-            self-expression through a dark,
-            sensual and editorial perspective.
+            Ukrainian artist and model based in Norway.
           </p>
         </div>
       </div>
@@ -1178,14 +1161,12 @@
             Selected Work
           </h2>
         </div>
+        <!-- Пустое поле для будущего текста -->
         <div
           class="work-empty reveal"
           aria-label="Selected Work"
         >
-          <p>
-            Photography · Fashion · Art ·
-            Creative Direction
-          </p>
+          <p></p>
         </div>
         <!-- GALLERY -->
         <div class="gallery">
