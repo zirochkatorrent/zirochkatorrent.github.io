@@ -1,259 +1,292 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Daniil Zorin — модель и блогер. zirochkatorrent.">
-<meta name="keywords" content="Daniil Zorin, zirochkatorrent, модель, блогер">
-<meta name="robots" content="index,follow">
-<title>Daniil Zorin — Model · Blogger</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap');
+<meta
+name=“description”
+content=“Daniil Zorin — модель и блогер. Официальный сайт.”
 
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+<meta
+name=“keywords”
+content=“Daniil Zorin, zirochkatorrent, модель, блогер”
 
-body{
-margin:0;
-background:#080808;
-color:#f4f4f0;
-font-family:Inter,sans-serif;
-font-weight:300
-}
-
-a{color:inherit;text-decoration:none}
-
-.wrap{
-width:min(1180px,calc(100% - 48px));
-margin:auto
-}
-
-header{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:space-between;
-padding:28px 0 34px
-}
-
-nav{
-display:flex;
-justify-content:flex-end;
-font-size:11px;
-text-transform:uppercase;
-letter-spacing:.16em;
-opacity:.45
-}
-
-.hero{
-padding:8vh 0 7vh
-}
-
-.eyebrow{
-font-size:11px;
-text-transform:uppercase;
-letter-spacing:.24em;
-opacity:.45;
-margin-bottom:24px
-}
-
-h1{
-margin:0;
-font-family:"Playfair Display",serif;
-font-size:clamp(64px,13vw,170px);
-line-height:.86;
-font-weight:500;
-letter-spacing:-.055em
-}
-
-.role{
-margin-top:34px;
-font-size:15px;
-text-transform:uppercase;
-letter-spacing:.18em;
-opacity:.7
-}
-
-.photo{
-margin-top:55px;
-overflow:hidden;
-border:1px solid #252525;
-background:#090909
-}
-
-.photo img{
-display:block;
-width:100%;
-height:auto;
-max-height:760px;
-object-fit:cover;
-object-position:center
-}
-
-section{
-padding:120px 0;
-border-top:1px solid #202020
-}
-
-.section-title{
-font-size:11px;
-text-transform:uppercase;
-letter-spacing:.24em;
-opacity:.5;
-margin-bottom:42px
-}
-
-.empty{
-min-height:180px
-}
-
-.socials{
-max-width:700px
-}
-
-.social{
-padding:22px 0;
-border-bottom:1px solid #252525;
-display:flex;
-justify-content:space-between;
-font-size:18px;
-transition:opacity .25s
-}
-
-.social:hover{
-opacity:.55
-}
-
-.arrow{
-opacity:.45
-}
-
-footer{
-padding:34px 0 50px;
-border-top:1px solid #202020;
-font-size:10px;
-text-transform:uppercase;
-letter-spacing:.16em;
-opacity:.35
-}
-
-@media(max-width:600px){
-.wrap{
-width:min(100% - 32px,1180px)
-}
-
-header{
-padding-top:20px
-}
-
-.hero{
-padding-top:15vh
-}
-
-.photo{
-margin-top:40px
-}
-
-section{
-padding:85px 0
-}
-}
-</style>
+  <meta name="robots" content="index, follow">
+  <title>Daniil Zorin — Model · Blogger</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap"
+    rel="stylesheet"
+  >
+  <style>
+    :root {
+      --bg: #080808;
+      --text: #f4f4f0;
+      --line: #252525;
+      --muted: rgba(244, 244, 240, 0.45);
+      --muted-light: rgba(244, 244, 240, 0.7);
+      --content-width: 1180px;
+      --side-padding: 48px;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .wrap {
+      width: min(
+        var(--content-width),
+        calc(100% - var(--side-padding) * 2)
+      );
+      margin-inline: auto;
+    }
+    /* Header */
+    .site-header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 28px 0 34px;
+    }
+    .nav {
+      display: flex;
+      justify-content: flex-end;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+    /* Hero */
+    .hero {
+      padding: 8vh 0 7vh;
+    }
+    .eyebrow,
+    .section-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: var(--muted);
+    }
+    .eyebrow {
+      margin-bottom: 24px;
+    }
+    .hero-title {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(64px, 13vw, 170px);
+      line-height: 0.86;
+      font-weight: 500;
+      letter-spacing: -0.055em;
+    }
+    .role {
+      margin-top: 34px;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted-light);
+    }
+    /* Main photo */
+    .photo {
+      margin-top: 55px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #090909;
+    }
+    .photo img {
+      display: block;
+      width: 100%;
+      max-height: 760px;
+      height: auto;
+      object-fit: cover;
+      object-position: center;
+    }
+    /* Sections */
+    section {
+      padding: 120px 0;
+      border-top: 1px solid #202020;
+    }
+    .section-title {
+      margin-bottom: 42px;
+    }
+    .section-content {
+      max-width: 700px;
+    }
+    /* Links */
+    .link-list {
+      max-width: 700px;
+    }
+    .link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 18px;
+      transition:
+        opacity 0.25s ease,
+        padding-left 0.25s ease;
+    }
+    .link:hover {
+      opacity: 0.55;
+      padding-left: 6px;
+    }
+    .arrow {
+      color: var(--muted);
+      transition: transform 0.25s ease;
+    }
+    .link:hover .arrow {
+      transform: translate(3px, -3px);
+    }
+    /* Footer */
+    footer {
+      padding: 34px 0 50px;
+      border-top: 1px solid #202020;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+    /* Mobile */
+    @media (max-width: 600px) {
+      :root {
+        --side-padding: 16px;
+      }
+      .site-header {
+        padding-top: 20px;
+      }
+      .hero {
+        padding-top: 15vh;
+      }
+      .hero-title {
+        font-size: clamp(58px, 20vw, 100px);
+      }
+      .photo {
+        margin-top: 40px;
+      }
+      section {
+        padding: 85px 0;
+      }
+      .link {
+        font-size: 16px;
+      }
+    }
+    /* Accessibility */
+    :focus-visible {
+      outline: 1px solid var(--text);
+      outline-offset: 5px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
-<header class="wrap">
-
-<nav>
-<span>DZ</span>
+  <header class="site-header wrap">
+<nav class="nav" aria-label="Main navigation">
+  <span>DZ</span>
 </nav>
-
 <main class="hero">
-
-<div class="eyebrow">Personal website</div>
-
-<h1>Daniil<br>Zorin</h1>
-
-<div class="role">Model · Blogger</div>
-
-<div class="photo">
-<img src="Facetune_15-06-2026-23-14-00.jpeg" alt="Daniil Zorin">
-</div>
-
+  <div class="eyebrow">
+    Personal website
+  </div>
+  <h1 class="hero-title">
+    Daniil<br>
+    Zorin
+  </h1>
+  <div class="role">
+    Model · Blogger
+  </div>
+  <div class="photo">
+    <img
+      src="Facetune_15-06-2026-23-14-00.jpeg"
+      alt="Daniil Zorin"
+      loading="eager"
+    >
+  </div>
 </main>
-
-</header>
-
-
-<section>
-<div class="wrap">
-<div class="section-title">01 — About</div>
-<div class="empty"></div>
-</div>
+  </header>
+  <main>
+<section id="about">
+  <div class="wrap">
+    <div class="section-title">
+      01 — About
+    </div>
+    <div class="section-content">
+      <!-- Здесь можно добавить описание -->
+    </div>
+  </div>
 </section>
-
-
-<section>
-<div class="wrap">
-<div class="section-title">02 — Portfolio</div>
-<div class="empty"></div>
-</div>
+<section id="portfolio">
+  <div class="wrap">
+    <div class="section-title">
+      02 — Portfolio
+    </div>
+    <div class="section-content">
+      <!-- Здесь можно добавить фотографии / проекты -->
+    </div>
+  </div>
 </section>
-
-
-<section>
-
-<div class="wrap">
-
-<div class="section-title">03 — Socials</div>
-
-<div class="socials">
-
-<a class="social"
-href="https://www.instagram.com/zirochkatorrent"
-target="_blank"
-rel="noopener noreferrer">
-
-<span>Instagram</span>
-<span class="arrow">↗</span>
-
-</a>
-
-</div>
-
-</div>
-
+<section id="socials">
+  <div class="wrap">
+    <div class="section-title">
+      03 — Socials
+    </div>
+    <div class="link-list">
+      <a
+        class="link"
+        href="https://www.instagram.com/zirochkatorrent"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+      >
+        <span>Instagram</span>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
 </section>
-
-
-<section>
-
-<div class="wrap">
-
-<div class="section-title">04 — Contact</div>
-
-<div class="socials">
-
-<a class="social"
-href="mailto:zirochkatorrent@icloud.com">
-
-<span>zirochkatorrent@icloud.com</span>
-<span class="arrow">↗</span>
-
-</a>
-
-</div>
-
-</div>
-
+<section id="contact">
+  <div class="wrap">
+    <div class="section-title">
+      04 — Contact
+    </div>
+    <div class="link-list">
+      <a
+        class="link"
+        href="mailto:zirochkatorrent@icloud.com"
+      >
+        <span>zirochkatorrent@icloud.com</span>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
 </section>
-
-
-<footer class="wrap">
-© 2026
-</footer>
-
+  </main>
+  <footer class="wrap">
+    © 2026 Daniil Zorin
+  </footer>
 </body>
 </html>
