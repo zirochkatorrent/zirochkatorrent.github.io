@@ -6,29 +6,35 @@
 
 <meta
 name=“description”
-content=“Daniil Zorin — модель и блогер. Официальный сайт.”
+content=“Daniil Zorin — model, blogger and creative based in Norway.”
 
 <meta
 name=“keywords”
-content=“Daniil Zorin, zirochkatorrent, модель, блогер”
+content=“Daniil Zorin, model, blogger, fashion, portfolio, Norway”
 
   <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Daniil Zorin — Model · Blogger">
+  <meta
+    property="og:description"
+    content="Model, blogger and creative based in Norway."
+  >
   <title>Daniil Zorin — Model · Blogger</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;500;600&family=Playfair+Display:wght@500;600&display=swap"
     rel="stylesheet"
   >
   <style>
     :root {
       --bg: #080808;
+      --surface: #0d0d0d;
       --text: #f4f4f0;
-      --line: #252525;
       --muted: rgba(244, 244, 240, 0.45);
-      --muted-light: rgba(244, 244, 240, 0.7);
-      --content-width: 1180px;
-      --side-padding: 48px;
+      --soft: rgba(244, 244, 240, 0.7);
+      --line: #242424;
+      --max-width: 1180px;
+      --padding: 48px;
     }
     * {
       box-sizing: border-box;
@@ -44,152 +50,372 @@ content=“Daniil Zorin, zirochkatorrent, модель, блогер”
       font-weight: 300;
       line-height: 1.5;
     }
+    body.no-scroll {
+      overflow: hidden;
+    }
     a {
       color: inherit;
       text-decoration: none;
     }
+    button {
+      font: inherit;
+    }
+    img {
+      display: block;
+      max-width: 100%;
+    }
     .wrap {
       width: min(
-        var(--content-width),
-        calc(100% - var(--side-padding) * 2)
+        var(--max-width),
+        calc(100% - var(--padding) * 2)
       );
       margin-inline: auto;
     }
-    /* Header */
-    .site-header {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 28px 0 34px;
+    /* Navigation */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 28px 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(8, 8, 8, 0.9),
+        transparent
+      );
+      pointer-events: none;
     }
-    .nav {
+    .nav-inner {
       display: flex;
-      justify-content: flex-end;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
       font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      pointer-events: auto;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.16em;
       color: var(--muted);
+      pointer-events: auto;
+    }
+    .nav-links a {
+      transition: color 0.25s ease;
+    }
+    .nav-links a:hover {
+      color: var(--text);
     }
     /* Hero */
     .hero {
-      padding: 8vh 0 7vh;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 150px 0 70px;
     }
     .eyebrow,
     .section-title {
-      font-size: 11px;
+      font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.24em;
       color: var(--muted);
     }
     .eyebrow {
-      margin-bottom: 24px;
+      margin-bottom: 25px;
     }
     .hero-title {
       margin: 0;
       font-family: "Playfair Display", serif;
-      font-size: clamp(64px, 13vw, 170px);
-      line-height: 0.86;
+      font-size: clamp(72px, 13vw, 175px);
+      line-height: 0.83;
       font-weight: 500;
-      letter-spacing: -0.055em;
+      letter-spacing: -0.06em;
     }
     .role {
-      margin-top: 34px;
-      font-size: 15px;
+      margin-top: 38px;
+      font-size: 14px;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--muted-light);
+      letter-spacing: 0.2em;
+      color: var(--soft);
     }
-    /* Main photo */
-    .photo {
-      margin-top: 55px;
+    .hero-image {
+      margin-top: 60px;
       overflow: hidden;
       border: 1px solid var(--line);
-      background: #090909;
+      background: var(--surface);
     }
-    .photo img {
-      display: block;
+    .hero-image img {
       width: 100%;
       max-height: 760px;
-      height: auto;
       object-fit: cover;
       object-position: center;
     }
     /* Sections */
     section {
-      padding: 120px 0;
-      border-top: 1px solid #202020;
+      padding: 140px 0;
+      border-top: 1px solid var(--line);
     }
-    .section-title {
-      margin-bottom: 42px;
+    .section-header {
+      margin-bottom: 55px;
     }
-    .section-content {
-      max-width: 700px;
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 60px;
+    }
+    .about-text {
+      max-width: 760px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(28px, 4vw, 52px);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+    }
+    .about-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 45px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+    }
+    /* Portfolio */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.8fr;
+      gap: 22px;
+      align-items: start;
+    }
+    .portfolio-column {
+      display: grid;
+      gap: 22px;
+    }
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      cursor: zoom-in;
+    }
+    .portfolio-item img {
+      width: 100%;
+      height: auto;
+      transition:
+        transform 0.7s cubic-bezier(.2,.7,.2,1),
+        opacity 0.4s ease;
+    }
+    .portfolio-item:hover img {
+      transform: scale(1.025);
+      opacity: 0.82;
+    }
+    .portfolio-caption {
+      position: absolute;
+      left: 18px;
+      bottom: 16px;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      opacity: 0;
+      transform: translateY(5px);
+      transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+    }
+    .portfolio-item:hover .portfolio-caption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Statement */
+    .statement {
+      min-height: 55vh;
+      display: flex;
+      align-items: center;
+    }
+    .statement-text {
+      max-width: 1000px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(42px, 7vw, 95px);
+      line-height: 0.95;
+      letter-spacing: -0.045em;
     }
     /* Links */
     .link-list {
-      max-width: 700px;
+      max-width: 800px;
     }
     .link {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
-      padding: 22px 0;
+      gap: 30px;
+      padding: 24px 0;
       border-bottom: 1px solid var(--line);
-      font-size: 18px;
+      font-size: 19px;
       transition:
         opacity 0.25s ease,
         padding-left 0.25s ease;
     }
     .link:hover {
       opacity: 0.55;
-      padding-left: 6px;
+      padding-left: 7px;
     }
     .arrow {
       color: var(--muted);
       transition: transform 0.25s ease;
     }
     .link:hover .arrow {
-      transform: translate(3px, -3px);
+      transform: translate(4px, -4px);
+    }
+    /* Contact */
+    .contact-text {
+      max-width: 700px;
+      margin-bottom: 45px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(30px, 5vw, 60px);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .contact-note {
+      margin-bottom: 25px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--muted);
     }
     /* Footer */
     footer {
-      padding: 34px 0 50px;
-      border-top: 1px solid #202020;
-      font-size: 10px;
+      padding: 35px 0 55px;
+      border-top: 1px solid var(--line);
+      font-size: 9px;
       text-transform: uppercase;
       letter-spacing: 0.16em;
       color: var(--muted);
     }
-    /* Mobile */
-    @media (max-width: 600px) {
-      :root {
-        --side-padding: 16px;
-      }
-      .site-header {
-        padding-top: 20px;
-      }
-      .hero {
-        padding-top: 15vh;
-      }
-      .hero-title {
-        font-size: clamp(58px, 20vw, 100px);
-      }
-      .photo {
-        margin-top: 40px;
-      }
-      section {
-        padding: 85px 0;
-      }
-      .link {
-        font-size: 16px;
-      }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+    }
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.96);
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+    }
+    .lightbox.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .lightbox-image {
+      max-width: 92vw;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 25px;
+      right: 30px;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      font-size: 28px;
+      font-weight: 300;
+      cursor: pointer;
+    }
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     /* Accessibility */
     :focus-visible {
       outline: 1px solid var(--text);
-      outline-offset: 5px;
+      outline-offset: 6px;
+    }
+    /* Mobile */
+    @media (max-width: 700px) {
+      :root {
+        --padding: 18px;
+      }
+      .site-nav {
+        padding: 20px 0;
+      }
+      .nav-links {
+        gap: 12px;
+        font-size: 8px;
+      }
+      .hero {
+        padding-top: 130px;
+        padding-bottom: 45px;
+      }
+      .hero-title {
+        font-size: clamp(62px, 20vw, 105px);
+      }
+      .role {
+        margin-top: 30px;
+        font-size: 11px;
+      }
+      .hero-image {
+        margin-top: 40px;
+      }
+      section {
+        padding: 90px 0;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+      .about-text {
+        font-size: 34px;
+      }
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+      .portfolio-caption {
+        opacity: 1;
+        transform: none;
+      }
+      .statement {
+        min-height: 45vh;
+      }
+      .statement-text {
+        font-size: 48px;
+      }
+      .link {
+        font-size: 16px;
+      }
+      .footer-inner {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .lightbox {
+        padding: 20px;
+      }
     }
     @media (prefers-reduced-motion: reduce) {
       html {
@@ -204,89 +430,283 @@ content=“Daniil Zorin, zirochkatorrent, модель, блогер”
   </style>
 </head>
 <body>
-  <header class="site-header wrap">
-<nav class="nav" aria-label="Main navigation">
-  <span>DZ</span>
-</nav>
-<main class="hero">
-  <div class="eyebrow">
-    Personal website
+  <!-- Navigation -->
+  <nav class="site-nav">
+    <div class="wrap nav-inner">
+  <a href="#" class="logo">
+    DZ
+  </a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#portfolio">Work</a>
+    <a href="#socials">Social</a>
+    <a href="#contact">Contact</a>
   </div>
-  <h1 class="hero-title">
+</div>
+  </nav>
+  <!-- Hero -->
+  <header class="wrap hero">
+<div>
+  <div class="eyebrow reveal">
+    Personal website · Norway
+  </div>
+  <h1 class="hero-title reveal">
     Daniil<br>
     Zorin
   </h1>
-  <div class="role">
-    Model · Blogger
+  <div class="role reveal">
+    Model · Blogger · Creative
   </div>
-  <div class="photo">
+  <div class="hero-image reveal">
     <img
       src="Facetune_15-06-2026-23-14-00.jpeg"
       alt="Daniil Zorin"
-      loading="eager"
     >
   </div>
-</main>
+</div>
   </header>
   <main>
+<!-- About -->
 <section id="about">
   <div class="wrap">
-    <div class="section-title">
-      01 — About
+    <div class="section-header reveal">
+      <div class="section-title">
+        01 — About
+      </div>
     </div>
-    <div class="section-content">
-      <!-- Здесь можно добавить описание -->
+    <div class="about-grid">
+      <div></div>
+      <div>
+        <div class="about-text reveal">
+          Model, blogger and creative exploring fashion,
+          identity and visual self-expression.
+        </div>
+        <div class="about-meta reveal">
+          <span>Based in Norway</span>
+          <span>Available internationally</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+<!-- Portfolio -->
 <section id="portfolio">
   <div class="wrap">
-    <div class="section-title">
-      02 — Portfolio
+    <div class="section-header reveal">
+      <div class="section-title">
+        02 — Selected Work
+      </div>
     </div>
-    <div class="section-content">
-      <!-- Здесь можно добавить фотографии / проекты -->
+    <div class="portfolio-grid">
+      <div class="portfolio-column">
+        <button
+          class="portfolio-item reveal"
+          data-image="portfolio-01.jpg"
+          aria-label="Open portfolio image"
+        >
+          <img
+            src="portfolio-01.jpg"
+            alt="Daniil Zorin — editorial portrait"
+            loading="lazy"
+          >
+          <span class="portfolio-caption">
+            Editorial · 01
+          </span>
+        </button>
+        <button
+          class="portfolio-item reveal"
+          data-image="portfolio-03.jpg"
+          aria-label="Open portfolio image"
+        >
+          <img
+            src="portfolio-03.jpg"
+            alt="Daniil Zorin — fashion editorial"
+            loading="lazy"
+          >
+          <span class="portfolio-caption">
+            Fashion · 03
+          </span>
+        </button>
+      </div>
+      <div class="portfolio-column">
+        <button
+          class="portfolio-item reveal"
+          data-image="portfolio-02.jpg"
+          aria-label="Open portfolio image"
+        >
+          <img
+            src="portfolio-02.jpg"
+            alt="Daniil Zorin — portrait"
+            loading="lazy"
+          >
+          <span class="portfolio-caption">
+            Portrait · 02
+          </span>
+        </button>
+        <button
+          class="portfolio-item reveal"
+          data-image="portfolio-04.jpg"
+          aria-label="Open portfolio image"
+        >
+          <img
+            src="portfolio-04.jpg"
+            alt="Daniil Zorin — personal project"
+            loading="lazy"
+          >
+          <span class="portfolio-caption">
+            Personal · 04
+          </span>
+        </button>
+      </div>
     </div>
   </div>
 </section>
+<!-- Statement -->
+<section class="statement">
+  <div class="wrap">
+    <div class="statement-text reveal">
+      Creating images.<br>
+      Building identity.
+    </div>
+  </div>
+</section>
+<!-- Socials -->
 <section id="socials">
   <div class="wrap">
-    <div class="section-title">
-      03 — Socials
+    <div class="section-header reveal">
+      <div class="section-title">
+        03 — Socials
+      </div>
     </div>
     <div class="link-list">
       <a
-        class="link"
+        class="link reveal"
         href="https://www.instagram.com/zirochkatorrent"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Instagram"
       >
         <span>Instagram</span>
-        <span class="arrow" aria-hidden="true">↗</span>
+        <span class="arrow">↗</span>
       </a>
     </div>
   </div>
 </section>
+<!-- Contact -->
 <section id="contact">
   <div class="wrap">
-    <div class="section-title">
-      04 — Contact
+    <div class="section-header reveal">
+      <div class="section-title">
+        04 — Contact
+      </div>
+    </div>
+    <div class="contact-text reveal">
+      Let's create something
+      interesting.
+    </div>
+    <div class="contact-note reveal">
+      For collaborations, modeling inquiries
+      and creative projects
     </div>
     <div class="link-list">
       <a
-        class="link"
+        class="link reveal"
         href="mailto:zirochkatorrent@icloud.com"
       >
         <span>zirochkatorrent@icloud.com</span>
-        <span class="arrow" aria-hidden="true">↗</span>
+        <span class="arrow">↗</span>
       </a>
     </div>
   </div>
 </section>
   </main>
-  <footer class="wrap">
+  <!-- Footer -->
+  <footer>
+<div class="wrap footer-inner">
+  <span>
     © 2026 Daniil Zorin
+  </span>
+  <span>
+    Based in Norway
+  </span>
+</div>
   </footer>
+  <!-- Lightbox -->
+  <div
+    class="lightbox"
+    id="lightbox"
+    aria-hidden="true"
+  >
+<button
+  class="lightbox-close"
+  id="lightboxClose"
+  aria-label="Close image"
+>
+  ×
+</button>
+<img
+  class="lightbox-image"
+  id="lightboxImage"
+  src=""
+  alt=""
+>
+  </div>
+  <script>
+    /* Scroll reveal */
+    const revealElements = document.querySelectorAll(".reveal");
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.12
+      }
+    );
+    revealElements.forEach((element) => {
+      revealObserver.observe(element);
+    });
+    /* Portfolio lightbox */
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxClose = document.getElementById("lightboxClose");
+    const portfolioItems =
+      document.querySelectorAll(".portfolio-item");
+    function openLightbox(image) {
+      lightboxImage.src = image;
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.classList.add("no-scroll");
+    }
+    function closeLightbox() {
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("no-scroll");
+      setTimeout(() => {
+        lightboxImage.src = "";
+      }, 300);
+    }
+    portfolioItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        openLightbox(item.dataset.image);
+      });
+    });
+    lightboxClose.addEventListener(
+      "click",
+      closeLightbox
+    );
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+    });
+  </script>
 </body>
 </html>
