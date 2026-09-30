@@ -8,7 +8,7 @@
   >
   <meta
     name="description"
-    content="Daniil Zorin — model and artist."
+    content="Daniil Zorin — Ukrainian artist and model based in Norway."
   >
   <meta
     name="robots"
@@ -18,14 +18,14 @@
     name="theme-color"
     content="#050505"
   >
-  <title>Daniil Zorin — Model & Artist</title>
+  <title>Daniil Zorin — Artist & Model</title>
   <!-- =====================================================
        FONTS
   ====================================================== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Inter:wght@300;400;500;600&display=swap"
     rel="stylesheet"
   >
   <style>
@@ -40,7 +40,7 @@
       --line: #242220;
       --max-width: 1280px;
       --padding: 42px;
-      --display-font: "Cormorant Garamond", serif;
+      --display-font: "Bodoni Moda", serif;
       --body-font: "Inter", sans-serif;
       --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
     }
@@ -141,7 +141,7 @@
     .nav-left {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 34px;
     }
     /* =====================================================
        MENU BUTTON
@@ -152,9 +152,9 @@
       flex-direction: column;
       justify-content: center;
       flex: 0 0 auto;
-      width: 34px;
-      height: 28px;
-      gap: 6px;
+      width: 42px;
+      height: 34px;
+      gap: 7px;
       cursor: pointer;
       transition:
         opacity 0.3s ease,
@@ -162,7 +162,7 @@
     }
     .menu-line {
       display: block;
-      width: 34px;
+      width: 42px;
       height: 1px;
       background: var(--white);
       transform-origin: left;
@@ -175,11 +175,11 @@
       opacity: 0.65;
     }
     .menu-button:hover .menu-line:nth-child(2) {
-      width: 24px;
+      width: 29px;
     }
     .nav.open .menu-line:nth-child(1) {
       transform:
-        translateY(7px)
+        translateY(8px)
         rotate(45deg);
     }
     .nav.open .menu-line:nth-child(2) {
@@ -188,7 +188,7 @@
     }
     .nav.open .menu-line:nth-child(3) {
       transform:
-        translateY(-7px)
+        translateY(-8px)
         rotate(-45deg);
     }
     /* =====================================================
@@ -197,7 +197,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 30px;
+      gap: 34px;
       max-width: 0;
       overflow: hidden;
       opacity: 0;
@@ -210,17 +210,17 @@
         transform 0.65s var(--ease);
     }
     .nav.open .nav-links {
-      max-width: 700px;
+      max-width: 800px;
       opacity: 1;
       transform: translateX(0);
       pointer-events: auto;
     }
     .nav-link {
       color: var(--white);
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.15em;
       opacity: 0;
       transform: translateY(8px);
       transition:
@@ -268,16 +268,16 @@
       color: var(--white);
       font-family: var(--display-font);
       /*
-        Large editorial / fashion typography.
+        Extra-large editorial typography.
       */
       font-size: clamp(
-        150px,
-        25vw,
-        440px
+        170px,
+        29vw,
+        520px
       );
       font-weight: 500;
-      line-height: 0.72;
-      letter-spacing: -0.065em;
+      line-height: 0.68;
+      letter-spacing: -0.075em;
       text-align: center;
       white-space: nowrap;
       animation:
@@ -298,12 +298,12 @@
       }
     }
     /* =====================================================
-       ROLES
+       ROLE
     ====================================================== */
     .hero-intro {
       display: flex;
       justify-content: center;
-      margin-top: 38px;
+      margin-top: 48px;
       text-align: center;
       animation:
         rolesReveal 1s 0.35s var(--ease) both;
@@ -312,9 +312,9 @@
       display: inline-block;
       color: var(--muted);
       font-size: 13px;
-      font-weight: 400;
+      font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.28em;
+      letter-spacing: 0.34em;
     }
     @keyframes rolesReveal {
       from {
@@ -435,9 +435,9 @@
       margin: 0;
       font-family: var(--display-font);
       font-size: clamp(
-        65px,
+        70px,
         8vw,
-        115px
+        120px
       );
       font-weight: 500;
       line-height: 0.82;
@@ -566,9 +566,9 @@
       margin: 35px 0 65px;
       font-family: var(--display-font);
       font-size: clamp(
-        65px,
+        70px,
         8vw,
-        115px
+        120px
       );
       font-weight: 500;
       line-height: 0.82;
@@ -578,20 +578,20 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 12px;
+      gap: 10px;
     }
     .contact-link {
       position: relative;
       display: inline-block;
-      padding-bottom: 7px;
+      padding-bottom: 6px;
       font-size: clamp(
-        24px,
-        2.5vw,
-        36px
+        20px,
+        2vw,
+        30px
       );
       font-weight: 400;
       line-height: 1;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.015em;
       transition:
         transform 0.45s var(--ease),
         opacity 0.3s ease;
@@ -717,24 +717,24 @@
         padding: 27px 0;
       }
       .nav-left {
-        gap: 22px;
+        gap: 23px;
       }
       .menu-button,
       .menu-line {
-        width: 30px;
+        width: 34px;
       }
       .menu-button {
-        height: 26px;
-        gap: 5px;
+        height: 29px;
+        gap: 6px;
       }
       .nav.open .menu-line:nth-child(1) {
         transform:
-          translateY(6px)
+          translateY(7px)
           rotate(45deg);
       }
       .nav.open .menu-line:nth-child(3) {
         transform:
-          translateY(-6px)
+          translateY(-7px)
           rotate(-45deg);
       }
       .nav-links {
@@ -752,19 +752,19 @@
       }
       .hero-title {
         font-size: clamp(
-          82px,
-          22vw,
-          190px
+          90px,
+          24vw,
+          205px
         );
-        line-height: 0.78;
-        letter-spacing: -0.06em;
+        line-height: 0.73;
+        letter-spacing: -0.065em;
       }
       .hero-intro {
-        margin-top: 35px;
+        margin-top: 42px;
       }
       .hero-roles {
         font-size: 11px;
-        letter-spacing: 0.22em;
+        letter-spacing: 0.27em;
       }
       .hero-image {
         width: 100%;
@@ -825,7 +825,7 @@
         font-size: 72px;
       }
       .contact-link {
-        font-size: 28px;
+        font-size: 25px;
       }
       /* LIGHTBOX */
       .lightbox {
@@ -848,19 +848,19 @@
       }
       .menu-button,
       .menu-line {
-        width: 27px;
+        width: 31px;
       }
       .nav-links {
-        gap: 13px;
+        gap: 12px;
       }
       .nav-link {
-        font-size: 9px;
+        font-size: 8px;
       }
       .hero-title {
-        font-size: 18vw;
+        font-size: 19vw;
       }
       .hero-roles {
-        font-size: 10px;
+        font-size: 9px;
       }
       .section-title {
         font-size: 60px;
@@ -872,7 +872,7 @@
         font-size: 64px;
       }
       .contact-link {
-        font-size: 26px;
+        font-size: 23px;
       }
       .about-content,
       .work-empty {
@@ -963,7 +963,7 @@
       </h1>
       <div class="hero-intro">
         <div class="hero-roles">
-          Model &amp; Artist
+          Artist
         </div>
       </div>
       <button
@@ -1007,7 +1007,7 @@
           aria-label="About"
         >
           <p>
-            Model and artist.
+            Ukrainian artist and model based in Norway.
           </p>
         </div>
       </div>
@@ -1166,9 +1166,6 @@
        JAVASCRIPT
   ====================================================== -->
   <script>
-    /* =====================================================
-       ELEMENTS
-    ====================================================== */
     const nav =
       document.getElementById("nav");
     const menuButton =
