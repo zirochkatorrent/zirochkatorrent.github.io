@@ -8,7 +8,7 @@
   >
   <meta
     name="description"
-    content="Daniil Zorin — model and blogger."
+    content="Daniil Zorin — model and artist."
   >
   <meta
     name="robots"
@@ -18,14 +18,20 @@
     name="theme-color"
     content="#050505"
   >
-  <title>Daniil Zorin — Model & Blogger</title>
+  <title>Daniil Zorin — Model & Artist</title>
+  <!-- =====================================================
+       FONTS
+  ====================================================== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap"
     rel="stylesheet"
   >
   <style>
+    /* =====================================================
+       VARIABLES
+    ====================================================== */
     :root {
       --black: #050505;
       --soft-black: #090909;
@@ -34,8 +40,13 @@
       --line: #242220;
       --max-width: 1280px;
       --padding: 42px;
+      --display-font: "Cormorant Garamond", serif;
+      --body-font: "Inter", sans-serif;
       --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
     }
+    /* =====================================================
+       RESET
+    ====================================================== */
     *,
     *::before,
     *::after {
@@ -49,7 +60,7 @@
       overflow-x: hidden;
       background: var(--black);
       color: var(--white);
-      font-family: "Inter", sans-serif;
+      font-family: var(--body-font);
       font-weight: 300;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
@@ -83,7 +94,9 @@
       outline: 1px solid var(--white);
       outline-offset: 6px;
     }
-    /* GRAIN */
+    /* =====================================================
+       GRAIN
+    ====================================================== */
     body::after {
       content: "";
       position: fixed;
@@ -96,7 +109,9 @@
         "data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E"
       );
     }
-    /* GLOBAL */
+    /* =====================================================
+       GLOBAL
+    ====================================================== */
     .wrap {
       width: min(
         var(--max-width),
@@ -107,7 +122,9 @@
     section {
       border-top: 1px solid var(--line);
     }
-    /* NAVIGATION */
+    /* =====================================================
+       NAVIGATION
+    ====================================================== */
     .nav {
       position: fixed;
       top: 0;
@@ -126,7 +143,9 @@
       align-items: center;
       gap: 28px;
     }
-    /* MENU */
+    /* =====================================================
+       MENU BUTTON
+    ====================================================== */
     .menu-button {
       position: relative;
       display: flex;
@@ -172,7 +191,9 @@
         translateY(-7px)
         rotate(-45deg);
     }
-    /* NAV LINKS */
+    /* =====================================================
+       NAVIGATION LINKS
+    ====================================================== */
     .nav-links {
       display: flex;
       align-items: center;
@@ -196,10 +217,10 @@
     }
     .nav-link {
       color: var(--white);
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.19em;
+      letter-spacing: 0.16em;
       opacity: 0;
       transform: translateY(8px);
       transition:
@@ -225,7 +246,9 @@
     .nav-link:hover {
       opacity: 0.55;
     }
-    /* HERO */
+    /* =====================================================
+       HERO
+    ====================================================== */
     .hero {
       min-height: 100svh;
       display: flex;
@@ -236,19 +259,25 @@
     .hero-content {
       width: 100%;
     }
+    /* =====================================================
+       NAME
+    ====================================================== */
     .hero-title {
       width: 100%;
       margin: 0;
       color: var(--white);
-      font-family: "Inter", sans-serif;
+      font-family: var(--display-font);
+      /*
+        Large editorial / fashion typography.
+      */
       font-size: clamp(
-        80px,
-        20vw,
-        340px
+        150px,
+        25vw,
+        440px
       );
-      font-weight: 400;
-      line-height: 0.82;
-      letter-spacing: -0.085em;
+      font-weight: 500;
+      line-height: 0.72;
+      letter-spacing: -0.065em;
       text-align: center;
       white-space: nowrap;
       animation:
@@ -268,7 +297,9 @@
           scale(1);
       }
     }
-    /* ROLES */
+    /* =====================================================
+       ROLES
+    ====================================================== */
     .hero-intro {
       display: flex;
       justify-content: center;
@@ -295,7 +326,9 @@
         transform: translateY(0);
       }
     }
-    /* HERO IMAGE */
+    /* =====================================================
+       HERO IMAGE
+    ====================================================== */
     .hero-image {
       position: relative;
       display: block;
@@ -380,7 +413,9 @@
           translateY(0);
       }
     }
-    /* SECTION HEADERS */
+    /* =====================================================
+       SECTION HEADERS
+    ====================================================== */
     .section-header,
     .work-header {
       display: flex;
@@ -398,22 +433,25 @@
     .section-title,
     .work-title {
       margin: 0;
+      font-family: var(--display-font);
       font-size: clamp(
-        55px,
-        7vw,
-        100px
+        65px,
+        8vw,
+        115px
       );
-      font-weight: 400;
-      line-height: 0.9;
-      letter-spacing: -0.06em;
+      font-weight: 500;
+      line-height: 0.82;
+      letter-spacing: -0.055em;
     }
-    /* ABOUT */
+    /* =====================================================
+       ABOUT
+    ====================================================== */
     .about {
       padding: 130px 0;
     }
     .about-content {
       width: 100%;
-      min-height: 260px;
+      min-height: 220px;
       padding: 40px 0;
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
@@ -433,13 +471,15 @@
       );
       margin: 0;
     }
-    /* WORK */
+    /* =====================================================
+       SELECTED WORK
+    ====================================================== */
     .work {
       padding: 130px 0;
     }
     .work-empty {
       width: 100%;
-      min-height: 200px;
+      min-height: 180px;
       margin-bottom: 70px;
       padding: 40px 0;
       border-top: 1px solid var(--line);
@@ -459,7 +499,9 @@
       );
       margin: 0;
     }
-    /* GALLERY */
+    /* =====================================================
+       GALLERY
+    ====================================================== */
     .gallery {
       display: grid;
       grid-template-columns:
@@ -514,39 +556,42 @@
         brightness(1.08)
         saturate(0.9);
     }
-    /* CONTACT */
+    /* =====================================================
+       CONTACT
+    ====================================================== */
     .contact {
       padding: 120px 0 130px;
     }
     .contact-title {
       margin: 35px 0 65px;
+      font-family: var(--display-font);
       font-size: clamp(
-        60px,
+        65px,
         8vw,
-        110px
+        115px
       );
-      font-weight: 400;
-      line-height: 0.9;
-      letter-spacing: -0.06em;
+      font-weight: 500;
+      line-height: 0.82;
+      letter-spacing: -0.055em;
     }
     .contact-list {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 16px;
+      gap: 12px;
     }
     .contact-link {
       position: relative;
       display: inline-block;
       padding-bottom: 7px;
       font-size: clamp(
-        32px,
-        4vw,
-        52px
+        24px,
+        2.5vw,
+        36px
       );
       font-weight: 400;
       line-height: 1;
-      letter-spacing: -0.025em;
+      letter-spacing: -0.02em;
       transition:
         transform 0.45s var(--ease),
         opacity 0.3s ease;
@@ -573,7 +618,9 @@
         scaleX(0.35);
       transform-origin: left;
     }
-    /* FOOTER */
+    /* =====================================================
+       FOOTER
+    ====================================================== */
     footer {
       padding: 30px 0 40px;
       border-top: 1px solid var(--line);
@@ -582,7 +629,9 @@
       text-transform: uppercase;
       letter-spacing: 0.22em;
     }
-    /* SCROLL REVEAL */
+    /* =====================================================
+       SCROLL REVEAL
+    ====================================================== */
     .reveal {
       opacity: 0;
       transform:
@@ -596,7 +645,9 @@
       transform:
         translateY(0);
     }
-    /* LIGHTBOX */
+    /* =====================================================
+       LIGHTBOX
+    ====================================================== */
     .lightbox {
       position: fixed;
       inset: 0;
@@ -655,7 +706,9 @@
       transform:
         rotate(90deg);
     }
-    /* MOBILE */
+    /* =====================================================
+       MOBILE
+    ====================================================== */
     @media (max-width: 700px) {
       :root {
         --padding: 28px;
@@ -688,9 +741,10 @@
         gap: 18px;
       }
       .nav-link {
-        font-size: 8px;
-        letter-spacing: 0.15em;
+        font-size: 10px;
+        letter-spacing: 0.13em;
       }
+      /* HERO */
       .hero {
         min-height: 100svh;
         padding-top: 175px;
@@ -698,12 +752,12 @@
       }
       .hero-title {
         font-size: clamp(
-          54px,
-          14vw,
-          160px
+          82px,
+          22vw,
+          190px
         );
-        line-height: 0.84;
-        letter-spacing: -0.075em;
+        line-height: 0.78;
+        letter-spacing: -0.06em;
       }
       .hero-intro {
         margin-top: 35px;
@@ -719,6 +773,7 @@
       .hero-image-label {
         display: none;
       }
+      /* ABOUT */
       .about {
         padding: 90px 0;
       }
@@ -732,22 +787,23 @@
         margin-top: 25px;
       }
       .section-title {
-        font-size: 64px;
+        font-size: 68px;
       }
       .work-title {
-        font-size: 60px;
+        font-size: 62px;
       }
       .about-content {
-        min-height: 220px;
+        min-height: 180px;
         padding: 30px 0;
         font-size: 18px;
         line-height: 1.55;
       }
+      /* WORK */
       .work {
         padding: 90px 0;
       }
       .work-empty {
-        min-height: 180px;
+        min-height: 160px;
         margin-bottom: 50px;
         padding: 30px 0;
         font-size: 18px;
@@ -759,17 +815,19 @@
       .gallery-column:nth-child(2) {
         padding-top: 0;
       }
+      /* CONTACT */
       .contact {
         padding: 90px 0 100px;
       }
       .contact-title {
         margin-top: 30px;
         margin-bottom: 50px;
-        font-size: 68px;
+        font-size: 72px;
       }
       .contact-link {
-        font-size: 36px;
+        font-size: 28px;
       }
+      /* LIGHTBOX */
       .lightbox {
         padding: 20px;
       }
@@ -778,7 +836,9 @@
         right: 22px;
       }
     }
-    /* SMALL PHONES */
+    /* =====================================================
+       SMALL PHONES
+    ====================================================== */
     @media (max-width: 380px) {
       :root {
         --padding: 22px;
@@ -794,20 +854,34 @@
         gap: 13px;
       }
       .nav-link {
-        font-size: 7px;
+        font-size: 9px;
       }
       .hero-title {
-        font-size: 12.5vw;
+        font-size: 18vw;
       }
       .hero-roles {
         font-size: 10px;
+      }
+      .section-title {
+        font-size: 60px;
+      }
+      .work-title {
+        font-size: 56px;
+      }
+      .contact-title {
+        font-size: 64px;
+      }
+      .contact-link {
+        font-size: 26px;
       }
       .about-content,
       .work-empty {
         font-size: 17px;
       }
     }
-    /* REDUCED MOTION */
+    /* =====================================================
+       REDUCED MOTION
+    ====================================================== */
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
@@ -822,6 +896,9 @@
   </style>
 </head>
 <body>
+  <!-- =====================================================
+       NAVIGATION
+  ====================================================== -->
   <nav
     class="nav"
     id="nav"
@@ -873,6 +950,9 @@
       </div>
     </div>
   </nav>
+  <!-- =====================================================
+       HERO
+  ====================================================== -->
   <header
     class="hero"
     id="home"
@@ -883,7 +963,7 @@
       </h1>
       <div class="hero-intro">
         <div class="hero-roles">
-          Model &amp; Blogger
+          Model &amp; Artist
         </div>
       </div>
       <button
@@ -902,7 +982,13 @@
       </button>
     </div>
   </header>
+  <!-- =====================================================
+       MAIN
+  ====================================================== -->
   <main>
+    <!-- ===================================================
+         ABOUT
+    ==================================================== -->
     <section
       class="about"
       id="about"
@@ -921,13 +1007,14 @@
           aria-label="About"
         >
           <p>
-            Model and blogger based in Norway.
-            Focused on fashion, visual storytelling
-            and creative projects.
+            Model and artist.
           </p>
         </div>
       </div>
     </section>
+    <!-- ===================================================
+         SELECTED WORK
+    ==================================================== -->
     <section
       class="work"
       id="work"
@@ -950,7 +1037,9 @@
             and creative work.
           </p>
         </div>
+        <!-- GALLERY -->
         <div class="gallery">
+          <!-- COLUMN 1 -->
           <div class="gallery-column">
             <button
               class="gallery-item reveal"
@@ -977,6 +1066,7 @@
               >
             </button>
           </div>
+          <!-- COLUMN 2 -->
           <div class="gallery-column">
             <button
               class="gallery-item reveal"
@@ -1006,6 +1096,9 @@
         </div>
       </div>
     </section>
+    <!-- ===================================================
+         CONTACT
+    ==================================================== -->
     <section
       class="contact"
       id="contact"
@@ -1036,11 +1129,17 @@
       </div>
     </section>
   </main>
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
   <footer>
     <div class="wrap">
       © 2026 Daniil Zorin
     </div>
   </footer>
+  <!-- =====================================================
+       LIGHTBOX
+  ====================================================== -->
   <div
     class="lightbox"
     id="lightbox"
@@ -1063,7 +1162,13 @@
       alt=""
     >
   </div>
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
   <script>
+    /* =====================================================
+       ELEMENTS
+    ====================================================== */
     const nav =
       document.getElementById("nav");
     const menuButton =
@@ -1077,13 +1182,20 @@
     const lightboxClose =
       document.getElementById("lightboxClose");
     const clickableImages =
-      document.querySelectorAll("[data-image]");
+      document.querySelectorAll(
+        "[data-image]"
+      );
     const heroImage =
       document.querySelector(".hero-image");
     let lastFocusedElement = null;
-    /* NAVIGATION */
+    /* =====================================================
+       NAVIGATION
+    ====================================================== */
     function setNavigation(open) {
-      nav.classList.toggle("open", open);
+      nav.classList.toggle(
+        "open",
+        open
+      );
       menuButton.setAttribute(
         "aria-expanded",
         String(open)
@@ -1106,10 +1218,14 @@
     navLinks.forEach((link) => {
       link.addEventListener(
         "click",
-        () => setNavigation(false)
+        () => {
+          setNavigation(false);
+        }
       );
     });
-    /* SCROLL REVEAL */
+    /* =====================================================
+       SCROLL REVEAL
+    ====================================================== */
     const revealElements =
       document.querySelectorAll(".reveal");
     if ("IntersectionObserver" in window) {
@@ -1120,43 +1236,68 @@
               if (!entry.isIntersecting) {
                 return;
               }
-              entry.target.classList.add("visible");
-              observer.unobserve(entry.target);
+              entry.target.classList.add(
+                "visible"
+              );
+              observer.unobserve(
+                entry.target
+              );
             });
           },
           {
             threshold: 0.12
           }
         );
-      revealElements.forEach((element) => {
-        revealObserver.observe(element);
-      });
+      revealElements.forEach(
+        (element) => {
+          revealObserver.observe(
+            element
+          );
+        }
+      );
     } else {
-      revealElements.forEach((element) => {
-        element.classList.add("visible");
-      });
+      revealElements.forEach(
+        (element) => {
+          element.classList.add(
+            "visible"
+          );
+        }
+      );
     }
-    /* LIGHTBOX */
-    function openLightbox(image, alt = "") {
+    /* =====================================================
+       LIGHTBOX
+    ====================================================== */
+    function openLightbox(
+      image,
+      alt = ""
+    ) {
       if (!image) {
         return;
       }
       lastFocusedElement =
         document.activeElement;
-      lightboxImage.src = image;
-      lightboxImage.alt = alt;
-      lightbox.classList.add("open");
+      lightboxImage.src =
+        image;
+      lightboxImage.alt =
+        alt;
+      lightbox.classList.add(
+        "open"
+      );
       lightbox.setAttribute(
         "aria-hidden",
         "false"
       );
-      document.body.classList.add("no-scroll");
+      document.body.classList.add(
+        "no-scroll"
+      );
       requestAnimationFrame(() => {
         lightboxClose.focus();
       });
     }
     function closeLightbox() {
-      lightbox.classList.remove("open");
+      lightbox.classList.remove(
+        "open"
+      );
       lightbox.setAttribute(
         "aria-hidden",
         "true"
@@ -1164,38 +1305,38 @@
       document.body.classList.remove(
         "no-scroll"
       );
-      /*
-        Не удаляем src через setTimeout.
-        Это предотвращает race condition,
-        когда новое изображение открывается
-        до завершения старого таймера.
-      */
       if (
         lastFocusedElement &&
-        typeof lastFocusedElement.focus === "function"
+        typeof lastFocusedElement.focus ===
+          "function"
       ) {
         lastFocusedElement.focus();
       }
       lastFocusedElement = null;
     }
-    clickableImages.forEach((element) => {
-      element.addEventListener(
-        "click",
-        () => {
-          const image =
-            element.dataset.image;
-          const img =
-            element.querySelector("img");
-          if (!image) {
-            return;
+    clickableImages.forEach(
+      (element) => {
+        element.addEventListener(
+          "click",
+          () => {
+            const image =
+              element.dataset.image;
+            const img =
+              element.querySelector(
+                "img"
+              );
+            if (!image) {
+              return;
+            }
+            openLightbox(
+              image,
+              img?.alt ||
+                "Portfolio image"
+            );
           }
-          openLightbox(
-            image,
-            img?.alt || "Portfolio image"
-          );
-        }
-      );
-    });
+        );
+      }
+    );
     lightboxClose.addEventListener(
       "click",
       closeLightbox
@@ -1203,34 +1344,48 @@
     lightbox.addEventListener(
       "click",
       (event) => {
-        if (event.target === lightbox) {
+        if (
+          event.target === lightbox
+        ) {
           closeLightbox();
         }
       }
     );
-    /* ESCAPE */
+    /* =====================================================
+       ESCAPE
+    ====================================================== */
     document.addEventListener(
       "keydown",
       (event) => {
-        if (event.key !== "Escape") {
+        if (
+          event.key !== "Escape"
+        ) {
           return;
         }
         if (
-          lightbox.classList.contains("open")
+          lightbox.classList.contains(
+            "open"
+          )
         ) {
           closeLightbox();
         }
         if (
-          nav.classList.contains("open")
+          nav.classList.contains(
+            "open"
+          )
         ) {
           setNavigation(false);
         }
       }
     );
-    /* HERO PARALLAX */
+    /* =====================================================
+       HERO PARALLAX
+    ====================================================== */
     if (
       heroImage &&
-      window.matchMedia("(pointer: fine)").matches &&
+      window.matchMedia(
+        "(pointer: fine)"
+      ).matches &&
       !window.matchMedia(
         "(prefers-reduced-motion: reduce)"
       ).matches
@@ -1241,15 +1396,20 @@
           const rect =
             heroImage.getBoundingClientRect();
           const x =
-            (event.clientX - rect.left) /
+            (event.clientX -
+              rect.left) /
               rect.width -
             0.5;
           const y =
-            (event.clientY - rect.top) /
+            (event.clientY -
+              rect.top) /
               rect.height -
             0.5;
           heroImage.style.transform =
-            `translate(${x * 4}px, ${y * 4}px)`;
+            `translate(
+              ${x * 4}px,
+              ${y * 4}px
+            )`;
         }
       );
       heroImage.addEventListener(
@@ -1260,14 +1420,17 @@
         }
       );
     }
-    /* IMAGE ERROR HANDLING */
+    /* =====================================================
+       IMAGE ERROR HANDLING
+    ====================================================== */
     document
       .querySelectorAll("img")
       .forEach((image) => {
         image.addEventListener(
           "error",
           () => {
-            image.style.visibility = "hidden";
+            image.style.visibility =
+              "hidden";
           }
         );
       });
