@@ -1,39 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
-  >
+  />
   <meta
     name="description"
     content="Daniil Zorin — Ukrainian artist and model based in Bodø, Norway."
-  >
+  />
   <meta
     name="robots"
     content="index, follow"
-  >
+  />
   <meta
     name="theme-color"
     content="#090708"
-  >
-  <title>Daniil Zorin — Artist & Model</title>
-  <!-- FONTS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  />
+  <meta
+    property="og:title"
+    content="Daniil Zorin — Artist & Model"
+  />
+  <meta
+    property="og:description"
+    content="Daniil Zorin — Ukrainian artist and model based in Bodø, Norway."
+  />
+  <meta
+    property="og:type"
+    content="website"
+  />
+  <title>Daniil Zorin — Artist &amp; Model</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
     rel="preconnect"
     href="https://fonts.gstatic.com"
     crossorigin
-  >
+  />
   <link
-    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Inter:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Inter:wght@300;400;500&display=swap"
     rel="stylesheet"
-  >
+  />
   <style>
-    /* =========================================================
-       ROOT
-    ========================================================= */
     :root {
       --black: #090708;
       --deep-black: #050405;
@@ -51,326 +59,631 @@
       --display-font: "Bodoni Moda", serif;
       --body-font: "Inter", sans-serif;
       --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+      /* Parallax variables */
+      --hero-x: 0px;
+      --hero-y: 0px;
+      --portrait-x: 0px;
+      --portrait-y: 0px;
     }
-    /* =========================================================
-       RESET
-    ========================================================= */
-    *,
-    *::before,
-    *::after {
+    * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
     html {
       scroll-behavior: smooth;
       background: var(--black);
     }
     body {
-      margin: 0;
-      overflow-x: hidden;
+      min-height: 100vh;
       background:
         radial-gradient(
-          circle at 50% 20%,
-          rgba(75, 17, 28, 0.10),
+          circle at 50% 15%,
+          rgba(123, 38, 55, 0.08),
           transparent 32%
         ),
         var(--black);
       color: var(--ivory);
       font-family: var(--body-font);
       font-weight: 300;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-    body.no-scroll {
-      overflow: hidden;
-    }
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-    button {
-      margin: 0;
-      padding: 0;
-      border: 0;
-      background: transparent;
-      color: inherit;
-      font: inherit;
-      -webkit-appearance: none;
-      appearance: none;
+    /* FIX: was body::selection */
+    ::selection {
+      background: var(--ivory);
+      color: var(--black);
     }
     img {
       display: block;
       max-width: 100%;
     }
-    ::selection {
-      background: var(--wine-light);
-      color: var(--ivory);
+    button,
+    a {
+      font: inherit;
     }
-    :focus-visible {
-      outline: 1px solid var(--cream);
-      outline-offset: 7px;
+    button {
+      border: 0;
+      background: none;
+      color: inherit;
+      cursor: pointer;
     }
-    /* =========================================================
-       FILM GRAIN
-    ========================================================= */
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      pointer-events: none;
-      opacity: 0.045;
-      mix-blend-mode: screen;
-      background-image: url(
-        "data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E"
-      );
+    button:focus-visible,
+    a:focus-visible {
+      outline: 1px solid var(--ivory);
+      outline-offset: 5px;
     }
-    /* =========================================================
-       LAYOUT
-    ========================================================= */
-    .wrap {
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .container {
       width: min(
-        var(--max-width),
-        calc(100% - var(--padding) * 2)
+        calc(100% - (var(--padding) * 2)),
+        var(--max-width)
       );
-      margin-inline: auto;
+      margin: 0 auto;
     }
-    section {
-      position: relative;
-      border-top: 1px solid var(--line);
-    }
-    section::before {
-      content: "";
-      position: absolute;
-      top: -1px;
-      left: 0;
-      width: 90px;
-      height: 1px;
-      background: var(--wine-light);
-      opacity: 0.75;
-    }
-    /* =========================================================
+    /* =========================
        NAVIGATION
-    ========================================================= */
+    ========================== */
     .nav {
       position: fixed;
       top: 0;
-      right: 0;
       left: 0;
-      z-index: 100;
-      padding: 30px 0;
+      z-index: 1000;
+      width: 100%;
+      padding: 26px var(--padding);
       pointer-events: none;
     }
     .nav-inner {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
+      justify-content: space-between;
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      pointer-events: auto;
     }
     .nav-left {
       display: flex;
-      align-items: center;
-      gap: 30px;
-      pointer-events: auto;
+      align-items: flex-start;
+      gap: 26px;
     }
     .menu-button {
-      position: relative;
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
       justify-content: center;
-      flex: 0 0 auto;
       width: 42px;
       height: 34px;
       gap: 7px;
-      cursor: pointer;
-      transition:
-        opacity 0.3s ease,
-        transform 0.5s var(--ease);
     }
     .menu-line {
       display: block;
-      width: 42px;
+      width: 32px;
       height: 1px;
       background: var(--ivory);
-      transform-origin: left;
+      transform-origin: left center;
       transition:
         transform 0.5s var(--ease),
-        opacity 0.3s ease,
         width 0.5s var(--ease),
         background 0.3s ease;
     }
-    .menu-button:hover {
-      opacity: 0.7;
+    .menu-line:nth-child(2) {
+      width: 23px;
     }
     .menu-button:hover .menu-line:nth-child(2) {
-      width: 27px;
-      background: var(--wine-light);
+      width: 32px;
     }
-    .nav.open .menu-line:nth-child(1) {
-      transform: translateY(8px) rotate(45deg);
+    .nav.open .menu-line:first-child {
+      transform: rotate(45deg) translateY(-1px);
     }
     .nav.open .menu-line:nth-child(2) {
-      opacity: 0;
-      width: 0;
-    }
-    .nav.open .menu-line:nth-child(3) {
-      transform: translateY(-8px) rotate(-45deg);
+      width: 32px;
+      transform: rotate(-45deg) translateY(1px);
     }
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 38px;
-      max-width: 0;
-      overflow: hidden;
+      gap: 34px;
+      transform: translateX(-12px);
       opacity: 0;
-      transform: translateX(-20px);
+      visibility: hidden;
       pointer-events: none;
-      white-space: nowrap;
       transition:
-        max-width 0.7s var(--ease),
-        opacity 0.4s ease,
-        transform 0.7s var(--ease);
+        opacity 0.45s var(--ease),
+        visibility 0.45s var(--ease),
+        transform 0.45s var(--ease);
     }
     .nav.open .nav-links {
-      max-width: 900px;
       opacity: 1;
-      transform: translateX(0);
+      visibility: visible;
       pointer-events: auto;
+      transform: translateX(0);
     }
     .nav-link {
-      position: relative;
-      color: var(--ivory);
-      font-size: 15px;
-      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      height: 34px;
+      color: var(--cream);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      letter-spacing: 0.22em;
-      opacity: 0;
-      transform: translateY(8px);
+      transform: translateY(6px);
       transition:
-        opacity 0.4s ease,
-        transform 0.5s var(--ease),
-        color 0.3s ease;
-    }
-    .nav.open .nav-link {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .nav.open .nav-link:nth-child(1) {
-      transition-delay: 0.08s;
-    }
-    .nav.open .nav-link:nth-child(2) {
-      transition-delay: 0.14s;
-    }
-    .nav.open .nav-link:nth-child(3) {
-      transition-delay: 0.20s;
-    }
-    .nav.open .nav-link:nth-child(4) {
-      transition-delay: 0.26s;
-    }
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      bottom: -7px;
-      left: 0;
-      height: 1px;
-      background: var(--wine-light);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.45s var(--ease);
+        color 0.3s ease,
+        opacity 0.3s ease;
     }
     .nav-link:hover {
-      color: var(--cream);
+      color: var(--ivory);
     }
-    .nav-link:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-    /* =========================================================
+    /* =========================
        HERO
-    ========================================================= */
+    ========================== */
     .hero {
       position: relative;
+      min-height: 100vh;
       min-height: 100svh;
       display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding-top: 150px;
-      padding-bottom: 120px;
+      padding: 150px var(--padding) 90px;
       overflow: hidden;
     }
     .hero::before {
       content: "";
       position: absolute;
-      width: 520px;
-      height: 520px;
-      top: 18%;
-      left: 50%;
-      transform: translateX(-50%);
+      inset: 0;
       background:
         radial-gradient(
-          circle,
-          rgba(93, 20, 34, 0.14),
-          transparent 68%
+          circle at 50% 48%,
+          rgba(75, 17, 28, 0.12),
+          transparent 38%
         );
       pointer-events: none;
     }
     .hero-content {
       position: relative;
+      z-index: 2;
       width: 100%;
-      z-index: 1;
+      max-width: 1500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .hero-title {
       width: 100%;
       margin: 0;
       color: var(--ivory);
       font-family: var(--display-font);
-      font-size: clamp(
-        110px,
-        20vw,
-        330px
-      );
+      font-size: clamp(125px, 22vw, 360px);
       font-weight: 400;
       line-height: 0.72;
       letter-spacing: -0.075em;
       text-align: center;
       white-space: nowrap;
+      /* FIX: parallax now uses CSS variables */
+      transform: translate(
+        var(--hero-x),
+        var(--hero-y)
+      );
       text-shadow:
         0 0 70px rgba(123, 38, 55, 0.08);
-      animation:
-        titleReveal 1.5s var(--ease) both;
-    }
-    @keyframes titleReveal {
-      from {
-        opacity: 0;
-        transform:
-          translateY(55px)
-          scale(0.96);
-      }
-      to {
-        opacity: 1;
-        transform:
-          translateY(0)
-          scale(1);
-      }
+      animation: titleReveal 1.5s var(--ease) both;
     }
     .hero-intro {
       display: flex;
       justify-content: center;
-      margin-top: 52px;
-      text-align: center;
-      animation:
-        rolesReveal
-        1s
-        0.35s
-        var(--ease)
-        both;
+      margin-top: 36px;
+      animation: fadeUp 1.2s 0.35s var(--ease) both;
     }
     .hero-roles {
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+    }
+    .hero-portrait {
+      position: relative;
+      width: min(330px, 42vw);
+      margin-top: 64px;
+      overflow: hidden;
+      /* FIX: parallax without destroying other transforms */
+      transform: translate(
+        var(--portrait-x),
+        var(--portrait-y)
+      );
+      animation: fadeUp 1.2s 0.5s var(--ease) both;
+    }
+    .hero-portrait::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(238, 232, 223, 0.12);
+      pointer-events: none;
+    }
+    .hero-portrait img {
+      width: 100%;
+      height: auto;
+      filter:
+        grayscale(100%)
+        contrast(1.03)
+        brightness(0.92);
+      transform: scale(1.01);
+      transition:
+        transform 1.2s var(--ease),
+        filter 0.8s ease;
+    }
+    .hero-portrait:hover img {
+      transform: scale(1.045);
+      filter:
+        grayscale(70%)
+        contrast(1.03)
+        brightness(0.96);
+    }
+    .hero-caption {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .scroll-note {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--dim);
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      animation: fadeUp 1.2s 1s var(--ease) both;
+    }
+    /* =========================
+       SECTIONS
+    ========================== */
+    section {
+      position: relative;
+    }
+    .section {
+      padding: 150px 0;
+    }
+    .section-label {
+      margin-bottom: 42px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+    .section-title {
+      margin-bottom: 55px;
+      color: var(--ivory);
+      font-family: var(--display-font);
+      font-size: clamp(55px, 8vw, 110px);
+      font-weight: 400;
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+    }
+    /* =========================
+       ABOUT
+    ========================== */
+    .about {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.01),
+          transparent
+        );
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 90px;
+      align-items: start;
+    }
+    .about-text {
+      max-width: 760px;
+      color: var(--cream);
+      font-size: clamp(20px, 2.3vw, 31px);
+      line-height: 1.45;
+      letter-spacing: -0.02em;
+    }
+    .about-text strong {
+      color: var(--ivory);
+      font-weight: 400;
+    }
+    .about-meta {
+      margin-top: 45px;
+      display: grid;
+      gap: 17px;
+    }
+    .meta-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      padding-bottom: 13px;
+      border-bottom: 1px solid var(--line);
       color: var(--muted);
       font-size: 11px;
-      font-weight: 500;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.42em;
-      padding-left: 0.42em;
     }
-    @keyframes rolesReveal {
+    .meta-item span:last-child {
+      color: var(--cream);
+      text-align: right;
+    }
+    /* =========================
+       WORK
+    ========================== */
+    .work {
+      background: var(--soft-black);
+    }
+    .work-block {
+      margin-bottom: 160px;
+    }
+    .work-block:last-child {
+      margin-bottom: 0;
+    }
+    .work-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 45px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 18px;
+    }
+    .work-name {
+      color: var(--ivory);
+      font-family: var(--display-font);
+      font-size: clamp(30px, 4vw, 54px);
+      font-weight: 400;
+      line-height: 1;
+    }
+    .work-type {
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    /* =========================
+       POETRY
+    ========================== */
+    .poetry {
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 90px 20px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(
+          circle at 50% 50%,
+          rgba(123, 38, 55, 0.12),
+          transparent 55%
+        );
+    }
+    .poem {
+      max-width: 800px;
+      color: var(--cream);
+      font-family: var(--display-font);
+      font-size: clamp(28px, 4vw, 58px);
+      font-weight: 400;
+      line-height: 1.25;
+      text-align: center;
+      letter-spacing: -0.02em;
+    }
+    .poem-line {
+      display: block;
+    }
+    .poem-line + .poem-line {
+      margin-top: 16px;
+    }
+    /* =========================
+       ARTWORK
+    ========================== */
+    .artwork-grid {
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1.1fr)
+        minmax(280px, 0.9fr);
+      gap: 70px;
+      align-items: end;
+    }
+    .artwork-image {
+      position: relative;
+      overflow: hidden;
+      cursor: zoom-in;
+      background: #0b090a;
+      padding: 0;
+    }
+    .artwork-image img {
+      width: 100%;
+      height: auto;
+      transition:
+        transform 1.2s var(--ease),
+        filter 0.8s ease;
+      filter:
+        saturate(0.88)
+        contrast(1.02);
+    }
+    .artwork-image:hover img {
+      transform: scale(1.025);
+      filter:
+        saturate(1)
+        contrast(1.03);
+    }
+    .artwork-info {
+      padding-bottom: 8px;
+    }
+    .artwork-title {
+      margin-bottom: 15px;
+      color: var(--ivory);
+      font-family: var(--display-font);
+      font-size: clamp(38px, 5vw, 72px);
+      font-weight: 400;
+      line-height: 0.95;
+    }
+    .artwork-medium {
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    /* =========================
+       CONTACT
+    ========================== */
+    .contact {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      background:
+        radial-gradient(
+          circle at 70% 50%,
+          rgba(75, 17, 28, 0.12),
+          transparent 40%
+        );
+    }
+    .contact-content {
+      width: 100%;
+    }
+    .contact-title {
+      max-width: 950px;
+      margin-bottom: 70px;
+      color: var(--ivory);
+      font-family: var(--display-font);
+      font-size: clamp(65px, 10vw, 150px);
+      font-weight: 400;
+      line-height: 0.83;
+      letter-spacing: -0.06em;
+    }
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px 50px;
+    }
+    .contact-link {
+      position: relative;
+      color: var(--cream);
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .contact-link::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -7px;
+      left: 0;
+      height: 1px;
+      background: var(--ivory);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.5s var(--ease);
+    }
+    .contact-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+    /* =========================
+       FOOTER
+    ========================== */
+    footer {
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+      color: var(--dim);
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    /* =========================
+       LIGHTBOX
+    ========================== */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      background: rgba(5, 4, 5, 0.96);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
+    }
+    .lightbox.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .lightbox-image {
+      max-width: min(90vw, 1200px);
+      max-height: 88vh;
+      object-fit: contain;
+      transform: scale(0.96);
+      transition:
+        transform 0.6s var(--ease);
+    }
+    .lightbox.open .lightbox-image {
+      transform: scale(1);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 25px;
+      right: 30px;
+      width: 44px;
+      height: 44px;
+      color: var(--ivory);
+      font-size: 28px;
+      font-weight: 300;
+      transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+    }
+    .lightbox-close:hover {
+      transform: rotate(90deg);
+      opacity: 0.7;
+    }
+    /* =========================
+       REVEAL ANIMATIONS
+    ========================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition:
+        opacity 1s var(--ease),
+        transform 1s var(--ease);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @keyframes titleReveal {
+      from {
+        opacity: 0;
+        transform: translateY(45px);
+      }
+      to {
+        opacity: 1;
+        transform: translate(
+          var(--hero-x),
+          var(--hero-y)
+        );
+      }
+    }
+    @keyframes fadeUp {
       from {
         opacity: 0;
         transform: translateY(25px);
@@ -380,622 +693,123 @@
         transform: translateY(0);
       }
     }
-    /* =========================================================
-       HERO IMAGE
-    ========================================================= */
-    .hero-image {
-      position: relative;
-      display: block;
-      width: min(720px, 76vw);
-      margin: 90px auto 0;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(
-          145deg,
-          var(--soft-black),
-          var(--deep-black)
-        );
-      cursor: zoom-in;
-      animation:
-        imageReveal
-        1.4s
-        0.55s
-        var(--ease)
-        both;
-      transition:
-        transform 0.6s var(--ease),
-        border-color 0.5s ease;
-      will-change: transform;
-    }
-    .hero-image:hover {
-      border-color: var(--line-strong);
-    }
-    .hero-image::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      pointer-events: none;
-      background:
-        linear-gradient(
-          115deg,
-          transparent 30%,
-          rgba(255, 255, 255, 0.08) 50%,
-          transparent 70%
-        );
-      transform: translateX(-120%);
-      transition:
-        transform 1.3s var(--ease);
-    }
-    .hero-image:hover::before {
-      transform: translateX(120%);
-    }
-    .hero-image::after {
-      content: "";
-      position: absolute;
-      inset: 12px;
-      z-index: 2;
-      border: 1px solid
-        rgba(123, 38, 55, 0.35);
-      pointer-events: none;
-      opacity: 0;
-      transition:
-        opacity 0.5s ease;
-    }
-    .hero-image:hover::after {
-      opacity: 1;
-    }
-    .hero-image img {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-      filter:
-        grayscale(0.18)
-        saturate(0.65)
-        contrast(1.08)
-        brightness(0.88);
-      transform: scale(1.025);
-      transition:
-        transform 1.4s var(--ease),
-        filter 1s ease;
-    }
-    .hero-image:hover img {
-      transform: scale(1.075);
-      filter:
-        grayscale(0)
-        saturate(0.85)
-        contrast(1.08)
-        brightness(0.94);
-    }
-    .hero-image-label {
-      position: absolute;
-      right: 18px;
-      bottom: 18px;
-      z-index: 3;
-      color:
-        rgba(238, 232, 223, 0.58);
-      font-size: 7px;
-      text-transform: uppercase;
-      letter-spacing: 0.3em;
-      writing-mode: vertical-rl;
-    }
-    @keyframes imageReveal {
-      from {
-        opacity: 0;
-        clip-path:
-          inset(12% 0 12% 0);
-        transform:
-          translateY(50px);
-      }
-      to {
-        opacity: 1;
-        clip-path:
-          inset(0 0 0 0);
-        transform:
-          translateY(0);
-      }
-    }
-    /* =========================================================
-       SECTION HEADERS
-    ========================================================= */
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 55px;
-    }
-    .section-number {
-      color: var(--wine-light);
-      font-size: 8px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.35em;
-    }
-    .section-title {
-      margin: 0;
-      font-family: var(--display-font);
-      font-size:
-        clamp(70px, 8vw, 120px);
-      font-weight: 400;
-      line-height: 0.82;
-      letter-spacing: -0.06em;
-    }
-    /* =========================================================
-       ABOUT
-    ========================================================= */
-    .about {
-      padding: 140px 0;
-    }
-    .about-content {
-      width: 100%;
-      min-height: 220px;
-      padding: 45px 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      color: var(--cream);
-      font-family: var(--display-font);
-      font-size:
-        clamp(25px, 3vw, 40px);
-      font-weight: 400;
-      line-height: 1.35;
-      letter-spacing: -0.025em;
-    }
-    .about-content p {
-      width: min(1000px, 100%);
-      margin: 0;
-    }
-    .about-content p::first-letter {
-      color: var(--wine-light);
-    }
-    /* =========================================================
-       WORK
-    ========================================================= */
-    .work {
-      padding: 140px 0;
-    }
-    .work-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 80px;
-    }
-    .work-title {
-      margin: 0;
-      font-family: var(--display-font);
-      font-size:
-        clamp(70px, 8vw, 120px);
-      font-weight: 400;
-      line-height: 0.82;
-      letter-spacing: -0.06em;
-    }
-    /* =========================================================
-       POETRY
-    ========================================================= */
-    .poetry {
-      padding: 60px 0 120px;
-      border-bottom: 1px solid var(--line);
-    }
-    .work-label {
-      margin-bottom: 40px;
-      color: var(--wine-light);
-      font-size: 10px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.35em;
-    }
-    .poem {
-      max-width: 850px;
-      margin: 0;
-      color: var(--cream);
-      font-family: var(--display-font);
-      font-size:
-        clamp(28px, 4vw, 54px);
-      font-weight: 400;
-      line-height: 1.3;
-      letter-spacing: -0.025em;
-    }
-    /* =========================================================
-       ARTWORK
-    ========================================================= */
-    .artwork {
-      padding-top: 120px;
-    }
-    .artwork-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 45px;
-    }
-    .artwork-title {
-      margin: 0;
-      font-family: var(--display-font);
-      font-size:
-        clamp(45px, 6vw, 80px);
-      font-weight: 400;
-      line-height: 0.9;
-      letter-spacing: -0.05em;
-    }
-    .artwork-image {
-      position: relative;
-      display: block;
-      width: min(900px, 100%);
-      margin: 0 auto;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: var(--soft-black);
-      cursor: zoom-in;
-    }
-    .artwork-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-      filter:
-        grayscale(0.05)
-        saturate(0.85)
-        contrast(1.05);
-      transition:
-        transform 1.1s var(--ease),
-        filter 0.8s ease;
-    }
-    .artwork-image:hover img {
-      transform: scale(1.025);
-      filter:
-        grayscale(0)
-        saturate(1)
-        contrast(1.05);
-    }
-    .artwork-info {
-      display: flex;
-      justify-content: space-between;
-      gap: 30px;
-      margin-top: 20px;
-      padding-bottom: 10px;
-    }
-    .artwork-medium {
-      color: var(--muted);
-      font-size: 10px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.3em;
-    }
-    /* =========================================================
-       CONTACT
-    ========================================================= */
-    .contact {
-      padding: 130px 0 140px;
-    }
-    .contact-title {
-      margin: 35px 0 65px;
-      font-family: var(--display-font);
-      font-size:
-        clamp(80px, 10vw, 150px);
-      font-weight: 400;
-      line-height: 0.78;
-      letter-spacing: -0.065em;
-    }
-    .contact-list {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 15px;
-    }
-    .contact-link {
-      position: relative;
-      display: inline-block;
-      padding-bottom: 8px;
-      font-family: var(--display-font);
-      font-size:
-        clamp(25px, 3vw, 42px);
-      font-weight: 400;
-      line-height: 1;
-      letter-spacing: -0.025em;
-      transition:
-        transform 0.5s var(--ease),
-        color 0.3s ease,
-        opacity 0.3s ease;
-    }
-    .contact-link::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      height: 1px;
-      background:
-        linear-gradient(
-          90deg,
-          var(--wine-light),
-          transparent
-        );
-      transform: scaleX(0);
-      transform-origin: right;
-      transition:
-        transform 0.5s var(--ease);
-    }
-    .contact-link:hover {
-      color: var(--cream);
-      transform:
-        translateX(10px);
-    }
-    .contact-link:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-    /* =========================================================
-       FOOTER
-    ========================================================= */
-    footer {
-      padding: 30px 0 40px;
-      border-top: 1px solid var(--line);
-      color: var(--dim);
-      font-size: 7px;
-      text-transform: uppercase;
-      letter-spacing: 0.25em;
-    }
-    /* =========================================================
-       SCROLL REVEAL
-    ========================================================= */
-    .reveal {
-      opacity: 0;
-      transform:
-        translateY(45px);
-      transition:
-        opacity 1s ease,
-        transform 1s var(--ease);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform:
-        translateY(0);
-    }
-    /* =========================================================
-       LIGHTBOX
-    ========================================================= */
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 30px;
-      background:
-        rgba(5, 4, 5, 0.975);
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition:
-        opacity 0.4s ease,
-        visibility 0.4s ease;
-    }
-    .lightbox.open {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-    }
-    .lightbox img {
-      width: auto;
-      max-width: 92vw;
-      max-height: 90vh;
-      object-fit: contain;
-      box-shadow:
-        0 30px 100px
-        rgba(0, 0, 0, 0.6);
-      transform:
-        scale(0.92);
-      transition:
-        transform 0.7s var(--ease);
-    }
-    .lightbox.open img {
-      transform:
-        scale(1);
-    }
-    .lightbox-close {
-      position: absolute;
-      top: 24px;
-      right: 30px;
-      z-index: 2;
-      color: var(--ivory);
-      font-size: 30px;
-      font-weight: 300;
-      cursor: pointer;
-      transition:
-        opacity 0.3s ease,
-        transform 0.4s var(--ease),
-        color 0.3s ease;
-    }
-    .lightbox-close:hover {
-      color: var(--wine-light);
-      opacity: 0.9;
-      transform:
-        rotate(90deg);
-    }
-    /* =========================================================
-       MOBILE
-    ========================================================= */
-    @media (max-width: 700px) {
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media (max-width: 900px) {
       :root {
         --padding: 28px;
       }
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 55px;
+      }
+      .artwork-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+      .artwork-info {
+        padding-bottom: 0;
+      }
+      .section {
+        padding: 115px 0;
+      }
+      .work-block {
+        margin-bottom: 110px;
+      }
+    }
+    @media (max-width: 650px) {
+      :root {
+        --padding: 20px;
+      }
       .nav {
-        padding: 27px 0;
-      }
-      .nav-left {
-        gap: 23px;
-      }
-      .menu-button,
-      .menu-line {
-        width: 34px;
-      }
-      .menu-button {
-        height: 29px;
-        gap: 6px;
-      }
-      .nav.open .menu-line:nth-child(1) {
-        transform:
-          translateY(7px)
-          rotate(45deg);
-      }
-      .nav.open .menu-line:nth-child(3) {
-        transform:
-          translateY(-7px)
-          rotate(-45deg);
+        padding: 20px var(--padding);
       }
       .nav-links {
-        gap: 22px;
+        position: absolute;
+        top: 70px;
+        left: var(--padding);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        padding: 22px 26px;
+        background: rgba(9, 7, 8, 0.95);
+        border: 1px solid var(--line);
+        transform: translateY(-10px);
+      }
+      .nav.open .nav-links {
+        transform: translateY(0);
       }
       .nav-link {
+        height: auto;
+        transform: none;
         font-size: 11px;
-        letter-spacing: 0.15em;
+        letter-spacing: 0.2em;
       }
       .hero {
-        min-height: 100svh;
-        padding-top: 175px;
-        padding-bottom: 90px;
+        padding:
+          120px
+          var(--padding)
+          70px;
       }
       .hero-title {
-        font-size:
-          clamp(65px, 18vw, 180px);
-        line-height: 0.72;
+        font-size: clamp(72px, 19.5vw, 195px);
         letter-spacing: -0.07em;
       }
       .hero-intro {
-        margin-top: 42px;
+        margin-top: 28px;
       }
       .hero-roles {
-        font-size: 9px;
-        letter-spacing: 0.28em;
+        font-size: 10px;
+        letter-spacing: 0.24em;
       }
-      .hero-image {
-        width: 100%;
-        margin-top: 65px;
-      }
-      .hero-image-label {
-        display: none;
-      }
-      .about {
-        padding: 95px 0;
-      }
-      .section-header,
-      .work-header {
-        display: block;
-        margin-bottom: 45px;
-      }
-      .section-title,
-      .work-title {
-        margin-top: 25px;
+      .hero-portrait {
+        width: min(280px, 72vw);
+        margin-top: 48px;
       }
       .section-title {
-        font-size: 68px;
+        margin-bottom: 40px;
       }
-      .work-title {
-        font-size: 61px;
-      }
-      .about-content {
-        min-height: 180px;
-        padding: 32px 0;
-        font-size: 24px;
-        line-height: 1.4;
-      }
-      .work {
-        padding: 95px 0;
-      }
-      .poetry {
-        padding:
-          30px 0 80px;
-      }
-      .poem {
-        font-size: 27px;
-      }
-      .artwork {
-        padding-top: 85px;
-      }
-      .artwork-header {
-        display: block;
+      .section-label {
         margin-bottom: 30px;
       }
-      .artwork-title {
-        margin-top: 20px;
-        font-size: 48px;
+      .about-text {
+        font-size: 20px;
       }
-      .artwork-info {
-        display: block;
-      }
-      .artwork-medium {
+      .meta-item {
         font-size: 9px;
       }
+      .work-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .poetry {
+        min-height: 390px;
+        padding: 65px 20px;
+      }
+      .poem {
+        font-size: clamp(25px, 7vw, 40px);
+      }
       .contact {
-        padding:
-          95px 0 105px;
+        min-height: 70vh;
       }
       .contact-title {
-        margin-top: 30px;
         margin-bottom: 50px;
-        font-size: 75px;
       }
-      .contact-link {
-        font-size: 29px;
+      .contact-links {
+        flex-direction: column;
+        gap: 25px;
       }
       .lightbox {
         padding: 20px;
       }
       .lightbox-close {
-        top: 20px;
-        right: 22px;
+        top: 15px;
+        right: 15px;
       }
     }
-    /* =========================================================
-       SMALL PHONES
-    ========================================================= */
-    @media (max-width: 380px) {
-      :root {
-        --padding: 22px;
-      }
-      .nav-left {
-        gap: 17px;
-      }
-      .menu-button,
-      .menu-line {
-        width: 31px;
-      }
-      .nav-links {
-        gap: 12px;
-      }
-      .nav-link {
-        font-size: 9px;
-      }
-      .hero-title {
-        font-size: 18vw;
-      }
-      .hero-roles {
-        font-size: 8px;
-      }
-      .section-title {
-        font-size: 60px;
-      }
-      .work-title {
-        font-size: 55px;
-      }
-      .contact-title {
-        font-size: 64px;
-      }
-      .contact-link {
-        font-size: 25px;
-      }
-      .about-content {
-        font-size: 21px;
-      }
-      .poem {
-        font-size: 24px;
-      }
-      .artwork-title {
-        font-size: 43px;
-      }
-    }
-    /* =========================================================
-       REDUCED MOTION
-    ========================================================= */
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
@@ -1003,22 +817,19 @@
       *,
       *::before,
       *::after {
-        animation: none !important;
-        transition: none !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
 </head>
 <body>
-  <!-- =======================================================
+  <!-- =========================
        NAVIGATION
-  ======================================================= -->
-  <nav
-    class="nav"
-    id="nav"
-    aria-label="Site navigation"
-  >
-    <div class="wrap nav-inner">
+  ========================== -->
+  <nav class="nav" id="nav" aria-label="Main navigation">
+    <div class="nav-inner">
       <div class="nav-left">
         <button
           class="menu-button"
@@ -1026,219 +837,214 @@
           type="button"
           aria-label="Open navigation"
           aria-expanded="false"
-          aria-controls="navigationLinks"
+          aria-controls="navLinks"
         >
-          <span class="menu-line"></span>
           <span class="menu-line"></span>
           <span class="menu-line"></span>
         </button>
-        <div
-          class="nav-links"
-          id="navigationLinks"
-        >
-          <a
-            class="nav-link"
-            href="#home"
-          >
-            Home
-          </a>
-          <a
-            class="nav-link"
-            href="#about"
-          >
-            About
-          </a>
-          <a
-            class="nav-link"
-            href="#work"
-          >
-            Work
-          </a>
-          <a
-            class="nav-link"
-            href="#contact"
-          >
-            Contact
-          </a>
+        <div class="nav-links" id="navLinks">
+          <a class="nav-link" href="#home">Home</a>
+          <a class="nav-link" href="#about">About</a>
+          <a class="nav-link" href="#work">Work</a>
+          <a class="nav-link" href="#contact">Contact</a>
         </div>
       </div>
     </div>
   </nav>
-  <!-- =======================================================
+  <!-- =========================
        HERO
-  ======================================================= -->
-  <header
-    class="hero"
-    id="home"
-  >
-    <div class="wrap hero-content">
-      <h1 class="hero-title">
-        Daniil Zorin
-      </h1>
-      <div class="hero-intro">
-        <div class="hero-roles">
-          Artist · Model · Content Creator
-        </div>
-      </div>
-      <button
-        class="hero-image"
-        type="button"
-        data-image="Facetune_15-06-2026-23-14-00.jpeg"
-        aria-label="Open portrait"
-      >
-        <img
-          src="Facetune_15-06-2026-23-14-00.jpeg"
-          alt="Portrait of Daniil Zorin"
-          loading="eager"
-          decoding="async"
-        >
-        <span class="hero-image-label">
-          Portrait / 001
-        </span>
-      </button>
-    </div>
-  </header>
-  <!-- =======================================================
-       MAIN
-  ======================================================= -->
+  ========================== -->
   <main>
-    <!-- =====================================================
-         ABOUT
-    ===================================================== -->
-    <section
-      class="about"
-      id="about"
-    >
-      <div class="wrap">
-        <div class="section-header reveal">
-          <span class="section-number">
-            01
-          </span>
-          <h2 class="section-title">
-            About
-          </h2>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Daniil Zorin
+        </h1>
+        <div class="hero-intro">
+          <div class="hero-roles">
+            Artist, Model
+          </div>
         </div>
-        <div
-          class="about-content reveal"
-          aria-label="About Daniil Zorin"
+        <button
+          class="hero-portrait"
+          type="button"
+          data-lightbox="Facetune_15-06-2026-23-14-00.jpeg"
+          aria-label="Open portrait"
         >
-          <p>
-            Daniil Andriiovych Zorin (b. 28 September 2007, Smila, Ukraine)
-            is a Ukrainian artist and model based in Bodø, Norway.
-          </p>
-        </div>
-      </div>
-    </section>
-    <!-- =====================================================
-         WORK
-    ===================================================== -->
-    <section
-      class="work"
-      id="work"
-    >
-      <div class="wrap">
-        <div class="work-header reveal">
-          <span class="section-number">
-            02
+          <img
+            src="Facetune_15-06-2026-23-14-00.jpeg"
+            alt="Portrait of Daniil Zorin"
+            width="330"
+            height="440"
+          />
+          <span class="hero-caption">
+            Portrait
           </span>
-          <h2 class="work-title">
-            Work
-          </h2>
-        </div>
-        <!-- POETRY -->
-        <article class="poetry reveal">
-          <div class="work-label">
-            Poetry
-          </div>
-          <p
-            class="poem"
-            lang="uk"
-          >
-            Літо, сонце, тепло, як в душі,<br>
-            Красиві квіти у золотім дощі.
-          </p>
-        </article>
-        <!-- ARTWORK -->
-        <article class="artwork">
-          <div class="artwork-header reveal">
-            <span class="work-label">
-              Artwork
-            </span>
-            <h3 class="artwork-title">
-              Painting
-            </h3>
-          </div>
-          <button
-            class="artwork-image reveal"
-            type="button"
-            data-image="IMG_2476.jpeg"
-            aria-label="Open painting"
-          >
-            <img
-              src="IMG_2476.jpeg"
-              alt="Painting by Daniil Zorin"
-              loading="lazy"
-              decoding="async"
-            >
-          </button>
-          <div class="artwork-info reveal">
-            <span class="artwork-medium">
-              Oil on canvas
-            </span>
-          </div>
-        </article>
+        </button>
+      </div>
+      <div class="scroll-note" aria-hidden="true">
+        Scroll to explore
       </div>
     </section>
-    <!-- =====================================================
-         CONTACT
-    ===================================================== -->
-    <section
-      class="contact"
-      id="contact"
-    >
-      <div class="wrap">
-        <div class="section-number reveal">
-          03
+    <!-- =========================
+         ABOUT
+    ========================== -->
+    <section class="section about" id="about">
+      <div class="container">
+        <div class="section-label reveal">
+          01 — About
         </div>
-        <h2 class="contact-title reveal">
-          Let's connect.
-        </h2>
-        <div class="contact-list">
-          <a
-            class="contact-link reveal"
-            href="https://www.instagram.com/zirochkatorrent"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Instagram
-          </a>
-          <a
-            class="contact-link reveal"
-            href="mailto:zirochkatorrent@icloud.com"
-          >
-            Email
-          </a>
+        <div class="about-grid">
+          <div>
+            <h2 class="section-title reveal">
+              About
+            </h2>
+          </div>
+          <div>
+            <p class="about-text reveal">
+              <strong>Daniil Andriiovych Zorin</strong>
+              (b. 28 September 2007, Smila, Ukraine)
+              is a Ukrainian artist and model based in
+              Bodø, Norway.
+            </p>
+            <div class="about-meta reveal">
+              <div class="meta-item">
+                <span>Born</span>
+                <span>28 September 2007</span>
+              </div>
+              <div class="meta-item">
+                <span>Origin</span>
+                <span>Smila, Ukraine</span>
+              </div>
+              <div class="meta-item">
+                <span>Based</span>
+                <span>Bodø, Norway</span>
+              </div>
+              <div class="meta-item">
+                <span>Fields</span>
+                <span>Art · Model</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- =========================
+         WORK
+    ========================== -->
+    <section class="section work" id="work">
+      <div class="container">
+        <div class="section-label reveal">
+          02 — Selected Work
+        </div>
+        <!-- Poetry -->
+        <div class="work-block">
+          <div class="work-heading reveal">
+            <h2 class="work-name">
+              Poetry
+            </h2>
+            <div class="work-type">
+              Ukrainian
+            </div>
+          </div>
+          <div class="poetry reveal">
+            <p class="poem" lang="uk">
+              <span class="poem-line">
+                Літо, сонце, тепло, як в душі,
+              </span>
+              <span class="poem-line">
+                Красиві квіти у золотім дощі.
+              </span>
+            </p>
+          </div>
+        </div>
+        <!-- Artwork -->
+        <div class="work-block">
+          <div class="work-heading reveal">
+            <h2 class="work-name">
+              Artwork
+            </h2>
+            <div class="work-type">
+              Selected piece
+            </div>
+          </div>
+          <div class="artwork-grid">
+            <button
+              class="artwork-image reveal"
+              type="button"
+              data-lightbox="IMG_2476.jpeg"
+              aria-label="Open artwork"
+            >
+              <img
+                src="IMG_2476.jpeg"
+                alt="Painting by Daniil Zorin"
+                loading="lazy"
+                width="1200"
+                height="900"
+              />
+            </button>
+            <div class="artwork-info reveal">
+              <h3 class="artwork-title">
+                Painting
+              </h3>
+              <div class="artwork-medium">
+                Oil on canvas
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- =========================
+         CONTACT
+    ========================== -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="contact-content">
+          <div class="section-label reveal">
+            03 — Contact
+          </div>
+          <h2 class="contact-title reveal">
+            Let's create
+            something
+            meaningful.
+          </h2>
+          <div class="contact-links reveal">
+            <a
+              class="contact-link"
+              href="https://www.instagram.com/zirochkatorrent"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Daniil Zorin on Instagram"
+            >
+              Instagram
+            </a>
+            <a
+              class="contact-link"
+              href="mailto:zirochkatorrent@icloud.com"
+            >
+              zirochkatorrent@icloud.com
+            </a>
+          </div>
         </div>
       </div>
     </section>
   </main>
-  <!-- =======================================================
+  <!-- =========================
        FOOTER
-  ======================================================= -->
+  ========================== -->
   <footer>
-    <div class="wrap">
-      © 2026 Daniil Zorin · All rights reserved.
-    </div>
+    © 2026 Daniil Zorin · All rights reserved.
   </footer>
-  <!-- =======================================================
+  <!-- =========================
        LIGHTBOX
-  ======================================================= -->
+  ========================== -->
   <div
     class="lightbox"
     id="lightbox"
-    aria-hidden="true"
     role="dialog"
     aria-modal="true"
+    aria-hidden="true"
     aria-label="Image preview"
   >
     <button
@@ -1250,195 +1056,143 @@
       ×
     </button>
     <img
+      class="lightbox-image"
       id="lightboxImage"
       src=""
       alt=""
-    >
+    />
   </div>
-  <!-- =======================================================
-       JAVASCRIPT
-  ======================================================= -->
   <script>
-    /* =======================================================
-       ELEMENTS
-    ======================================================= */
-    const nav =
-      document.getElementById("nav");
-    const menuButton =
-      document.getElementById("menuButton");
-    const navLinks =
-      document.querySelectorAll(".nav-link");
-    const lightbox =
-      document.getElementById("lightbox");
-    const lightboxImage =
-      document.getElementById("lightboxImage");
-    const lightboxClose =
-      document.getElementById("lightboxClose");
-    const clickableImages =
-      document.querySelectorAll("[data-image]");
-    const heroImage =
-      document.querySelector(".hero-image");
-    let lastFocusedElement = null;
-    /* =======================================================
+    /* =========================
        NAVIGATION
-    ======================================================= */
-    function setNavigation(open) {
-      nav.classList.toggle(
-        "open",
-        open
-      );
+    ========================== */
+    const nav = document.getElementById("nav");
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.querySelectorAll(".nav-link");
+    function closeMenu() {
+      nav.classList.remove("open");
       menuButton.setAttribute(
         "aria-expanded",
-        String(open)
+        "false"
       );
       menuButton.setAttribute(
         "aria-label",
-        open
+        "Open navigation"
+      );
+    }
+    function toggleMenu() {
+      const isOpen = nav.classList.toggle("open");
+      menuButton.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+      menuButton.setAttribute(
+        "aria-label",
+        isOpen
           ? "Close navigation"
           : "Open navigation"
       );
     }
     menuButton.addEventListener(
       "click",
-      () => {
-        const isOpen =
-          nav.classList.contains("open");
-        setNavigation(!isOpen);
-      }
+      toggleMenu
     );
     navLinks.forEach((link) => {
       link.addEventListener(
         "click",
-        () => {
-          setNavigation(false);
-        }
+        closeMenu
       );
     });
-    /* =======================================================
+    /* =========================
        SCROLL REVEAL
-    ======================================================= */
+    ========================== */
     const revealElements =
       document.querySelectorAll(".reveal");
-    if (
-      "IntersectionObserver"
-      in window
-    ) {
-      const revealObserver =
-        new IntersectionObserver(
-          (entries, observer) => {
-            entries.forEach(
-              (entry) => {
-                if (
-                  !entry.isIntersecting
-                ) {
-                  return;
-                }
-                entry.target.classList.add(
-                  "visible"
-                );
-                observer.unobserve(
-                  entry.target
-                );
-              }
-            );
-          },
-          {
-            threshold: 0.12
-          }
-        );
-      revealElements.forEach(
-        (element) => {
-          revealObserver.observe(
-            element
-          );
+    const revealObserver =
+      new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          });
+        },
+        {
+          threshold: 0.12,
+          rootMargin: "0px 0px -50px 0px"
         }
       );
-    } else {
-      revealElements.forEach(
-        (element) => {
-          element.classList.add(
-            "visible"
-          );
-        }
-      );
-    }
-    /* =======================================================
+    revealElements.forEach((element) => {
+      revealObserver.observe(element);
+    });
+    /* =========================
        LIGHTBOX
-    ======================================================= */
-    function openLightbox(
-      image,
-      alt = ""
-    ) {
-      if (!image) {
-        return;
-      }
+    ========================== */
+    const lightbox =
+      document.getElementById("lightbox");
+    const lightboxImage =
+      document.getElementById("lightboxImage");
+    const lightboxClose =
+      document.getElementById("lightboxClose");
+    const lightboxTriggers =
+      document.querySelectorAll(
+        "[data-lightbox]"
+      );
+    let lastFocusedElement = null;
+    function openLightbox(src, alt = "") {
       lastFocusedElement =
         document.activeElement;
-      lightboxImage.src =
-        image;
-      lightboxImage.alt =
-        alt;
-      lightbox.classList.add(
-        "open"
-      );
+      lightboxImage.src = src;
+      lightboxImage.alt = alt;
+      lightbox.classList.add("open");
       lightbox.setAttribute(
         "aria-hidden",
         "false"
       );
-      document.body.classList.add(
-        "no-scroll"
-      );
-      requestAnimationFrame(
-        () => {
-          lightboxClose.focus();
-        }
-      );
+      document.body.style.overflow = "hidden";
+      requestAnimationFrame(() => {
+        lightboxClose.focus();
+      });
     }
     function closeLightbox() {
-      lightbox.classList.remove(
-        "open"
-      );
+      lightbox.classList.remove("open");
       lightbox.setAttribute(
         "aria-hidden",
         "true"
       );
-      document.body.classList.remove(
-        "no-scroll"
-      );
-      lightboxImage.removeAttribute(
-        "src"
-      );
-      lightboxImage.alt = "";
+      document.body.style.overflow = "";
+      setTimeout(() => {
+        lightboxImage.src = "";
+        lightboxImage.alt = "";
+      }, 500);
       if (
         lastFocusedElement &&
-        typeof lastFocusedElement.focus ===
-          "function"
+        typeof lastFocusedElement.focus === "function"
       ) {
         lastFocusedElement.focus();
       }
-      lastFocusedElement = null;
     }
-    clickableImages.forEach(
-      (element) => {
-        element.addEventListener(
-          "click",
-          () => {
-            const image =
-              element.dataset.image;
-            const img =
-              element.querySelector("img");
-            if (!image) {
-              return;
-            }
-            openLightbox(
-              image,
-              img?.alt ||
-                "Portfolio image"
+    lightboxTriggers.forEach((trigger) => {
+      trigger.addEventListener(
+        "click",
+        () => {
+          const image =
+            trigger.getAttribute(
+              "data-lightbox"
             );
+          const imageElement =
+            trigger.querySelector("img");
+          const alt =
+            imageElement?.getAttribute("alt") ||
+            "Image preview";
+          if (image) {
+            openLightbox(image, alt);
           }
-        );
-      }
-    );
+        }
+      );
+    });
     lightboxClose.addEventListener(
       "click",
       closeLightbox
@@ -1453,90 +1207,98 @@
         }
       }
     );
-    /* =======================================================
-       ESCAPE
-    ======================================================= */
+    /* =========================
+       KEYBOARD CONTROLS
+    ========================== */
     document.addEventListener(
       "keydown",
       (event) => {
-        if (
-          event.key !== "Escape"
-        ) {
+        if (event.key !== "Escape") {
           return;
         }
         if (
-          lightbox.classList.contains(
-            "open"
-          )
+          lightbox.classList.contains("open")
         ) {
           closeLightbox();
           return;
         }
         if (
-          nav.classList.contains(
-            "open"
-          )
+          nav.classList.contains("open")
         ) {
-          setNavigation(false);
+          closeMenu();
         }
       }
     );
-    /* =======================================================
-       HERO PARALLAX
-    ======================================================= */
-    if (
-      heroImage &&
-      window.matchMedia(
-        "(pointer: fine)"
-      ).matches &&
-      !window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches
-    ) {
-      heroImage.addEventListener(
-        "mousemove",
-        (event) => {
-          const rect =
-            heroImage.getBoundingClientRect();
-          const x =
-            (event.clientX -
-              rect.left) /
-              rect.width -
-            0.5;
-          const y =
-            (event.clientY -
-              rect.top) /
-              rect.height -
-            0.5;
-          heroImage.style.transform =
-            `translate(
-              ${x * 4}px,
-              ${y * 4}px
-            )`;
-        }
-      );
-      heroImage.addEventListener(
-        "mouseleave",
-        () => {
-          heroImage.style.transform =
-            "translate(0, 0)";
-        }
-      );
-    }
-    /* =======================================================
+    /* =========================
        IMAGE ERROR HANDLING
-    ======================================================= */
+    ========================== */
     document
       .querySelectorAll("img")
       .forEach((image) => {
         image.addEventListener(
           "error",
           () => {
-            image.style.display =
-              "none";
+            image.style.opacity = "0.25";
+            console.warn(
+              "Image could not be loaded:",
+              image.src
+            );
           }
         );
       });
+    /* =========================
+       HERO PARALLAX
+    ========================== */
+    const heroTitle =
+      document.querySelector(
+        ".hero-title"
+      );
+    const heroPortrait =
+      document.querySelector(
+        ".hero-portrait"
+      );
+    const prefersReducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+    if (
+      !prefersReducedMotion &&
+      window.innerWidth > 800
+    ) {
+      document.addEventListener(
+        "mousemove",
+        (event) => {
+          const x =
+            event.clientX /
+              window.innerWidth -
+            0.5;
+          const y =
+            event.clientY /
+              window.innerHeight -
+            0.5;
+          if (heroTitle) {
+            heroTitle.style.setProperty(
+              "--hero-x",
+              `${x * -8}px`
+            );
+            heroTitle.style.setProperty(
+              "--hero-y",
+              `${y * -5}px`
+            );
+          }
+          if (heroPortrait) {
+            heroPortrait.style.setProperty(
+              "--portrait-x",
+              `${x * 5}px`
+            );
+            heroPortrait.style.setProperty(
+              "--portrait-y",
+              `${y * 5}px`
+            );
+          }
+        }
+      );
+    }
   </script>
 </body>
 </html>
